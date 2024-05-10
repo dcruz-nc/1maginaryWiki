@@ -535,10 +535,9 @@ a:hover {
         descHeader.classList.add('modal-description-header');
         modalContent.appendChild(descHeader);
         const desc = document.createElement('p');
-        desc.innerText = parseLinks(data.description);
+        insertLinksIntoParagraph(parseLinks(data.description), desc);
         desc.classList.add('modal-description');
         modalContent.appendChild(desc);
-
 
         if (!data.description || !data.description.trim()) {
     // Hide the description section if description data is empty
@@ -546,14 +545,15 @@ a:hover {
         desc.style.display = 'none';
     }
 
-        const appearancesHeader = document.createElement('h1');
-        appearancesHeader.innerText = 'Appearances';
-        appearancesHeader.classList.add('modal-appearances-header');
-        modalContent.appendChild(appearancesHeader);
-        const appearancesDesc = document.createElement('p');
-        appearancesDesc.innerText = parseLinks(data.appearances);
-        appearancesDesc.classList.add('modal-appearances-desc');
-        modalContent.appendChild(appearancesDesc);
+    const appearancesHeader = document.createElement('h1');
+    appearancesHeader.innerText = 'Appearances';
+    appearancesHeader.classList.add('modal-appearances-header');
+    modalContent.appendChild(appearancesHeader);
+    const appearancesDesc = document.createElement('p');
+    appearancesDesc.classList.add('modal-appearances-desc');
+    insertLinksIntoParagraph(parseLinks(data.appearances), appearancesDesc);
+    modalContent.appendChild(appearancesDesc);
+
 
         if (!data.appearances || !data.appearances.trim()) {
     // Hide the appearances section if appearances data is empty
@@ -566,8 +566,8 @@ a:hover {
         historyHeader.classList.add('modal-history-header');
         modalContent.appendChild(historyHeader);
         const historyDesc = document.createElement('p');
-        historyDesc.innerText = parseLinks(data.history);
         historyDesc.classList.add('modal-history-desc');
+        insertLinksIntoParagraph(parseLinks(data.history), historyDesc);
         modalContent.appendChild(historyDesc);
 
         if (!data.history || !data.history.trim()) {
@@ -588,12 +588,29 @@ a:hover {
 
 
     function parseLinks(text) {
-        const regex = /<a\s+(?:[^>]*?\s+)?href="([^"]*)"[^>]*>(.*?)<\/a>/gi;
-        const replacedText = text.replace(regex, '<a href="$1">$2</a>');
-
-        const aliasRegex = /&lt;a\s+href="([^"]*)"&gt;([^&lt;]+)&lt;\/a&gt;/gi;
-        return replacedText.replace(aliasRegex, '<a href="$1">$2</a>');
+    const regex = /<a\s+(?:[^>]*?\s+)?href="([^"]*)"[^>]*>(.*?)<\/a>/gi;
+    const replacedText = text.replace(regex, (match, href, innerHTML) => {
+        return `<a href="${href}">${innerHTML}</a>`;
+        });
+        return replacedText;
     }
+
+    function insertLinksIntoParagraph(textWithLinks, paragraphElement) {
+        const tempElement = document.createElement('div');
+        tempElement.innerHTML = textWithLinks;
+
+        // Create a new div element to contain both inner text and inner HTML
+        const containerDiv = document.createElement('div');
+        containerDiv.appendChild(document.createTextNode(paragraphElement.innerText));
+        containerDiv.appendChild(tempElement);
+
+        // Clear the existing content of the paragraph element
+        paragraphElement.innerHTML = '';
+
+        // Append the container div to the paragraph element
+        paragraphElement.appendChild(containerDiv);
+    }
+
 
     function addTableRow(table, headerText, dataText) {
         const row = table.insertRow();
