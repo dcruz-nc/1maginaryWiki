@@ -76,13 +76,93 @@ h2 {
         border-bottom: 2px solid white;
         padding: 10px;
         margin-bottom: 5px;
+        display: none;
     }
+
+    #logo {
+        background-image: url('assets/logo.png');
+        background-size: cover;
+        width: 100px;
+        height: 100px;
+        position: relative;
+        outline: 1px solid white;
+        margin: 10px;
+    }
+
+    .sidepanel {
+        height: 100%;
+        width: 120px;
+        position: fixed;
+        top: 0;
+        left: 0px; /* Hide the panel initially */
+        background-color: #121212;
+        overflow-x: hidden;
+        transition: 0.5s;
+        outline: 1px solid rgb(49, 49, 49);
+        display: flex;
+        flex-direction: column;
+        z-index: 999;
+    }
+
+    #everything {
+        position: absolute;
+        left: 120px;
+        width: 80vw;
+    }
+
+.option {
+    margin: 10px;
+    margin-top: -5px;
+    text-decoration: none;
+    color: white;
+}
+
+
+.option:hover {
+    color: #00ff00;
+    cursor: pointer;
+}
+
+p {
+        margin-left: 10px;
+        font-size: 1em;
+    }
+
+
+    a {
+    text-decoration: none;
+    color:rgb(0, 207, 0);
+}
+
+a:hover {
+    color: rgb(4, 255, 41);
+}
+
+
+
 
 </style>
 <body>
+
+    <div class="sidepanel" id="mySidepanel">
+        <div id="logo"></div>
+        <a href="https://1maginary.online/wiki" class="option" id="home">Home</a>
+        <a href="https://1maginary.online/wiki/1maginary" class="option"> 1maginary</a>
+        <a href="https://1maginary.online/wiki/artists" class="option" id="artists">Artists</a>
+        <a href="https://1maginary.online/wiki/items"  class="option" id="items">Items</a>
+        <a href="https://1maginary.online/wiki/emotes" class="option" >Emotes</a>
+        <a href="https://1maginary.online/wiki/creators" class="option" >Creators</a>
+    </div>
+
+    <div id="everything">
     <h1>Categories</h1>
 
-    <h2>Artists</h2>
+    <div id="section-one">
+        <p>Items are virtual objects that can be earned when a user spends time on <a href="https://1maginary.online/radio">1*RADIO</a>.</p>
+        <p>The list is sorted in alphabetical order.</p>
+    </div>
+
+
     <ul id="pageList-artists">
     </ul>
 
@@ -94,6 +174,7 @@ h2 {
         <div class="modal-content" id="modalContent">
         </div>
     </div>
+</div>
 
 
 <script src="scripts/points.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-storage.js"></script>
