@@ -476,6 +476,7 @@ a:hover {
         fetchAndSortPages();
         getPageDataFromURL();
     };
+    
 
     function displayPageData(data) {
         const modalContent = document.getElementById('modalContent');
@@ -538,6 +539,12 @@ a:hover {
         desc.classList.add('modal-description');
         modalContent.appendChild(desc);
 
+        if (!data.description || !data.description.trim()) {
+    // Hide the description section if description data is empty
+        descHeader.style.display = 'none';
+        desc.style.display = 'none';
+    }
+
         const appearancesHeader = document.createElement('h1');
         appearancesHeader.innerText = 'Appearances';
         appearancesHeader.classList.add('modal-appearances-header');
@@ -546,6 +553,12 @@ a:hover {
         appearancesDesc.innerText = parseLinks(data.appearances);
         appearancesDesc.classList.add('modal-appearances-desc');
         modalContent.appendChild(appearancesDesc);
+
+        if (!data.appearances || !data.appearances.trim()) {
+    // Hide the appearances section if appearances data is empty
+        appearancesHeader.style.display = 'none';
+        appearancesDesc.style.display = 'none';
+    }
 
         const historyHeader = document.createElement('h1');
         historyHeader.innerText = 'History';
@@ -556,6 +569,12 @@ a:hover {
         historyDesc.classList.add('modal-history-desc');
         modalContent.appendChild(historyDesc);
 
+        if (!data.history || !data.history.trim()) {
+    // Hide the history section if history data is empty
+        historyHeader.style.display = 'none';
+        historyDesc.style.display = 'none';
+    }
+
         const modal = document.getElementById('pageModal');
         modal.style.display = 'block';
 
@@ -564,6 +583,8 @@ a:hover {
         url.hash = itemName;
         history.pushState({}, '', url);
     }
+
+
 
     function parseLinks(text) {
         const regex = /<a\s+(?:[^>]*?\s+)?href="([^"]*)"[^>]*>(.*?)<\/a>/gi;
