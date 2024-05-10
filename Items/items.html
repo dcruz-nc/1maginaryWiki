@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+            <link rel="stylesheet" href="styles.css"/>
+            <link rel="icon" type="image/x-icon" href="favicon.ico">
+            <meta charset="UTF-8">
+            <meta name="darkreader-lock">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=ABeeZee&family=Noto+Sans+TC&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link href="https://fonts.googleapis.com/css2?family=Handjet&display=swap" rel="stylesheet">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta property="og:title" content="1*RADIO">
+            <meta property="og:description" content="1*RADIO">
+            <meta property="og:image" content="https://i.imgur.com/NsWEb0Z.png">
+            <meta property="og:type" content="website">
+            <title>1*categories</title>
+    </head>
+<style>
+
+
+body {
+    background-color: black;
+    margin: 0;
+    height: 100vh;
+    font-family: sans-serif;
+    color: white;
+    overflow: auto;
+}
+
+h1 {
+    margin: 10px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h2 {
+    margin: 10px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+    .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #000000;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 70%;
+            text-align: center;
+        }
+
+    li:hover {
+        color: green;
+        cursor: pointer;
+    }
+
+    ul {
+        margin: 10px;
+    }
+
+    #pageList-artists {
+        border-bottom: 2px solid white;
+        padding: 10px;
+        margin-bottom: 5px;
+    }
+
+</style>
+<body>
+    <h1>Categories</h1>
+
+    <h2>Artists</h2>
+    <ul id="pageList-artists">
+    </ul>
+
+    <h2>Items</h2>
+    <ul id="pageList-items">
+    </ul>
+
+    <div id="pageModal" class="modal">
+        <div class="modal-content" id="modalContent">
+        </div>
+    </div>
+
+
+<script src="scripts/points.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-storage.js"></script>
+<script src="scripts/points.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-storage.js"></script>
+<script>
+
+const firebaseConfig = {
+    apiKey: "AIzaSyA6WX1wyybNv8y7YjWoxjYo3r7A9JXFrn0",
+    authDomain: "imaginary-online.firebaseapp.com",
+    projectId: "imaginary-online",
+    storageBucket: "imaginary-online.appspot.com",
+    messagingSenderId: "161150961566",
+    appId: "1:161150961566:web:601b3313b7aa4a0c39b88f",
+    measurementId: "G-VYEP9HHWPB"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+const pagesRef = db.collection('Pages');
+
+function fetchAndSortPages() {
+    const pageListArtists = document.getElementById('pageList-artists');
+    const pageListItems = document.getElementById('pageList-items');
+    pageListArtists.innerHTML = '';
+    pageListItems.innerHTML = '';
+
+    pagesRef.get().then((querySnapshot) => {
+        const sortedArtists = {};
+        const sortedItems = {};
+
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            const category = data.category;
+            const itemName = data.name.toUpperCase();
+
+            const firstLetter = itemName.charAt(0);
+
+            if (category === 'artist') {
+                if (!sortedArtists[firstLetter]) {
+                    sortedArtists[firstLetter] = [];
+                }
+                sortedArtists[firstLetter].push(data);
+            } else if (category === 'item') {
+                if (!sortedItems[firstLetter]) {
+                    sortedItems[firstLetter] = [];
+                }
+                sortedItems[firstLetter].push(data);
+            }
+        });
+
+        displaySortedCategories(sortedArtists, pageListArtists);
+        displaySortedCategories(sortedItems, pageListItems);
+    });
+}
+
+function displaySortedCategories(sortedCategories, targetElement) {
+    Object.keys(sortedCategories).sort().forEach((letter) => {
+        const group = sortedCategories[letter];
+
+        const header = document.createElement('h2');
+        header.textContent = letter;
+        targetElement.appendChild(header);
+
+        group.sort((a, b) => a.name.localeCompare(b.name));
+
+        group.forEach((item) => {
+            const listItem = document.createElement('li');
+            listItem.textContent = item.name;
+
+            listItem.addEventListener('click', () => {
+                displayPageData(item);
+            });
+
+            targetElement.appendChild(listItem);
+        });
+    });
+}
+
+window.onload = fetchAndSortPages;
+
+function displayPageData(data) {
+    const modal = document.getElementById('pageModal');
+    const modalContent = document.getElementById('modalContent');
+    modalContent.innerHTML = '';
+
+    const image = document.createElement('img');
+    image.src = data.imageURL;
+    modalContent.appendChild(image);
+
+    const nameHeader = document.createElement('h1');
+    nameHeader.textContent = data.name;
+    modalContent.appendChild(nameHeader);
+
+    const categoryHeader = document.createElement('h1');
+    categoryHeader.textContent = 'Category';
+    modalContent.appendChild(categoryHeader);
+    const categoryDesc = document.createElement('p');
+    categoryDesc.textContent = 'the category desc goes here.';
+    modalContent.appendChild(categoryDesc);
+
+    const descHeader = document.createElement('h1');
+    descHeader.textContent = 'Description';
+    modalContent.appendChild(descHeader);
+    const desc = document.createElement('p');
+    desc.textContent = data.description;
+    modalContent.appendChild(desc);
+
+    const appearancesHeader = document.createElement('h1');
+    appearancesHeader.textContent = 'Appearances';
+    modalContent.appendChild(appearancesHeader);
+    const appearancesDesc = document.createElement('p');
+    appearancesDesc.textContent = 'the apperance desc goes here.';
+    modalContent.appendChild(appearancesDesc);
+
+    const historyHeader = document.createElement('h1');
+    historyHeader.textContent = 'History';
+    modalContent.appendChild(historyHeader);
+    const historyDesc = document.createElement('p');
+    historyDesc.textContent = 'the history desc goes here.';
+    modalContent.appendChild(historyDesc);
+
+    modal.style.display = 'block';
+
+    const itemName = data.name.replace(/\s+/g, '-').toLowerCase();
+    const url = new URL(window.location.href);
+    url.hash = itemName;
+    history.pushState({}, '', url);
+}
+
+function getPageDataFromURL() {
+    const hash = window.location.hash.substring(1);
+    const itemName = hash.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+
+    const sampleData = {
+        name: itemName,
+        imageURL: 'sample-image-url',
+        description: 'Sample description'
+    };
+    displayPageData(sampleData);
+}
+
+window.onload = () => {
+    fetchAndSortPages();
+    if (window.location.hash) {
+        getPageDataFromURL();
+    }
+};
+
+window.onclick = function(event) {
+    const modal = document.getElementById('pageModal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+        const url = new URL(window.location.href);
+        url.hash = '';
+        history.pushState({}, '', url);
+    }
+}
+
+
+</script>
+</body>
+</html>

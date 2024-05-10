@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+            <link rel="stylesheet" href="styles.css"/>
+            <link rel="icon" type="image/x-icon" href="favicon.ico">
+            <meta charset="UTF-8">
+            <meta name="darkreader-lock">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=ABeeZee&family=Noto+Sans+TC&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link href="https://fonts.googleapis.com/css2?family=Handjet&display=swap" rel="stylesheet">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta property="og:title" content="1*RADIO">
+            <meta property="og:description" content="1*RADIO">
+            <meta property="og:image" content="https://i.imgur.com/NsWEb0Z.png">
+            <meta property="og:type" content="website">
+            <title>1*Wiki</title>
+    </head>
+<style>
+
+
+body {
+    background-color: black;
+    margin: 0;
+    height: 100vh;
+    font-family: sans-serif;
+    color: white;
+    overflow: auto;
+}
+
+h1 {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 10px;
+    font-size: 40px;
+}
+
+h2 {
+    margin: 10px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+    .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #000000;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 70%;
+            text-align: center;
+        }
+
+
+
+        li {
+            list-style-type: none;
+            margin-left: -30px;
+        }
+
+
+
+    #pageList-artists {
+        border-bottom: 2px solid white;
+        padding: 10px;
+        margin-bottom: 5px;
+    }
+
+    p {
+        margin-left: 10px;
+        font-size: 1em;
+    }
+    
+    a {
+        text-decoration: none; 
+        color: inherit; 
+    }
+
+    a:hover {
+        border-bottom: 1px solid white;
+        cursor: pointer;
+    }
+
+    #logo {
+        background-image: url('assets/logo.png');
+        background-size: cover;
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        right: 5vw;
+        top: 5vw;
+        outline: 1px solid white;
+    }
+
+    #header {
+        font-family: 'Times New Roman', Times, serif;
+        margin: 10px;
+        font-size: 2em;
+        width: 90vw;
+        border-bottom: 1px solid white;
+    }
+
+    #section-one {
+        width: 70vw;
+    }
+
+    #navigation-box {
+        outline: 1px solid rgb(56, 56, 56);
+        background-color: rgb(21, 21, 21);
+        width: 40vw;
+        height: auto;
+        padding-bottom: 10px;
+        margin-left: 10px;
+        padding-top: 1px;
+        margin-top: 10px;
+    }
+
+    #login-button {
+        margin-left: 10px;
+        cursor: pointer;
+    }
+
+    #login-button:hover {
+        color: green;
+    }
+
+    #logging-in {
+        outline: 1px solid rgb(56, 56, 56);
+        background-color: rgb(21, 21, 21);
+        padding-bottom: 10px;
+        margin-left: 10px;
+        padding-top: 1px;
+        margin-top: 10px;
+        width: 80vw;
+        height: auto;
+    }
+
+    #permissions {
+        outline: 1px solid rgb(56, 56, 56);
+        background-color: rgb(21, 21, 21);
+        padding-bottom: 10px;
+        margin-left: 10px;
+        padding-top: 1px;
+        margin-top: 10px;
+        width: 80vw;
+        height: auto;
+    }
+
+    #rules {
+        outline: 1px solid rgb(56, 56, 56);
+        background-color: rgb(21, 21, 21);
+        padding-bottom: 10px;
+        margin-left: 10px;
+        padding-top: 1px;
+        margin-top: 10px;
+        width: 80vw;
+        height: auto;
+    }
+
+
+    #reporting-problems {
+        outline: 1px solid rgb(56, 56, 56);
+        background-color: rgb(21, 21, 21);
+        padding-bottom: 10px;
+        margin-left: 10px;
+        padding-top: 1px;
+        margin-top: 10px;
+        width: 80vw;
+        height: auto;
+    }
+
+    #gray-text {
+        color: gray;
+    }
+
+
+
+
+</style>
+<body>
+
+    
+    
+    <div id="header">Main Page</div>
+
+    <div id="section-one">
+        <h1>Welcome to the 1* Wiki!</h1>
+        <p>Explore information about the history of 1*, site, artists that have collaborated with 1maginary.<p>
+        <p>These articles serve to cover everything you would want to know regarding the 1maginary universe.</p>
+    </div>
+
+    <div id="logo"></div>
+    <br>
+    <br>
+    <br>
+    <h2>Navigate</h2>
+    <div id="navigation-box">
+        <ul>
+            <li><a href="https://1maginary.online/wiki/artists">Artists</a></li>
+            <li><a href="https://1maginary.online/wiki/items">Items</a></li>
+        </ul>
+    </div>
+
+
+    <br>
+    <h2>Logging in</h2>
+    <div id="logging-in">
+        <p>To login to the 1maginary wiki, <div id="login-button">click here</div></p>
+    </div>
+
+    <br>
+    <h2>Permissions</h2>
+    <div id="permissions">
+        <p>To create or edit the 1* wiki, you must have an account that is at least 7 weeks old.</p>
+        <p>Users can only create 1 page every 12 hours. This it to prevent potential spam.</p>
+    </div>
+
+    <br>
+    <h2>Etiquitte</h2>
+    <div id="rules">
+        <ul>
+            <li>Citation is recommended if possible.</li>
+            <li>Insulting any individual or group does not belong on the wiki.</li>
+            <li>Keep discussions relevant to the page.</li>
+        </ul>
+    </div>
+    
+
+    <br>
+    <h2>Reporting Problems</h2>
+    <div id="reporting-problems">
+        <p>Contact with moderators can be made through the 1* discord server.</p>
+    </div>
+
+    <br>
+    <p id="gray-text">This page was last edited on Wednesday, May 8th, 2024, at 06:52 PM.</p>
+    <br>
+
+
+    <div id="pageModal" class="modal">
+        <div class="modal-content" id="modalContent">
+        </div>
+    </div>
+
+
+<script src="scripts/points.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-storage.js"></script>
+<script src="scripts/points.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-storage.js"></script>
+<script>
+
+
+const firebaseConfig = {
+          apiKey: "AIzaSyA6WX1wyybNv8y7YjWoxjYo3r7A9JXFrn0",
+          authDomain: "imaginary-online.firebaseapp.com",
+          projectId: "imaginary-online",
+          storageBucket: "imaginary-online.appspot.com",
+          messagingSenderId: "161150961566",
+          appId: "1:161150961566:web:601b3313b7aa4a0c39b88f",
+          measurementId: "G-VYEP9HHWPB"
+        };
+        firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+</script>
+</body>
+</html>
