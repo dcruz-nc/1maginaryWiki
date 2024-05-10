@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="styles.css"/>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="darkreader-lock">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=ABeeZee&family=Noto+Sans+TC&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Handjet&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="1*RADIO">
+    <meta property="og:description" content="1*RADIO">
+    <meta property="og:image" content="https://i.imgur.com/NsWEb0Z.png">
+    <meta property="og:type" content="website">
+    <title>1*create</title>
+</head>
+<style>
+body {
+    background-color: black;
+    margin: 0;
+    height: 100vh;
+    font-family: sans-serif;
+    color: white;
+    overflow: auto;
+}
+
+input, textarea, select {
+    font-family: sans-serif;
+}
+
+h1 {
+    margin: 5px;
+    margin-left: 5px;
+    font-family: "Times New Roman", serif;
+}
+
+#description {
+    background-color: black;
+    color: white;
+    font-family: sans-serif;
+    outline: 2px solid rgb(0, 0, 0);
+    width: 90vw;
+    height: 100px;
+    font-size: 20px;
+    resize: none;
+    overflow: auto;
+}
+
+#history {
+    background-color: black;
+    color: white;
+    font-family: sans-serif;
+    outline: 2px solid rgb(0, 0, 0);
+    width: 90vw;
+    height: 100px;
+    font-size: 20px;
+    resize: none;
+    overflow: auto;
+}
+
+#appearances {
+    background-color: black;
+    color: white;
+    font-family: sans-serif;
+    outline: 2px solid rgb(0, 0, 0);
+    width: 90vw;
+    height: 100px;
+    font-size: 20px;
+    resize: none;
+    overflow: auto;
+    margin-bottom: 10px;
+}
+
+#category {
+    height: 40px;
+}
+
+#name {
+    background-color: black;
+    color: white;
+    font-family: sans-serif;
+    outline: 2px solid rgb(0, 0, 0);
+    width: 90vw;
+    height: 40px;
+    font-size: 20px;
+    resize: none;
+    overflow: auto;
+    margin-bottom: 10px;
+    padding-left: 5px;
+}
+
+#pageForm {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 10px;
+}
+
+button {
+    background-color: black;
+    outline: 2px solid white;
+    color: white;
+    height: 40px;
+    font-family: sans-serif;
+    font-size: 20px;
+}
+
+button:hover {
+    background-color: rgb(255, 255, 255);
+    outline: 2px solid white;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+}
+
+select {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    width: 180px;
+    height: 30px;
+    font-size: 20px;
+    font-family: sans-serif;
+}
+
+input {
+    background-color: black;
+    color: white;
+    width: 90vw;
+    height: 40px;
+    margin-top: 5px;
+    outline: 3px solid black;
+}
+
+input#image {
+    background-color: black;
+    margin-bottom: 10px;
+}
+
+h1 {
+    margin: 5px;
+}
+
+#logo {
+        background-image: url('assets/logo.png');
+        background-size: cover;
+        width: 100px;
+        height: 100px;
+        position: relative;
+        outline: 1px solid white;
+        margin: 10px;
+    }
+
+    .sidepanel {
+        height: 100%;
+        width: 120px;
+        position: fixed;
+        top: 0;
+        left: 0px; /* Hide the panel initially */
+        background-color: #121212;
+        overflow-x: hidden;
+        transition: 0.5s;
+        outline: 1px solid rgb(49, 49, 49);
+        display: flex;
+        flex-direction: column;
+        z-index: 999;
+    }
+
+    #everything {
+        position: absolute;
+        left: 120px;
+        width: 80vw;
+    }
+
+.option {
+    margin: 10px;
+    margin-top: -5px;
+    text-decoration: none;
+    color: white;
+}
+
+
+.option:hover {
+    color: #00ff00;
+    cursor: pointer;
+}
+
+h2 {
+    margin-bottom: 2px;
+}
+
+
+</style>
+<body>
+
+
+
+    <div class="sidepanel" id="mySidepanel">
+        <div id="logo"></div>
+        <a href="https://1maginary.online/wiki" class="option" id="home">Home</a>
+        <a href="https://1maginary.online/wiki/1maginary" class="option"> 1maginary</a>
+        <a href="https://1maginary.online/wiki/artists" class="option" id="artists">Artists</a>
+        <a href="https://1maginary.online/wiki/items"  class="option" id="items">Items</a>
+        <a href="https://1maginary.online/wiki/emotes" class="option" >Emotes</a>
+        <a href="https://1maginary.online/wiki/creators" class="option" >Creators</a>
+    </div>
+
+    <div id="everything">
+    <br>
+    <h1>Create Wiki Page</h1>
+
+    <form id="pageForm">
+        <h2>Name</h2>
+        <input type="text" id="name" placeholder="Name" required>
+        <select id="category" required>
+            <option value="item">Item</option>
+        </select>
+        <h2>Description</h2>
+        <textarea id="description" placeholder="Description (necessary)" required></textarea>
+        <input type="file" id="image">
+        <button type="submit">Create Page</button>
+    </form>
+
+    <div id="successMessage" style="display: none; color: green;">
+        Page created successfully!
+    </div>
+    <br>
+    <br>
+    <br>
+</div>
+<br>
+
+<script src="auth.js"></script>
+<script src="scripts/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-storage.js"></script>
+<script src="scripts/points.js"></script>
+<script>
+const firebaseConfig = {
+    apiKey: "AIzaSyA6WX1wyybNv8y7YjWoxjYo3r7A9JXFrn0",
+    authDomain: "imaginary-online.firebaseapp.com",
+    projectId: "imaginary-online",
+    storageBucket: "imaginary-online.appspot.com",
+    messagingSenderId: "161150961566",
+    appId: "1:161150961566:web:601b3313b7aa4a0c39b88f",
+    measurementId: "G-VYEP9HHWPB"
+};
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+const storage = firebase.storage();
+
+const pagesRef = db.collection('Pages');
+
+const pageForm = document.getElementById('pageForm');
+
+pageForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const category = document.getElementById('category').value;
+    const description = document.getElementById('description').value;
+    const image = document.getElementById('image').files[0];
+
+    const existingPage = await pagesRef.where('name', '==', name).get();
+    if (!existingPage.empty) {
+        alert('A page with this name already exists. Please choose a different name.');
+        return;
+    }
+
+    const storageRef = storage.ref();
+    const imageRef = storageRef.child(`images/${image.name}`);
+    const snapshot = await imageRef.put(image);
+    const imageURL = await snapshot.ref.getDownloadURL();
+
+    const pageData = {
+        name,
+        category,
+        description,
+        imageURL,
+    };
+
+    await pagesRef.add(pageData);
+
+    pageForm.reset();
+    document.getElementById('successMessage').style.display = 'block';
+});
+
+function processLink(url, label) {
+    if (url.trim() !== '') {
+        if (url.trim().startsWith('<a href=')) {
+            return url;
+        } else {
+            return `<a href="${url}" target="_blank">${label}</a>`;
+        }
+    }
+    return '';
+}
+
+</script>
+
+</body>
+</html>

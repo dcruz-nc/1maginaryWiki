@@ -533,23 +533,6 @@ a:hover {
         desc.classList.add('modal-description');
         modalContent.appendChild(desc);
 
-        const appearancesHeader = document.createElement('h1');
-        appearancesHeader.textContent = 'Appearances';
-        appearancesHeader.classList.add('modal-appearances-header');
-        modalContent.appendChild(appearancesHeader);
-        const appearancesDesc = document.createElement('p');
-        appearancesDesc.innerHTML = parseLinks(data.appearances);
-        appearancesDesc.classList.add('modal-appearances-desc');
-        modalContent.appendChild(appearancesDesc);
-
-        const historyHeader = document.createElement('h1');
-        historyHeader.textContent = 'History';
-        historyHeader.classList.add('modal-history-header');
-        modalContent.appendChild(historyHeader);
-        const historyDesc = document.createElement('p');
-        historyDesc.innerHTML = parseLinks(data.history);
-        historyDesc.classList.add('modal-history-desc');
-        modalContent.appendChild(historyDesc);
 
         const modal = document.getElementById('pageModal');
         modal.style.display = 'block';
