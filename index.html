@@ -23,13 +23,24 @@
 
 
 body {
-    background-color: rgb(228, 240, 5);
+    background-color: rgb(0, 0, 0);
     margin: 0;
     height: 100vh;
     font-family: sans-serif;
     color: white;
     overflow: auto;
 }
+
+::selection {
+            background-color: #00ab00;
+            color: white; /* Change text color to make it visible */
+        }
+
+        /* For older versions of Firefox */
+        ::-moz-selection {
+            background-color: #00a700;
+            color: white;
+        }
 
 h1 {
     font-family: 'Times New Roman', Times, serif;
@@ -90,8 +101,8 @@ h2 {
     }
 
     a:hover {
-        border-bottom: 1px solid white;
         cursor: pointer;
+        color: #00ff00;
     }
 
     #logo {
@@ -134,7 +145,7 @@ h2 {
     }
 
     #login-button:hover {
-        color: green;
+        color: #00ff00;
     }
 
     #logging-in {
@@ -146,6 +157,26 @@ h2 {
         margin-top: 10px;
         width: 80vw;
         height: auto;
+    }
+
+    #create-a-page {
+        outline: 1px solid rgb(56, 56, 56);
+        background-color: rgb(21, 21, 21);
+        padding-bottom: 10px;
+        margin-left: 10px;
+        padding-top: 1px;
+        margin-top: 10px;
+        width: 80vw;
+        height: auto;
+    }
+
+    #create-button {
+        margin-left: 10px;
+        cursor: pointer;
+    }
+
+    #create-button:hover {
+        color: #00ff00;
     }
 
     #permissions {
@@ -198,19 +229,22 @@ h2 {
 
     <div id="section-one">
         <h1>Welcome to the 1* Wiki!</h1>
-        <p>Explore information about the history of 1*, site, artists that have collaborated with 1maginary.<p>
-        <p>These articles serve to cover everything you would want to know regarding the 1maginary universe.</p>
+        <p>Explore information about the history of 1*, site, artists, creators, items, and emotes.<p>
+        <p>These articles serve to cover everything you would want to know regarding the 1maginary universe</p>
     </div>
 
     <div id="logo"></div>
     <br>
     <br>
     <br>
-    <h2>Navigate</h2>
+    <h2>Navigate Categories</h2>
     <div id="navigation-box">
         <ul>
-            <li><a href="https://1maginary.online/wiki/artists">Artists</a></li>
-            <li><a href="https://1maginary.online/wiki/items">Items</a></li>
+            <li><a href="https://1maginary.online/wiki/1maginary">> 1maginary</a></li>
+            <li><a href="https://1maginary.online/wiki/artists">> Artists</a></li>
+            <li><a href="https://1maginary.online/wiki/items">> Items</a></li>
+            <li><a href="https://1maginary.online/wiki/emotes">> Emotes</a></li>
+            <li><a href="https://1maginary.online/wiki/creators">> Creators</a></li>
         </ul>
     </div>
 
@@ -222,6 +256,12 @@ h2 {
     </div>
 
     <br>
+    <h2>Create a Page</h2>
+    <div id="create-a-page">
+        <p>To create a page that displays on the 1maginary wiki, <div id="create-button">click here</div></p>
+    </div>
+
+    <br>
     <h2>Permissions</h2>
     <div id="permissions">
         <p>To create or edit the 1* wiki, you must have an account that is at least 7 weeks old.</p>
@@ -229,7 +269,7 @@ h2 {
     </div>
 
     <br>
-    <h2>Etiquitte</h2>
+    <h2>Wiki Etiquitte</h2>
     <div id="rules">
         <ul>
             <li>Citation is recommended if possible.</li>
@@ -242,7 +282,7 @@ h2 {
     <br>
     <h2>Reporting Problems</h2>
     <div id="reporting-problems">
-        <p>Contact with moderators can be made through the 1* discord server.</p>
+        <p>Contact with moderators can be made through the <a href="https://discord.gg/jBRFJwASXH">1* discord server.</a></p>
     </div>
 
     <br>
