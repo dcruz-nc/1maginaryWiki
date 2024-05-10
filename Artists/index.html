@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+            <link rel="stylesheet" href="styles.css"/>
+            <link rel="icon" type="image/x-icon" href="favicon.ico">
+            <meta charset="UTF-8">
+            <meta name="darkreader-lock">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=ABeeZee&family=Noto+Sans+TC&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link href="https://fonts.googleapis.com/css2?family=Handjet&display=swap" rel="stylesheet">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta property="og:title" content="1*RADIO">
+            <meta property="og:description" content="1*RADIO">
+            <meta property="og:image" content="https://i.imgur.com/NsWEb0Z.png">
+            <meta property="og:type" content="website">
+            <title>1*Artists</title>
+    </head>
+<style>
+
+
+body {
+    background-color: black;
+    margin: 0;
+    height: 100vh;
+    font-family: sans-serif;
+    color: white;
+    overflow: auto;
+}
+
+h1 {
+    margin: 10px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h2 {
+    margin: 10px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+
+    li:hover {
+        color: green;
+        cursor: pointer;
+    }
+
+    ul {
+        margin: 10px;
+    }
+
+
+    #pageList-artists {
+        outline: 1px solid rgb(56, 56, 56);
+        background-color: rgb(21, 21, 21);
+        padding-bottom: 10px;
+        margin-left: 10px;
+        padding-top: 1px;
+        margin-top: 10px;
+        width: 80%;
+        height: auto;
+    }
+
+    p {
+        margin-left: 10px;
+        font-size: 1em;
+    }
+    
+    #pageList-items {
+        display: none;
+    }
+
+    #header {
+        font-family: 'Times New Roman', Times, serif;
+        margin: 10px;
+        font-size: 1em;
+        width: 90%;
+        border-bottom: 1px solid white;
+    }
+
+    #section-one {
+        width: 70vw;
+    }
+
+    .sidepanel {
+        height: 100%;
+        width: 120px;
+        position: fixed;
+        top: 0;
+        left: 0px; /* Hide the panel initially */
+        background-color: #121212;
+        overflow-x: hidden;
+        transition: 0.5s;
+        outline: 1px solid rgb(49, 49, 49);
+        display: flex;
+        flex-direction: column;
+        z-index: 999;
+    }
+
+
+    #everything {
+        position: absolute;
+        left: 150px;
+        width: 80vw;
+    }
+
+
+    #logo {
+        background-image: url('assets/logo.png');
+        background-size: cover;
+        width: 100px;
+        height: 100px;
+        outline: 1px solid white;
+        margin: 10px;
+    }
+
+    .modal {
+            display: none;
+            
+            position: absolute;
+            z-index: 1;
+            left: -29px;
+            width: 93vw;
+            top: 0;
+            height: 100vh;
+            overflow: auto;
+            background-color: rgba(0, 0, 0);
+        }
+
+        .modal-content {
+            background-color: #000000;
+            padding: 20px;
+            width: 100%;
+            height: 100%;
+            margin-left: 15px;
+        }
+
+        .modal-image-category-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 350px; 
+    height: auto;
+    overflow: auto;
+    margin: 20px;
+    margin-right: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px; /* Adjust padding as needed */
+    background-color: #121212;
+    outline: 2px solid rgb(49, 49, 49);
+}
+
+
+
+
+
+    /* Styles for name */
+.modal-name {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: left;
+    border-bottom: 1px solid white;
+    width: 60vw;
+}
+
+/* Styles for category container */
+.modal-category {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Styles for category header */
+.modal-category-header {
+    font-weight: bold;
+    margin-right: 10px; /* Adjust spacing as needed */
+}
+
+/* Styles for category description */
+.modal-category-desc {
+    margin-left: auto; /* Align to the right */
+}
+
+
+/* Styles for description header */
+.modal-description-header {
+    font-size: 30px;
+    /* Other styles as needed */
+}
+
+/* Styles for description */
+.modal-description {
+    outline: 1px solid rgb(56, 56, 56);
+        background-color: rgb(21, 21, 21);
+        padding-bottom: 10px;
+        margin-left: 10px;
+        padding-top: 1px;
+        padding: 5px;
+        margin-top: 10px;
+        width: 50vw;
+        height: auto;
+}
+
+
+/* Styles for appearances header */
+.modal-appearances-header {
+    font-size: 30px;
+    
+    /* Other styles as needed */
+}
+
+/* Styles for appearances description */
+.modal-appearances-desc {
+    outline: 1px solid rgb(56, 56, 56);
+        background-color: rgb(21, 21, 21);
+        padding-bottom: 10px;
+        margin-left: 10px;
+        padding-top: 1px;
+        padding: 5px;
+        margin-top: 10px;
+        width: 50vw;
+        height: auto;
+}
+
+/* Styles for history header */
+.modal-history-header {
+    font-size: 30px;
+    /* Other styles as needed */
+}
+
+/* Styles for history description */
+.modal-history-desc {
+    outline: 1px solid rgb(56, 56, 56);
+        background-color: rgb(21, 21, 21);
+        padding-bottom: 10px;
+        margin-left: 10px;
+        padding-top: 1px;
+        padding: 5px;
+        margin-top: 10px;
+        width: 50vw;
+        height: auto;
+}
+
+
+.modal-custom-header {
+    font-size: 30px;
+}
+
+.modal-custom {
+    outline: 1px solid rgb(56, 56, 56);
+        background-color: rgb(21, 21, 21);
+        padding-bottom: 10px;
+        margin-left: 10px;
+        padding-top: 1px;
+        padding: 5px;
+        margin-top: 10px;
+        width: 50vw;
+        height: auto;
+}
+
+
+    /* Styles for headers */
+    .modal-header {
+        background-color: rgb(0, 207, 0);
+        color: white;
+        font-weight: bold;
+        padding: 5px;
+        text-align: center;
+        width: 95%;
+        margin-top: 10px;
+    }
+
+
+    .modal-header_0 {
+        font-size: 30px;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    .modal-info_0 {
+        outline: 1px solid rgb(56, 56, 56);
+        background-color: rgb(21, 21, 21);
+        padding-bottom: 10px;
+        margin-left: 10px;
+        padding-top: 1px;
+        padding: 5px;
+        margin-top: 10px;
+        width: 50vw;
+        height: auto;
+    }
+
+
+    /* Styles for table  (socials and country)*/
+    table {
+        text-align: left;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        font-size: 100%;
+    }
+
+
+
+
+a {
+    text-decoration: none;
+    color:rgb(0, 207, 0);
+}
+
+a:hover {
+    color: rgb(4, 255, 41);
+}
+
+
+
+.modal-history {
+    color: black;
+    display: none;
+}
+
+#editButton {
+    background-color: blue;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+}
+
+#pageForm {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 10px;
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    
+}
+
+.option {
+    margin: 10px;
+    margin-top: -5px;
+    text-decoration: none;
+    color: white;
+}
+
+
+.option:hover {
+    color: #00ff00;
+    cursor: pointer;
+}
+
+
+</style>
+<body>
+    <div class="sidepanel" id="mySidepanel">
+        <div id="logo"></div>
+        <a href="https://1maginary.online/wiki" class="option" id="home">Home</a>
+        <a href="https://1maginary.online/wiki/1maginary" class="option"> 1maginary</a>
+        <a class="option" id="artists">Artists</a>
+        <a href="https://1maginary.online/wiki/items"  class="option" id="items">Items</a>
+        <a href="https://1maginary.online/wiki/emotes" class="option" >Emotes</a>
+        <a href="https://1maginary.online/wiki/creators" class="option" >Creators</a>
+    </div>
+
+    <div id="everything">
+    <div id="header"><h1>Category:Artists</h1></div>
+
+    <div id="section-one">
+        <p>Artists that have have been featured on 1*Radio, , 1*Magazine, Artist-Index, or the 1maginary youtube channel.<p>
+        <p>The list is sorted in alphabetical order.</p>
+    </div>
+
+    <ul id="pageList-artists">
+    </ul>
+
+    <ul id="pageList-items">
+    </ul>
+
+    <div id="pageModal" class="modal">
+        <a href="https://1maginary.online/wiki/edit"><div id="editButton"></div></a>
+        <div class="modal-content" id="modalContent">
+        </div>
+        
+    </div>
+</div>
+
+<script src="scripts/points.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-storage.js"></script>
+<script src="scripts/points.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-storage.js"></script>
+<script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyA6WX1wyybNv8y7YjWoxjYo3r7A9JXFrn0",
+        authDomain: "imaginary-online.firebaseapp.com",
+        projectId: "imaginary-online",
+        storageBucket: "imaginary-online.appspot.com",
+        messagingSenderId: "161150961566",
+        appId: "1:161150961566:web:601b3313b7aa4a0c39b88f",
+        measurementId: "G-VYEP9HHWPB"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    const pagesRef = db.collection('Pages');
+
+    function fetchAndSortPages() {
+        const pageListArtists = document.getElementById('pageList-artists');
+        const pageListItems = document.getElementById('pageList-items');
+        pageListArtists.innerText = '';
+        pageListItems.innerText = '';
+
+        pagesRef.get().then((querySnapshot) => {
+            const sortedArtists = {};
+            const sortedItems = {};
+
+            querySnapshot.forEach((doc) => {
+                const data = doc.data();
+                const category = data.category;
+                const itemName = data.name.toUpperCase();
+
+                const firstLetter = itemName.charAt(0);
+
+                if (category === 'artist') {
+                    if (!sortedArtists[firstLetter]) {
+                        sortedArtists[firstLetter] = [];
+                    }
+                    sortedArtists[firstLetter].push(data);
+                } else if (category === 'item') {
+                    if (!sortedItems[firstLetter]) {
+                        sortedItems[firstLetter] = [];
+                    }
+                    sortedItems[firstLetter].push(data);
+                }
+            });
+
+            displaySortedCategories(sortedArtists, pageListArtists);
+            displaySortedCategories(sortedItems, pageListItems);
+        });
+    }
+
+    function displaySortedCategories(sortedCategories, targetElement) {
+        Object.keys(sortedCategories).sort().forEach((letter) => {
+            const group = sortedCategories[letter];
+
+            const header = document.createElement('h2');
+            header.innerText = letter;
+            targetElement.appendChild(header);
+
+            group.sort((a, b) => a.name.localeCompare(b.name));
+
+            group.forEach((item) => {
+                const listItem = document.createElement('li');
+                listItem.innerText = item.name;
+
+                listItem.addEventListener('click', () => {
+                    displayPageData(item);
+                });
+
+                targetElement.appendChild(listItem);
+            });
+        });
+    }
+
+    window.onload = () => {
+        fetchAndSortPages();
+        getPageDataFromURL();
+    };
+    
+
+    function displayPageData(data) {
+        const modalContent = document.getElementById('modalContent');
+        modalContent.innerText = '';
+
+        const imageCategoryContainer = document.createElement('div');
+        imageCategoryContainer.classList.add('modal-image-category-container');
+        modalContent.appendChild(imageCategoryContainer);
+
+        const container = document.createElement('div');
+        container.classList.add('modal-image-container');
+
+        const nameElement = document.createElement('p');
+        nameElement.innerText = data.name;
+        nameElement.style.fontWeight = 'bold';
+        nameElement.style.textAlign = 'center';
+        container.appendChild(nameElement);
+
+
+        const image = document.createElement('img');
+        image.classList.add('modal-image');
+        image.src = data.imageURL;
+        image.style.width = '200px';
+        image.style.height = '200px';
+        container.appendChild(image);
+
+        imageCategoryContainer.appendChild(container);
+
+        const headerCountry = document.createElement('div');
+        headerCountry.classList.add('modal-header');
+        headerCountry.innerText = 'Artist';
+        imageCategoryContainer.appendChild(headerCountry);
+
+        const tableCountry = document.createElement('table');
+        imageCategoryContainer.appendChild(tableCountry);
+
+        addTableRow(tableCountry, 'Country', data.country);
+
+        const header = document.createElement('div');
+        header.classList.add('modal-header');
+        header.innerText = 'Media';
+        imageCategoryContainer.appendChild(header);
+
+        const table = document.createElement('table');
+        imageCategoryContainer.appendChild(table);
+
+
+        addTableRow(table, 'SoundCloud', parseLinks(data.soundcloud));
+        addTableRow(table, 'Spotify', parseLinks(data.spotify));
+        addTableRow(table, 'Instagram', parseLinks(data.instagram));
+        addTableRow(table, 'Twitter', parseLinks(data.twitter));
+
+        const nameHeader = document.createElement('h1');
+        nameHeader.innerText = data.name;
+        nameHeader.classList.add('modal-name');
+        modalContent.appendChild(nameHeader);
+
+        const descHeader = document.createElement('h1');
+        descHeader.innerText = 'Description';
+        descHeader.classList.add('modal-description-header');
+        modalContent.appendChild(descHeader);
+        const desc = document.createElement('p');
+        desc.innerText = parseLinks(data.description);
+        desc.classList.add('modal-description');
+        modalContent.appendChild(desc);
+
+
+        if (!data.description || !data.description.trim()) {
+    // Hide the description section if description data is empty
+        descHeader.style.display = 'none';
+        desc.style.display = 'none';
+    }
+
+        const appearancesHeader = document.createElement('h1');
+        appearancesHeader.innerText = 'Appearances';
+        appearancesHeader.classList.add('modal-appearances-header');
+        modalContent.appendChild(appearancesHeader);
+        const appearancesDesc = document.createElement('p');
+        appearancesDesc.innerText = parseLinks(data.appearances);
+        appearancesDesc.classList.add('modal-appearances-desc');
+        modalContent.appendChild(appearancesDesc);
+
+        if (!data.appearances || !data.appearances.trim()) {
+    // Hide the appearances section if appearances data is empty
+        appearancesHeader.style.display = 'none';
+        appearancesDesc.style.display = 'none';
+    }
+
+        const historyHeader = document.createElement('h1');
+        historyHeader.innerText = 'History';
+        historyHeader.classList.add('modal-history-header');
+        modalContent.appendChild(historyHeader);
+        const historyDesc = document.createElement('p');
+        historyDesc.innerText = parseLinks(data.history);
+        historyDesc.classList.add('modal-history-desc');
+        modalContent.appendChild(historyDesc);
+
+        if (!data.history || !data.history.trim()) {
+    // Hide the history section if history data is empty
+        historyHeader.style.display = 'none';
+        historyDesc.style.display = 'none';
+    }
+
+        const modal = document.getElementById('pageModal');
+        modal.style.display = 'block';
+
+        const itemName = data.name.replace(/\s+/g, '-').toLowerCase();
+        const url = new URL(window.location.href);
+        url.hash = itemName;
+        history.pushState({}, '', url);
+    }
+
+
+
+    function parseLinks(text) {
+        const regex = /<a\s+(?:[^>]*?\s+)?href="([^"]*)"[^>]*>(.*?)<\/a>/gi;
+        const replacedText = text.replace(regex, '<a href="$1">$2</a>');
+
+        const aliasRegex = /&lt;a\s+href="([^"]*)"&gt;([^&lt;]+)&lt;\/a&gt;/gi;
+        return replacedText.replace(aliasRegex, '<a href="$1">$2</a>');
+    }
+
+    function addTableRow(table, headerText, dataText) {
+        const row = table.insertRow();
+        const header = row.insertCell(0);
+        const data = row.insertCell(1);
+        header.innerText = headerText;
+        data.innerHTML = dataText;
+    }
+
+    function getPageDataFromURL() {
+        const url = new URL(window.location.href);
+        let artistName = url.hash.substring(1).toLowerCase();
+        artistName = artistName.replace(/\s+/g, '-');
+        if (artistName) {
+            pagesRef.where('category', '==', 'artist').get()
+                .then((querySnapshot) => {
+                    const artistData = querySnapshot.docs.find(doc => doc.data().name.toLowerCase().replace(/\s+/g, '-') === artistName);
+                    if (artistData) {
+                        displayPageData(artistData.data());
+                    } else {
+                        console.log("Artist not found");
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error getting artist data:", error);
+                });
+        }
+    }
+
+    window.onload = () => {
+        fetchAndSortPages();
+        getPageDataFromURL();
+    };
+
+    window.onclick = function(event) {
+        const modal = document.getElementById('pageModal');
+        if (event.target === modal) {
+            closeModal();
+        }
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('pageModal');
+        modal.style.display = 'none';
+        const url = new URL(window.location.href);
+        url.hash = '';
+        history.pushState({}, '', url);
+    }
+
+    const closeModalButton = document.getElementById('artists');
+    if (closeModalButton) {
+        closeModalButton.addEventListener('click', closeModal);
+    }
+
+</script>
+</body>
+</html>
