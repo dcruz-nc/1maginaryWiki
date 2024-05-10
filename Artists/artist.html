@@ -306,7 +306,9 @@ h2 {
         font-size: 100%;
     }
 
-
+    .bold-text {
+        font-weight: bold;
+    }
 
 
 #artists {
@@ -510,7 +512,7 @@ a:hover {
         const tableCountry = document.createElement('table');
         imageCategoryContainer.appendChild(tableCountry);
 
-        addTableRow(tableCountry, 'Country', data.country);
+        addTableRow(tableCountry, 'Country', data.country, true);
 
         const header = document.createElement('div');
         header.classList.add('modal-header');
@@ -520,10 +522,12 @@ a:hover {
         const table = document.createElement('table');
         imageCategoryContainer.appendChild(table);
 
-        addTableRow(table, 'SoundCloud', parseLinks(data.soundcloud));
-        addTableRow(table, 'Spotify', parseLinks(data.spotify));
-        addTableRow(table, 'Instagram', parseLinks(data.instagram));
-        addTableRow(table, 'Twitter', parseLinks(data.twitter));
+        /* function addTableRow(table, headerText, dataText, isHeaderBold)  */
+        addTableRow(table, 'SoundCloud', parseLinks(data.soundcloud), true); /* true = bold */
+        addTableRow(table, 'Spotify', parseLinks(data.spotify), true);
+        addTableRow(table, 'Instagram', parseLinks(data.instagram), true);
+        addTableRow(table, 'Twitter', parseLinks(data.twitter), true);
+
 
         const nameHeader = document.createElement('h1');
         nameHeader.innerText = data.name;
@@ -612,13 +616,18 @@ a:hover {
     }
 
 
-    function addTableRow(table, headerText, dataText) {
-        const row = table.insertRow();
-        const header = row.insertCell(0);
-        const data = row.insertCell(1);
-        header.innerText = headerText;
-        data.innerHTML = dataText;
+    function addTableRow(table, headerText, dataText, isHeaderBold) {
+    const row = table.insertRow();
+    const header = row.insertCell(0);
+    const data = row.insertCell(1);
+
+    header.innerText = headerText;
+    data.innerHTML = dataText;
+
+    if (isHeaderBold) {
+        header.style.fontWeight = 'bold';
     }
+}
 
     function getPageDataFromURL() {
         const url = new URL(window.location.href);
