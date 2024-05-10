@@ -119,6 +119,7 @@ h2 {
 
     .modal {
             display: none;
+            
             position: absolute;
             z-index: 1;
             left: -29px;
@@ -143,6 +144,7 @@ h2 {
     right: 0;
     width: 350px; 
     height: auto;
+    overflow: auto;
     margin: 20px;
     margin-right: 80px;
     display: flex;
@@ -207,6 +209,7 @@ h2 {
 /* Styles for appearances header */
 .modal-appearances-header {
     font-size: 30px;
+    
     /* Other styles as needed */
 }
 
@@ -289,8 +292,9 @@ h2 {
     }
 
 
-    /* Styles for table */
+    /* Styles for table  (socials and country)*/
     table {
+        text-align: left;
         width: 100%;
         margin-top: 10px;
     }
@@ -299,6 +303,7 @@ h2 {
         padding: 8px;
         text-align: left;
         border-bottom: 1px solid #ddd;
+        font-size: 100%;
     }
 
 
@@ -412,8 +417,8 @@ a:hover {
     function fetchAndSortPages() {
         const pageListArtists = document.getElementById('pageList-artists');
         const pageListItems = document.getElementById('pageList-items');
-        pageListArtists.innerHTML = '';
-        pageListItems.innerHTML = '';
+        pageListArtists.innerText = '';
+        pageListItems.innerText = '';
 
         pagesRef.get().then((querySnapshot) => {
             const sortedArtists = {};
@@ -449,14 +454,14 @@ a:hover {
             const group = sortedCategories[letter];
 
             const header = document.createElement('h2');
-            header.textContent = letter;
+            header.innerText = letter;
             targetElement.appendChild(header);
 
             group.sort((a, b) => a.name.localeCompare(b.name));
 
             group.forEach((item) => {
                 const listItem = document.createElement('li');
-                listItem.textContent = item.name;
+                listItem.innerText = item.name;
 
                 listItem.addEventListener('click', () => {
                     displayPageData(item);
@@ -471,10 +476,11 @@ a:hover {
         fetchAndSortPages();
         getPageDataFromURL();
     };
+    
 
     function displayPageData(data) {
         const modalContent = document.getElementById('modalContent');
-        modalContent.innerHTML = '';
+        modalContent.innerText = '';
 
         const imageCategoryContainer = document.createElement('div');
         imageCategoryContainer.classList.add('modal-image-category-container');
@@ -484,7 +490,7 @@ a:hover {
         container.classList.add('modal-image-container');
 
         const nameElement = document.createElement('p');
-        nameElement.textContent = data.name;
+        nameElement.innerText = data.name;
         container.appendChild(nameElement);
 
         const image = document.createElement('img');
@@ -498,7 +504,7 @@ a:hover {
 
         const headerCountry = document.createElement('div');
         headerCountry.classList.add('modal-header');
-        headerCountry.textContent = 'Artist';
+        headerCountry.innerText = 'Artist';
         imageCategoryContainer.appendChild(headerCountry);
 
         const tableCountry = document.createElement('table');
@@ -508,7 +514,7 @@ a:hover {
 
         const header = document.createElement('div');
         header.classList.add('modal-header');
-        header.textContent = 'Media';
+        header.innerText = 'Media';
         imageCategoryContainer.appendChild(header);
 
         const table = document.createElement('table');
@@ -520,36 +526,54 @@ a:hover {
         addTableRow(table, 'Twitter', parseLinks(data.twitter));
 
         const nameHeader = document.createElement('h1');
-        nameHeader.textContent = data.name;
+        nameHeader.innerText = data.name;
         nameHeader.classList.add('modal-name');
         modalContent.appendChild(nameHeader);
 
         const descHeader = document.createElement('h1');
-        descHeader.textContent = 'Description';
+        descHeader.innerText = 'Description';
         descHeader.classList.add('modal-description-header');
         modalContent.appendChild(descHeader);
         const desc = document.createElement('p');
-        desc.innerHTML = parseLinks(data.description);
+        desc.innerText = parseLinks(data.description);
         desc.classList.add('modal-description');
         modalContent.appendChild(desc);
 
+        if (!data.description || !data.description.trim()) {
+    // Hide the description section if description data is empty
+        descHeader.style.display = 'none';
+        desc.style.display = 'none';
+    }
+
         const appearancesHeader = document.createElement('h1');
-        appearancesHeader.textContent = 'Appearances';
+        appearancesHeader.innerText = 'Appearances';
         appearancesHeader.classList.add('modal-appearances-header');
         modalContent.appendChild(appearancesHeader);
         const appearancesDesc = document.createElement('p');
-        appearancesDesc.innerHTML = parseLinks(data.appearances);
+        appearancesDesc.innerText = parseLinks(data.appearances);
         appearancesDesc.classList.add('modal-appearances-desc');
         modalContent.appendChild(appearancesDesc);
 
+        if (!data.appearances || !data.appearances.trim()) {
+    // Hide the appearances section if appearances data is empty
+        appearancesHeader.style.display = 'none';
+        appearancesDesc.style.display = 'none';
+    }
+
         const historyHeader = document.createElement('h1');
-        historyHeader.textContent = 'History';
+        historyHeader.innerText = 'History';
         historyHeader.classList.add('modal-history-header');
         modalContent.appendChild(historyHeader);
         const historyDesc = document.createElement('p');
-        historyDesc.innerHTML = parseLinks(data.history);
+        historyDesc.innerText = parseLinks(data.history);
         historyDesc.classList.add('modal-history-desc');
         modalContent.appendChild(historyDesc);
+
+        if (!data.history || !data.history.trim()) {
+    // Hide the history section if history data is empty
+        historyHeader.style.display = 'none';
+        historyDesc.style.display = 'none';
+    }
 
         const modal = document.getElementById('pageModal');
         modal.style.display = 'block';
@@ -559,6 +583,8 @@ a:hover {
         url.hash = itemName;
         history.pushState({}, '', url);
     }
+
+
 
     function parseLinks(text) {
         const regex = /<a\s+(?:[^>]*?\s+)?href="([^"]*)"[^>]*>(.*?)<\/a>/gi;
@@ -572,8 +598,8 @@ a:hover {
         const row = table.insertRow();
         const header = row.insertCell(0);
         const data = row.insertCell(1);
-        header.textContent = headerText;
-        data.textContent = dataText;
+        header.innerText = headerText;
+        data.innerHTML = dataText;
     }
 
     function getPageDataFromURL() {
@@ -621,6 +647,5 @@ a:hover {
         closeModalButton.addEventListener('click', closeModal);
     }
 </script>
-
 </body>
 </html>
