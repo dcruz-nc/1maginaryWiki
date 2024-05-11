@@ -117,7 +117,6 @@ h2 {
         background-size: cover;
         width: 100px;
         height: 100px;
-        outline: 1px solid white;
         margin: 10px;
     }
 
@@ -510,17 +509,32 @@ a:hover {
     cursor: pointer;
 }
 
+#account-container {
+    position: absolute;
+    bottom: 5px;
+    color: #00ff00;
+    margin: 2px;
+}
+
+
 
 </style>
 <body>
     <div class="sidepanel" id="mySidepanel">
         <div id="logo"></div>
-        <a href="https://1maginary.online/wiki" class="option" id="home">Home</a>
-        <a href="https://1maginary.online/wiki/1maginary" class="option"> 1maginary</a>
-        <a class="option" id="artists">Artists</a>
-        <a href="https://1maginary.online/wiki/items"  class="option" id="items">Items</a>
-        <a href="https://1maginary.online/wiki/emotes" class="option" >Emotes</a>
-        <a href="https://1maginary.online/wiki/creators" class="option" >Creators</a>
+            <a href="https://1maginary.online/wiki" class="option" id="home">Home</a>
+            <a href="https://1maginary.online/wiki/1maginary" class="option"> 1maginary</a>
+            <a class="option" id="artists">Artists</a>
+            <a href="https://1maginary.online/wiki/items"  class="option" id="items">Items</a>
+            <a href="https://1maginary.online/wiki/emotes" class="option" >Emotes</a>
+            <a href="https://1maginary.online/wiki/creators" class="option" >Creators</a>
+
+
+        <div id="account-container">
+            <div id="login-button"><p>Login</p></div>
+            <div id="logout-button"><p>Logout</p></div>
+            <div id="signup-button"><p>Signup</p></div>
+        </div>
     </div>
 
     <div id="everything">
@@ -699,36 +713,7 @@ a:hover {
         desc.style.display = 'none';
     }
 
-    const appearancesHeader = document.createElement('h1');
-    appearancesHeader.innerText = 'Appearances';
-    appearancesHeader.classList.add('modal-appearances-header');
-    modalContent.appendChild(appearancesHeader);
-    const appearancesDesc = document.createElement('p');
-    appearancesDesc.classList.add('modal-appearances-desc');
-    insertLinksIntoParagraph(parseLinks(data.appearances), appearancesDesc);
-    modalContent.appendChild(appearancesDesc);
 
-
-        if (!data.appearances || !data.appearances.trim()) {
-    // Hide the appearances section if appearances data is empty
-        appearancesHeader.style.display = 'none';
-        appearancesDesc.style.display = 'none';
-    }
-
-        const historyHeader = document.createElement('h1');
-        historyHeader.innerText = 'History';
-        historyHeader.classList.add('modal-history-header');
-        modalContent.appendChild(historyHeader);
-        const historyDesc = document.createElement('p');
-        historyDesc.classList.add('modal-history-desc');
-        insertLinksIntoParagraph(parseLinks(data.history), historyDesc);
-        modalContent.appendChild(historyDesc);
-
-        if (!data.history || !data.history.trim()) {
-    // Hide the history section if history data is empty
-        historyHeader.style.display = 'none';
-        historyDesc.style.display = 'none';
-    }
 
         const modal = document.getElementById('pageModal');
         modal.style.display = 'block';
