@@ -44,37 +44,14 @@ h1 {
     color: white;
     font-family: sans-serif;
     outline: 2px solid rgb(0, 0, 0);
-    width: 90vw;
+    width: 80vw;
     height: 100px;
     font-size: 20px;
     resize: none;
     overflow: auto;
 }
 
-#history {
-    background-color: black;
-    color: white;
-    font-family: sans-serif;
-    outline: 2px solid rgb(0, 0, 0);
-    width: 90vw;
-    height: 100px;
-    font-size: 20px;
-    resize: none;
-    overflow: auto;
-}
 
-#appearances {
-    background-color: black;
-    color: white;
-    font-family: sans-serif;
-    outline: 2px solid rgb(0, 0, 0);
-    width: 90vw;
-    height: 100px;
-    font-size: 20px;
-    resize: none;
-    overflow: auto;
-    margin-bottom: 10px;
-}
 
 #category {
     height: 40px;
@@ -85,7 +62,7 @@ h1 {
     color: white;
     font-family: sans-serif;
     outline: 2px solid rgb(0, 0, 0);
-    width: 90vw;
+    width: 80vw;
     height: 40px;
     font-size: 20px;
     resize: none;
@@ -130,7 +107,7 @@ select {
 input {
     background-color: black;
     color: white;
-    width: 90vw;
+    width: 80vw;
     height: 40px;
     margin-top: 5px;
     outline: 3px solid black;
@@ -212,6 +189,16 @@ h2 {
         display: none; /* Initially hide the content */
     }
 
+    #create-wiki-page {
+        color: #00ff00;
+        margin-left: 10px;
+    }
+
+    ::selection {
+    background-color: #00ff00;
+}
+
+
 
 </style>
 <body>
@@ -230,7 +217,7 @@ h2 {
 
     <div id="everything">
     <br>
-    <h1>Create Wiki Page</h1>
+    <h1 id="create-wiki-page">Create Wiki Page</h1>
     <div id="guide-box" onclick="toggleGuide()">
         <h3 id="guide-header">🢒 Formatting Guide</h3>
         <div id="guide-box-content">
@@ -252,12 +239,12 @@ h2 {
 
     <form id="pageForm">
         <h2>Name</h2>
-        <input type="text" id="name" placeholder="Name" required>
+        <input type="text" id="name" placeholder="Name (necessary)" required>
         <select id="category" required>
             <option value="artist">Artist</option>
         </select>
-        <h2>Description</h2>
-        <textarea id="description" placeholder="Description (necessary)" required></textarea>
+        <h2>Content</h2>
+        <textarea id="description" placeholder="Content (necessary)" required></textarea>
         <h2>Media Links</h2>
         <input type="url" id="soundcloud" placeholder="SoundCloud Profile">
         <input type="url" id="spotify" placeholder="Spotify Profile">
@@ -344,11 +331,17 @@ pageForm.addEventListener('submit', async (e) => {
     const category = document.getElementById('category').value;
     let description = document.getElementById('description').value;
     const image = document.getElementById('image').files[0];
-    const soundcloud = processLink(document.getElementById('soundcloud').value, 'SoundCloud');
-    const spotify = processLink(document.getElementById('spotify').value, 'Spotify');
-    const instagram = processLink(document.getElementById('instagram').value, 'Instagram');
-    const twitter = processLink(document.getElementById('twitter').value, 'Twitter');
+    let soundcloud = processLink(document.getElementById('soundcloud').value, 'SoundCloud');
+    let spotify = processLink(document.getElementById('spotify').value, 'Spotify');
+    let instagram = processLink(document.getElementById('instagram').value, 'Instagram');
+    let twitter = processLink(document.getElementById('twitter').value, 'Twitter');
     const country = document.getElementById('country').value;
+
+    // Check if the fields are blank, if so, set them to null
+    soundcloud = soundcloud.trim() !== '' ? soundcloud : null;
+    spotify = spotify.trim() !== '' ? spotify : null;
+    instagram = instagram.trim() !== '' ? instagram : null;
+    twitter = twitter.trim() !== '' ? twitter : null;
 
     description = processDescription(description);
 
@@ -380,6 +373,7 @@ pageForm.addEventListener('submit', async (e) => {
     pageForm.reset();
     document.getElementById('successMessage').style.display = 'block';
 });
+
 
 
 

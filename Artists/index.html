@@ -44,7 +44,7 @@ h2 {
 
 
     li:hover {
-        color: green;
+        color: rgb(0, 255, 0);
         cursor: pointer;
     }
 
@@ -455,7 +455,7 @@ a:hover {
     <div id="header"><h1>Category:Artists</h1></div>
 
     <div id="section-one">
-        <p>Artists that have have been featured on 1*Radio, , 1*Magazine, Artist-Index, or the 1maginary youtube channel.<p>
+        <p>Artists that have have been featured on 1*Radio, , 1*Magazine, Artist-Index, the 1maginary youtube channel, or have contributed to the project in another way.<p>
         <p>The list is sorted in alphabetical order.</p>
     </div>
 
@@ -578,7 +578,6 @@ a:hover {
 
 
 
-
 function displayPageData(data) {
     const modalContent = document.getElementById('modalContent');
     modalContent.innerText = '';
@@ -623,11 +622,10 @@ function displayPageData(data) {
     const table = document.createElement('table');
     imageCategoryContainer.appendChild(table);
 
-    /* function addTableRow(table, headerText, dataText, isHeaderBold)  */
-    addTableRow(table, 'SoundCloud', parseLinks(data.soundcloud), true); /* true = bold */
+    addTableRow(table, 'SoundCloud', parseLinks(data.soundcloud), true);
     addTableRow(table, 'Spotify', parseLinks(data.spotify), true);
-    addTableRow(table, 'Instagram', parseLinks(data.instagram), true);
-    addTableRow(table, 'Twitter', parseLinks(data.twitter), true);
+    addTableRow(table, 'Instagram', parseLinks(data.instagram || 'unknown'), true);
+    addTableRow(table, 'Twitter', parseLinks(data.twitter || 'unknown'), true);
 
     const nameHeader = document.createElement('h1');
     nameHeader.innerText = data.name;
