@@ -193,6 +193,25 @@ h2 {
     margin-bottom: 2px;
 }
 
+#guide-box {
+        outline: 1px solid rgb(56, 56, 56);
+        background-color: rgb(21, 21, 21);
+        padding-bottom: 10px;
+        margin-left: 10px;
+        padding-top: 1px;
+        padding: 5px;
+        margin-top: 10px;
+        width: 45vw;
+        height: auto;
+        margin-top: 25px;
+        cursor: pointer; /* Add cursor pointer for indicating it's clickable */
+        padding-left: 10px;
+    }
+
+    #guide-box-content {
+        display: none; /* Initially hide the content */
+    }
+
 
 </style>
 <body>
@@ -212,6 +231,24 @@ h2 {
     <div id="everything">
     <br>
     <h1>Create Wiki Page</h1>
+    <div id="guide-box" onclick="toggleGuide()">
+        <h3 id="guide-header">🢒 Formatting Guide</h3>
+        <div id="guide-box-content">
+            <h3>Headers</h3>
+            <p>To create headers, use hash (#) symbols followed by a space. For example:</p>
+            <p># Header Example</p>
+            <br>
+            <h3>Hyperlinks</h3>
+            <p>To create hyperlinks, use square brackets [] for the link text and parentheses () for the URL. For example:</p>
+            <p>[Link Text](URL)</p>
+            <br>
+            <h3>Line Breaks</h3>
+            <p>To insert a line break, end the line with two or more spaces followed by a newline character. For example:</p>
+            <p>This is the first line.</p>
+            <br>
+            <p>This is the second line.</p>
+        </div>
+    </div>
 
     <form id="pageForm">
         <h2>Name</h2>
@@ -360,8 +397,18 @@ function processLink(url, label) {
 
 
 
-
-
+// TOGGLE GUIDE BOX
+function toggleGuide() {
+        var content = document.getElementById("guide-box-content");
+        var header = document.getElementById("guide-header");
+        if (content.style.display === "none") {
+            content.style.display = "block";
+            header.innerHTML = "🢓 Formatting Guide:";
+        } else {
+            content.style.display = "none";
+            header.innerHTML = "🢒 Formatting Guide:";
+        }
+    }
 
 
 </script>
