@@ -622,8 +622,8 @@ function displayPageData(data) {
     const table = document.createElement('table');
     imageCategoryContainer.appendChild(table);
 
-    addTableRow(table, 'SoundCloud', parseLinks(data.soundcloud), true);
-    addTableRow(table, 'Spotify', parseLinks(data.spotify), true);
+    addTableRow(table, 'SoundCloud', parseLinks(data.soundcloud || 'unknown'), true);
+    addTableRow(table, 'Spotify', parseLinks(data.spotify || 'unknown'), true);
     addTableRow(table, 'Instagram', parseLinks(data.instagram || 'unknown'), true);
     addTableRow(table, 'Twitter', parseLinks(data.twitter || 'unknown'), true);
 
