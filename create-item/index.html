@@ -17,7 +17,7 @@
     <meta property="og:description" content="1*RADIO">
     <meta property="og:image" content="https://i.imgur.com/NsWEb0Z.png">
     <meta property="og:type" content="website">
-    <title>1*create</title>
+    <title>1*Create Item</title>
 </head>
 <style>
 body {
@@ -51,7 +51,7 @@ h1 {
     overflow: auto;
 }
 
-#history {
+#usage {
     background-color: black;
     color: white;
     font-family: sans-serif;
@@ -61,19 +61,6 @@ h1 {
     font-size: 20px;
     resize: none;
     overflow: auto;
-}
-
-#appearances {
-    background-color: black;
-    color: white;
-    font-family: sans-serif;
-    outline: 2px solid rgb(0, 0, 0);
-    width: 90vw;
-    height: 100px;
-    font-size: 20px;
-    resize: none;
-    overflow: auto;
-    margin-bottom: 10px;
 }
 
 #category {
@@ -221,6 +208,8 @@ h2 {
         </select>
         <h2>Description</h2>
         <textarea id="description" placeholder="Description (necessary)" required></textarea>
+        <h2>Usage</h2>
+        <textarea id="usage" placeholder="Usage (necessary)" required></textarea>
         <input type="file" id="image">
         <button type="submit">Create Page</button>
     </form>
@@ -269,6 +258,7 @@ pageForm.addEventListener('submit', async (e) => {
     const name = document.getElementById('name').value;
     const category = document.getElementById('category').value;
     const description = document.getElementById('description').value;
+    const usage = document.getElementById('usage').value;
     const image = document.getElementById('image').files[0];
 
     const existingPage = await pagesRef.where('name', '==', name).get();
@@ -286,6 +276,7 @@ pageForm.addEventListener('submit', async (e) => {
         name,
         category,
         description,
+        usage,
         imageURL,
     };
 

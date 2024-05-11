@@ -100,6 +100,10 @@ h2 {
         z-index: 999;
     }
 
+    .sidepanel a {
+        font-size: 15px;
+    }
+
 
     #everything {
         position: absolute;
@@ -116,6 +120,13 @@ h2 {
         outline: 1px solid white;
         margin: 10px;
     }
+
+    /* ///////////////////////////////////////////////////// *
+    /* //////////// */
+    /* //////////// */
+    /* //////////// */
+    /* //////////// */
+    /* MODAL STYLES */
 
     .modal {
             display: none;
@@ -140,7 +151,7 @@ h2 {
 
         .modal-image-category-container {
     position: absolute;
-    top: 0;
+    top: 80px;
     right: 0;
     width: 350px; 
     height: auto;
@@ -166,7 +177,7 @@ h2 {
     font-weight: bold;
     text-align: left;
     border-bottom: 1px solid white;
-    width: 60vw;
+    width: 86vw;
 }
 
 /* Styles for category container */
@@ -206,6 +217,8 @@ h2 {
         width: 50vw;
         height: auto;
 }
+
+
 
 
 /* Styles for appearances header */
@@ -305,7 +318,7 @@ h2 {
     th, td {
         padding: 8px;
         text-align: left;
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid #333333;
         font-size: 100%;
     }
 
@@ -336,6 +349,142 @@ a:hover {
     bottom: 50px;
     right: 50px;
 }
+
+
+
+    /* ///////////////////////////////////////////////////// */
+    /* //////////////////////////////// */
+    /* //////////////////////////////// */
+    /* //////////////////////////////// */
+    /* MODAL STYLES FOR MEDIUM SCREENS */
+
+/* Media query for smaller screens */
+@media (max-width: 1400px) {
+    .modal-description {
+        outline: 1px solid rgb(56, 56, 56);
+    background-color: rgb(21, 21, 21);
+    padding-bottom: 10px;
+    margin-left: 10px;
+    padding-top: 1px;
+    padding: 5px;
+    margin-top: 10px;
+    width: 45vw;
+    height: auto;
+    }
+
+
+.modal-appearances-desc {
+    outline: 1px solid rgb(56, 56, 56);
+        background-color: rgb(21, 21, 21);
+        padding-bottom: 10px;
+        margin-left: 10px;
+        padding-top: 1px;
+        padding: 5px;
+        margin-top: 10px;
+        width: 45vw;
+        height: auto;
+}
+
+.modal-history-desc {
+    outline: 1px solid rgb(56, 56, 56);
+        background-color: rgb(21, 21, 21);
+        padding-bottom: 10px;
+        margin-left: 10px;
+        padding-top: 1px;
+        padding: 5px;
+        margin-top: 10px;
+        width: 45vw;
+        height: auto;
+}
+
+.modal-name {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: left;
+    border-bottom: 1px solid white;
+    width: 83vw;
+}
+
+}
+
+
+    /* ///////////////////////////////////////////////////// */
+    /* ///////////////////////////////////////////////////// */
+    /* ///////////////////////////////////////////////////// */
+    /* ///////////////////////////////////////////////////// */
+    /* ///////////////////////////////////////////////////// */
+    /* ///////////////////////////////////////////////////// */
+
+
+
+
+
+
+
+    /* ///////////////////////////////////////////////////// */
+    /* //////////////////////////////// */
+    /* //////////////////////////////// */
+    /* //////////////////////////////// */
+    /* MODAL STYLES FOR SMALLER SCREENS */
+
+/* Media query for smaller screens */
+@media (max-width: 1000px) {
+    .modal-description {
+        outline: 1px solid rgb(56, 56, 56);
+    background-color: rgb(21, 21, 21);
+    padding-bottom: 10px;
+    margin-left: 10px;
+    padding-top: 1px;
+    padding: 5px;
+    margin-top: 10px;
+    width: 35vw;
+    height: auto;
+    }
+
+
+.modal-appearances-desc {
+    outline: 1px solid rgb(56, 56, 56);
+        background-color: rgb(21, 21, 21);
+        padding-bottom: 10px;
+        margin-left: 10px;
+        padding-top: 1px;
+        padding: 5px;
+        margin-top: 10px;
+        width: 35vw;
+        height: auto;
+}
+
+.modal-history-desc {
+    outline: 1px solid rgb(56, 56, 56);
+        background-color: rgb(21, 21, 21);
+        padding-bottom: 10px;
+        margin-left: 10px;
+        padding-top: 1px;
+        padding: 5px;
+        margin-top: 10px;
+        width: 35vw;
+        height: auto;
+}
+
+.modal-name {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: left;
+    border-bottom: 1px solid white;
+    width: 80vw;
+}
+
+}
+
+
+    /* ///////////////////////////////////////////////////// */
+    /* ///////////////////////////////////////////////////// */
+    /* ///////////////////////////////////////////////////// */
+    /* ///////////////////////////////////////////////////// */
+    /* ///////////////////////////////////////////////////// */
+    /* ///////////////////////////////////////////////////// */
+
+
 
 #pageForm {
     display: flex;
@@ -398,6 +547,8 @@ a:hover {
 
 <script src="scripts/points.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-storage.js"></script>
 <script src="scripts/points.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-storage.js"></script>
+
+
 <script>
     const firebaseConfig = {
         apiKey: "AIzaSyA6WX1wyybNv8y7YjWoxjYo3r7A9JXFrn0",
@@ -494,7 +645,6 @@ a:hover {
         nameElement.style.textAlign = 'center';
         container.appendChild(nameElement);
 
-
         const image = document.createElement('img');
         image.classList.add('modal-image');
         image.src = data.imageURL;
@@ -512,7 +662,7 @@ a:hover {
         const tableCountry = document.createElement('table');
         imageCategoryContainer.appendChild(tableCountry);
 
-        addTableRow(tableCountry, 'Country', data.country);
+        addTableRow(tableCountry, 'Country', data.country, true);
 
         const header = document.createElement('div');
         header.classList.add('modal-header');
@@ -522,11 +672,12 @@ a:hover {
         const table = document.createElement('table');
         imageCategoryContainer.appendChild(table);
 
+        /* function addTableRow(table, headerText, dataText, isHeaderBold)  */
+        addTableRow(table, 'SoundCloud', parseLinks(data.soundcloud), true); /* true = bold */
+        addTableRow(table, 'Spotify', parseLinks(data.spotify), true);
+        addTableRow(table, 'Instagram', parseLinks(data.instagram), true);
+        addTableRow(table, 'Twitter', parseLinks(data.twitter), true);
 
-        addTableRow(table, 'SoundCloud', parseLinks(data.soundcloud));
-        addTableRow(table, 'Spotify', parseLinks(data.spotify));
-        addTableRow(table, 'Instagram', parseLinks(data.instagram));
-        addTableRow(table, 'Twitter', parseLinks(data.twitter));
 
         const nameHeader = document.createElement('h1');
         nameHeader.innerText = data.name;
@@ -538,10 +689,9 @@ a:hover {
         descHeader.classList.add('modal-description-header');
         modalContent.appendChild(descHeader);
         const desc = document.createElement('p');
-        desc.innerText = parseLinks(data.description);
+        insertLinksIntoParagraph(parseLinks(data.description), desc);
         desc.classList.add('modal-description');
         modalContent.appendChild(desc);
-
 
         if (!data.description || !data.description.trim()) {
     // Hide the description section if description data is empty
@@ -549,14 +699,15 @@ a:hover {
         desc.style.display = 'none';
     }
 
-        const appearancesHeader = document.createElement('h1');
-        appearancesHeader.innerText = 'Appearances';
-        appearancesHeader.classList.add('modal-appearances-header');
-        modalContent.appendChild(appearancesHeader);
-        const appearancesDesc = document.createElement('p');
-        appearancesDesc.innerText = parseLinks(data.appearances);
-        appearancesDesc.classList.add('modal-appearances-desc');
-        modalContent.appendChild(appearancesDesc);
+    const appearancesHeader = document.createElement('h1');
+    appearancesHeader.innerText = 'Appearances';
+    appearancesHeader.classList.add('modal-appearances-header');
+    modalContent.appendChild(appearancesHeader);
+    const appearancesDesc = document.createElement('p');
+    appearancesDesc.classList.add('modal-appearances-desc');
+    insertLinksIntoParagraph(parseLinks(data.appearances), appearancesDesc);
+    modalContent.appendChild(appearancesDesc);
+
 
         if (!data.appearances || !data.appearances.trim()) {
     // Hide the appearances section if appearances data is empty
@@ -569,8 +720,8 @@ a:hover {
         historyHeader.classList.add('modal-history-header');
         modalContent.appendChild(historyHeader);
         const historyDesc = document.createElement('p');
-        historyDesc.innerText = parseLinks(data.history);
         historyDesc.classList.add('modal-history-desc');
+        insertLinksIntoParagraph(parseLinks(data.history), historyDesc);
         modalContent.appendChild(historyDesc);
 
         if (!data.history || !data.history.trim()) {
@@ -591,20 +742,42 @@ a:hover {
 
 
     function parseLinks(text) {
-        const regex = /<a\s+(?:[^>]*?\s+)?href="([^"]*)"[^>]*>(.*?)<\/a>/gi;
-        const replacedText = text.replace(regex, '<a href="$1">$2</a>');
-
-        const aliasRegex = /&lt;a\s+href="([^"]*)"&gt;([^&lt;]+)&lt;\/a&gt;/gi;
-        return replacedText.replace(aliasRegex, '<a href="$1">$2</a>');
+    const regex = /<a\s+(?:[^>]*?\s+)?href="([^"]*)"[^>]*>(.*?)<\/a>/gi;
+    const replacedText = text.replace(regex, (match, href, innerHTML) => {
+        return `<a href="${href}">${innerHTML}</a>`;
+        });
+        return replacedText;
     }
 
-    function addTableRow(table, headerText, dataText) {
-        const row = table.insertRow();
-        const header = row.insertCell(0);
-        const data = row.insertCell(1);
-        header.innerText = headerText;
-        data.innerHTML = dataText;
+    function insertLinksIntoParagraph(textWithLinks, paragraphElement) {
+        const tempElement = document.createElement('div');
+        tempElement.innerHTML = textWithLinks;
+
+        // Create a new div element to contain both inner text and inner HTML
+        const containerDiv = document.createElement('div');
+        containerDiv.appendChild(document.createTextNode(paragraphElement.innerText));
+        containerDiv.appendChild(tempElement);
+
+        // Clear the existing content of the paragraph element
+        paragraphElement.innerHTML = '';
+
+        // Append the container div to the paragraph element
+        paragraphElement.appendChild(containerDiv);
     }
+
+
+    function addTableRow(table, headerText, dataText, isHeaderBold) {
+    const row = table.insertRow();
+    const header = row.insertCell(0);
+    const data = row.insertCell(1);
+
+    header.innerText = headerText;
+    data.innerHTML = dataText;
+
+    if (isHeaderBold) {
+        header.style.fontWeight = 'bold';
+    }
+}
 
     function getPageDataFromURL() {
         const url = new URL(window.location.href);
@@ -650,7 +823,8 @@ a:hover {
     if (closeModalButton) {
         closeModalButton.addEventListener('click', closeModal);
     }
-
 </script>
+
+
 </body>
 </html>
