@@ -221,10 +221,6 @@ h2 {
         </select>
         <h2>Description</h2>
         <textarea id="description" placeholder="Description (necessary)" required></textarea>
-        <h2>Appearances</h2>
-        <textarea id="appearances" placeholder="Appearances (necessary)"></textarea>
-        <h2>History</h2>
-        <textarea id="history" placeholder="History (not necessary)"></textarea>
         <h2>Media Links</h2>
         <input type="url" id="soundcloud" placeholder="SoundCloud Profile">
         <input type="url" id="spotify" placeholder="Spotify Profile">
@@ -273,20 +269,30 @@ const pagesRef = db.collection('Pages');
 
 const pageForm = document.getElementById('pageForm');
 
+
+
+// Function to process the description input
+function processDescription(description) {
+    const markdownLinkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+    const htmlDescription = description.replace(markdownLinkRegex, '<a href="$2">$1</a>');
+    return htmlDescription;
+}
+
+
 pageForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const name = document.getElementById('name').value;
     const category = document.getElementById('category').value;
-    const description = document.getElementById('description').value;
-    const history = document.getElementById('history').value;
-    const appearances = document.getElementById('appearances').value;
+    let description = document.getElementById('description').value;
     const image = document.getElementById('image').files[0];
     const soundcloud = processLink(document.getElementById('soundcloud').value, 'SoundCloud');
     const spotify = processLink(document.getElementById('spotify').value, 'Spotify');
     const instagram = processLink(document.getElementById('instagram').value, 'Instagram');
     const twitter = processLink(document.getElementById('twitter').value, 'Twitter');
     const country = document.getElementById('country').value;
+
+    description = processDescription(description);
 
     const existingPage = await pagesRef.where('name', '==', name).get();
     if (!existingPage.empty) {
@@ -303,8 +309,6 @@ pageForm.addEventListener('submit', async (e) => {
         name,
         category,
         description,
-        history,
-        appearances,
         imageURL,
         soundcloud,
         spotify,
@@ -319,6 +323,9 @@ pageForm.addEventListener('submit', async (e) => {
     document.getElementById('successMessage').style.display = 'block';
 });
 
+
+
+
 function processLink(url, label) {
     if (url.trim() !== '') {
         if (url.trim().startsWith('<a href=')) {
@@ -329,6 +336,12 @@ function processLink(url, label) {
     }
     return '';
 }
+
+
+
+
+
+
 
 </script>
 
