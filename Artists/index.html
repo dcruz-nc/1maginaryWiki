@@ -212,52 +212,11 @@ h2 {
         margin-left: 10px;
         padding-top: 1px;
         padding: 5px;
-        margin-top: 10px;
         width: 50vw;
         height: auto;
+        margin-top: 25px;
 }
 
-
-
-
-/* Styles for appearances header */
-.modal-appearances-header {
-    font-size: 30px;
-    
-    /* Other styles as needed */
-}
-
-/* Styles for appearances description */
-.modal-appearances-desc {
-    outline: 1px solid rgb(56, 56, 56);
-        background-color: rgb(21, 21, 21);
-        padding-bottom: 10px;
-        margin-left: 10px;
-        padding-top: 1px;
-        padding: 5px;
-        margin-top: 10px;
-        width: 50vw;
-        height: auto;
-}
-
-/* Styles for history header */
-.modal-history-header {
-    font-size: 30px;
-    /* Other styles as needed */
-}
-
-/* Styles for history description */
-.modal-history-desc {
-    outline: 1px solid rgb(56, 56, 56);
-        background-color: rgb(21, 21, 21);
-        padding-bottom: 10px;
-        margin-left: 10px;
-        padding-top: 1px;
-        padding: 5px;
-        margin-top: 10px;
-        width: 50vw;
-        height: auto;
-}
 
 
 .modal-custom-header {
@@ -265,7 +224,7 @@ h2 {
 }
 
 .modal-custom {
-    outline: 1px solid rgb(56, 56, 56);
+        outline: 1px solid rgb(56, 56, 56);
         background-color: rgb(21, 21, 21);
         padding-bottom: 10px;
         margin-left: 10px;
@@ -369,32 +328,9 @@ a:hover {
     margin-top: 10px;
     width: 45vw;
     height: auto;
+    margin-top: 25px;
     }
 
-
-.modal-appearances-desc {
-    outline: 1px solid rgb(56, 56, 56);
-        background-color: rgb(21, 21, 21);
-        padding-bottom: 10px;
-        margin-left: 10px;
-        padding-top: 1px;
-        padding: 5px;
-        margin-top: 10px;
-        width: 45vw;
-        height: auto;
-}
-
-.modal-history-desc {
-    outline: 1px solid rgb(56, 56, 56);
-        background-color: rgb(21, 21, 21);
-        padding-bottom: 10px;
-        margin-left: 10px;
-        padding-top: 1px;
-        padding: 5px;
-        margin-top: 10px;
-        width: 45vw;
-        height: auto;
-}
 
 .modal-name {
     font-size: 40px;
@@ -438,32 +374,10 @@ a:hover {
     margin-top: 10px;
     width: 35vw;
     height: auto;
+    margin-top: 25px;
     }
 
 
-.modal-appearances-desc {
-    outline: 1px solid rgb(56, 56, 56);
-        background-color: rgb(21, 21, 21);
-        padding-bottom: 10px;
-        margin-left: 10px;
-        padding-top: 1px;
-        padding: 5px;
-        margin-top: 10px;
-        width: 35vw;
-        height: auto;
-}
-
-.modal-history-desc {
-    outline: 1px solid rgb(56, 56, 56);
-        background-color: rgb(21, 21, 21);
-        padding-bottom: 10px;
-        margin-left: 10px;
-        padding-top: 1px;
-        padding: 5px;
-        margin-top: 10px;
-        width: 35vw;
-        height: auto;
-}
 
 .modal-name {
     font-size: 40px;
@@ -642,88 +556,109 @@ a:hover {
     };
     
 
-    function displayPageData(data) {
-        const modalContent = document.getElementById('modalContent');
-        modalContent.innerText = '';
+    function insertLinksIntoParagraph(description, container) {
+    // Create a temporary div element to parse the HTML content
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = description;
 
-        const imageCategoryContainer = document.createElement('div');
-        imageCategoryContainer.classList.add('modal-image-category-container');
-        modalContent.appendChild(imageCategoryContainer);
-
-        const container = document.createElement('div');
-        container.classList.add('modal-image-container');
-
-        const nameElement = document.createElement('p');
-        nameElement.innerText = data.name;
-        nameElement.style.fontWeight = 'bold';
-        nameElement.style.textAlign = 'center';
-        container.appendChild(nameElement);
-
-        const image = document.createElement('img');
-        image.classList.add('modal-image');
-        image.src = data.imageURL;
-        image.style.width = '200px';
-        image.style.height = '200px';
-        container.appendChild(image);
-
-        imageCategoryContainer.appendChild(container);
-
-        const headerCountry = document.createElement('div');
-        headerCountry.classList.add('modal-header');
-        headerCountry.innerText = 'Artist';
-        imageCategoryContainer.appendChild(headerCountry);
-
-        const tableCountry = document.createElement('table');
-        imageCategoryContainer.appendChild(tableCountry);
-
-        addTableRow(tableCountry, 'Country', data.country, true);
-
-        const header = document.createElement('div');
-        header.classList.add('modal-header');
-        header.innerText = 'Media';
-        imageCategoryContainer.appendChild(header);
-
-        const table = document.createElement('table');
-        imageCategoryContainer.appendChild(table);
-
-        /* function addTableRow(table, headerText, dataText, isHeaderBold)  */
-        addTableRow(table, 'SoundCloud', parseLinks(data.soundcloud), true); /* true = bold */
-        addTableRow(table, 'Spotify', parseLinks(data.spotify), true);
-        addTableRow(table, 'Instagram', parseLinks(data.instagram), true);
-        addTableRow(table, 'Twitter', parseLinks(data.twitter), true);
+    // Iterate over child nodes and handle them accordingly
+    tempDiv.childNodes.forEach(node => {
+        if (node.tagName && node.tagName.toLowerCase() === 'h1') {
+            // If the node is an <h1> tag, apply the modal-description-header class
+            const header = document.createElement('h1');
+            header.innerText = node.innerText;
+            header.classList.add('modal-description-header');
+            container.appendChild(header);
+        } else {
+            // Otherwise, append the node as it is
+            container.appendChild(node.cloneNode(true));
+        }
+    });
+}
 
 
-        const nameHeader = document.createElement('h1');
-        nameHeader.innerText = data.name;
-        nameHeader.classList.add('modal-name');
-        modalContent.appendChild(nameHeader);
 
-        const descHeader = document.createElement('h1');
-        descHeader.innerText = 'Description';
-        descHeader.classList.add('modal-description-header');
-        modalContent.appendChild(descHeader);
-        const desc = document.createElement('p');
-        insertLinksIntoParagraph(parseLinks(data.description), desc);
-        desc.classList.add('modal-description');
-        modalContent.appendChild(desc);
 
-        if (!data.description || !data.description.trim()) {
-    // Hide the description section if description data is empty
+function displayPageData(data) {
+    const modalContent = document.getElementById('modalContent');
+    modalContent.innerText = '';
+
+    const imageCategoryContainer = document.createElement('div');
+    imageCategoryContainer.classList.add('modal-image-category-container');
+    modalContent.appendChild(imageCategoryContainer);
+
+    const container = document.createElement('div');
+    container.classList.add('modal-image-container');
+
+    const nameElement = document.createElement('p');
+    nameElement.innerText = data.name;
+    nameElement.style.fontWeight = 'bold';
+    nameElement.style.textAlign = 'center';
+    container.appendChild(nameElement);
+
+    const image = document.createElement('img');
+    image.classList.add('modal-image');
+    image.src = data.imageURL;
+    image.style.width = '200px';
+    image.style.height = '200px';
+    container.appendChild(image);
+
+    imageCategoryContainer.appendChild(container);
+
+    const headerCountry = document.createElement('div');
+    headerCountry.classList.add('modal-header');
+    headerCountry.innerText = 'Artist';
+    imageCategoryContainer.appendChild(headerCountry);
+
+    const tableCountry = document.createElement('table');
+    imageCategoryContainer.appendChild(tableCountry);
+
+    addTableRow(tableCountry, 'Country', data.country, true);
+
+    const header = document.createElement('div');
+    header.classList.add('modal-header');
+    header.innerText = 'Media';
+    imageCategoryContainer.appendChild(header);
+
+    const table = document.createElement('table');
+    imageCategoryContainer.appendChild(table);
+
+    /* function addTableRow(table, headerText, dataText, isHeaderBold)  */
+    addTableRow(table, 'SoundCloud', parseLinks(data.soundcloud), true); /* true = bold */
+    addTableRow(table, 'Spotify', parseLinks(data.spotify), true);
+    addTableRow(table, 'Instagram', parseLinks(data.instagram), true);
+    addTableRow(table, 'Twitter', parseLinks(data.twitter), true);
+
+    const nameHeader = document.createElement('h1');
+    nameHeader.innerText = data.name;
+    nameHeader.classList.add('modal-name');
+    modalContent.appendChild(nameHeader);
+
+    const descHeader = document.createElement('h1');
+    descHeader.classList.add('modal-description-header');
+    modalContent.appendChild(descHeader);
+    const desc = document.createElement('div');
+    insertLinksIntoParagraph(parseLinks(data.description), desc);
+    desc.classList.add('modal-description');
+    modalContent.appendChild(desc);
+
+    if (!data.description || !data.description.trim()) {
+        // Hide the description section if description data is empty
         descHeader.style.display = 'none';
         desc.style.display = 'none';
     }
 
+    const modal = document.getElementById('pageModal');
+    modal.style.display = 'block';
+
+    const itemName = data.name.replace(/\s+/g, '-').toLowerCase();
+    const url = new URL(window.location.href);
+    url.hash = itemName;
+    history.pushState({}, '', url);
+}
 
 
-        const modal = document.getElementById('pageModal');
-        modal.style.display = 'block';
-
-        const itemName = data.name.replace(/\s+/g, '-').toLowerCase();
-        const url = new URL(window.location.href);
-        url.hash = itemName;
-        history.pushState({}, '', url);
-    }
-
+ 
 
 
     function parseLinks(text) {
@@ -763,6 +698,8 @@ a:hover {
         header.style.fontWeight = 'bold';
     }
 }
+
+
 
     function getPageDataFromURL() {
         const url = new URL(window.location.href);

@@ -271,12 +271,33 @@ const pageForm = document.getElementById('pageForm');
 
 
 
-// Function to process the description input
 function processDescription(description) {
+    // Replace line breaks with <br> tags
+    const reformattedDescription = description.replace(/\n/g, '<br>');
+
+    // Check for markdown links and convert them to HTML links
     const markdownLinkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
-    const htmlDescription = description.replace(markdownLinkRegex, '<a href="$2">$1</a>');
-    return htmlDescription;
+    const htmlDescriptionWithLinks = reformattedDescription.replace(markdownLinkRegex, '<a href="$2">$1</a>');
+
+    // Check for lines starting with '#'
+    const lines = htmlDescriptionWithLinks.split('<br>');
+    const reformattedLines = lines.map(line => {
+        if (line.trim().startsWith('# ')) {
+            // If the line starts with '# ' followed by text, convert it to <h1> tag
+            const text = line.substring(2).trim(); // Extract the text after '# '
+            return `<h1>${text}</h1>`;
+        } else {
+            return line;
+        }
+    });
+
+    // Join the lines back to a single string
+    const finalDescription = reformattedLines.join('<br>');
+
+    return finalDescription;
 }
+
+
 
 
 pageForm.addEventListener('submit', async (e) => {
