@@ -508,6 +508,19 @@ a:hover {
     cursor: pointer;
 }
 
+#backEdit {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    color:rgb(0, 207, 0);
+}
+
+#backEdit:hover {
+    color: #00ff00;
+    cursor: pointer;
+}
+
+
 
 #ref ul {
     margin-top: 10px;
@@ -592,7 +605,7 @@ input, textarea, select {
 
 
 <div id="editModal" class="modal">
-    <!-- Edit modal content -->
+    <div id="backEdit"><<</div>
     <div class="modal-content">
         <h1>Edit Artist</h1>
         <label for="editName">Name:</label>
@@ -922,36 +935,25 @@ function displayPageData(data) {
 
 
 function checkAndDisplayHeaders(description) {
-    const regexHeaders = /#\s*(\w+)/g; // Regular expression to match headers
     const regexLinks = /<a\s+(?:[^>]*?\s+)?href="([^"]*)"[^>]*>(.*?)<\/a>/gi; // Regular expression to match links
 
-    const headerMatches = description.match(regexHeaders); // Find all matches of headers
-    const linkMatches = description.match(regexLinks); // Find all matches of links
+    const linkMatches = description.match(regexLinks); 
 
     const refElement = document.getElementById('ref');
-    refElement.innerHTML = ''; // Clear existing ref
+    refElement.innerHTML = ''; 
 
-    if (headerMatches || linkMatches) {
+    if (linkMatches) {
         const list = document.createElement('ul');
 
-        // Display headers
-        if (headerMatches) {
-            headerMatches.forEach(match => {
-                const headerText = match.replace('#', '').trim(); // Remove '#' and trim whitespace
-                const listItem = document.createElement('li');
-                listItem.innerText = headerText;
-                list.appendChild(listItem);
-            });
-        }
 
         // Display links
         if (linkMatches) {
             linkMatches.forEach(match => {
-                const linkUrl = match.replace(regexLinks, '$1'); // Extract URL from the match
+                const linkUrl = match.replace(regexLinks, '$1'); 
                 const linkElement = document.createElement('li');
                 const anchorElement = document.createElement('a');
-                anchorElement.href = linkUrl; // Set href attribute to the extracted URL
-                anchorElement.innerText = linkUrl; // Set inner text as the raw URL
+                anchorElement.href = linkUrl; 
+                anchorElement.innerText = linkUrl; 
                 linkElement.appendChild(anchorElement);
                 list.appendChild(linkElement);
             });
@@ -982,6 +984,14 @@ function checkAndDisplayHeaders(description) {
         history.pushState({}, '', url);
     }
 
+    function closeEditModal() {
+        const editModal = document.getElementById('editModal');
+        editModal.style.display = 'none';
+        const url = new URL(window.location.href);
+        url.hash = '';
+        history.pushState({}, '', url);
+    }
+
     const closeModalButton = document.getElementById('artists');
     if (closeModalButton) {
         closeModalButton.addEventListener('click', closeModal);
@@ -992,12 +1002,23 @@ function checkAndDisplayHeaders(description) {
         closeModalButtonTwo.addEventListener('click', closeModal);
     }
 
+    const closeEditModalButton = document.getElementById('artists');
+    if (closeEditModalButton) {
+        closeEditModalButton.addEventListener('click', closeEditModal);
+    }
+
+    const closeEditModalButtonTwo = document.getElementById('backEdit');
+    if (closeEditModalButtonTwo) {
+        closeEditModalButtonTwo.addEventListener('click', closeEditModal);
+    }
 
 
-
-
-
-
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
 
 // EDIT SCRIPT
 
@@ -1010,10 +1031,13 @@ editButton.addEventListener('click', () => {
 function displayEditModal() {
     const editModal = document.getElementById('editModal');
     editModal.style.display = 'block';
+    const backButton = document.getElementById('back');
+    backButton.style.display = 'none';
     const url = new URL(window.location.href);
     const artistName = url.hash.substring(1).toLowerCase();
     url.hash = artistName + '?edit';
     history.pushState({}, '', url);
+    
     
     // Populate input fields with existing artist data
     populateEditFields(artistName);
