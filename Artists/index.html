@@ -31,11 +31,22 @@ body {
     overflow: auto;
 }
 
+::selection {
+            background-color: #00ab00;
+            color: white; /* Change text color to make it visible */
+        }
+
+        /* For older versions of Firefox */
+        ::-moz-selection {
+            background-color: #00a700;
+            color: white;
+        }
+
+
 h1 {
     margin-top: 10px;
     margin-bottom: -10px;
     font-family: 'Times New Roman', Times, serif;
-    border-bottom: 1.5px solid rgb(43, 43, 43);
     width: 95%;
 }
 
@@ -43,6 +54,7 @@ h2 {
     margin: 10px;
     font-family: 'Times New Roman', Times, serif;
 }
+
 
 
 
@@ -223,6 +235,18 @@ h2 {
         margin-top: 32px;
 }
 
+#ref {
+        outline: 1px solid rgb(56, 56, 56);
+    background-color: rgb(21, 21, 21);
+    padding-bottom: 10px;
+    margin-left: 0px;
+    padding-top: 1px;
+    padding: 10px;
+    margin-top: 32px;
+    width: 50vw;
+    height: auto;
+    }
+
 
 
 .modal-custom-header {
@@ -336,6 +360,18 @@ a:hover {
     height: auto;
     }
 
+    #ref {
+        outline: 1px solid rgb(56, 56, 56);
+    background-color: rgb(21, 21, 21);
+    padding-bottom: 10px;
+    margin-left: 0px;
+    padding-top: 1px;
+    padding: 10px;
+    margin-top: 32px;
+    width: 45vw;
+    height: auto;
+    }
+
 
 .modal-name {
     font-size: 40px;
@@ -375,11 +411,24 @@ a:hover {
     padding-bottom: 10px;
     margin-left: 0px;
     padding-top: 1px;
-    padding: 5px;
+    padding: 10px;
     margin-top: 32px;
     width: 35vw;
     height: auto;
     }
+
+    #ref {
+        outline: 1px solid rgb(56, 56, 56);
+    background-color: rgb(21, 21, 21);
+    padding-bottom: 10px;
+    margin-left: 0px;
+    padding-top: 1px;
+    padding: 10px;
+    margin-top: 32px;
+    width: 35vw;
+    height: auto;
+    }
+
 
 
 
@@ -451,6 +500,16 @@ a:hover {
     cursor: pointer;
 }
 
+
+#ref ul {
+    margin-top: 10px;
+    margin-left: -20px;
+}
+
+#ref li {
+    margin-top: 2px;
+}
+
 </style>
 <body>
 
@@ -491,6 +550,7 @@ a:hover {
         <div id="back"><<</div>
         <a href="https://1maginary.online/wiki/edit"><div id="editButton"></div></a>
         <div class="modal-content" id="modalContent">
+    
         </div>
         
     </div>
@@ -677,12 +737,42 @@ function displayPageData(data) {
     desc.classList.add('modal-description');
     modalContent.appendChild(desc);
 
+    // Create a <br> element
+    const lineBreak = document.createElement('br');
+    modalContent.appendChild(lineBreak);
+
+    // Create a <br> element
+    const lineBreakTwo = document.createElement('br');
+    modalContent.appendChild(lineBreakTwo);
+
+    // Create a <br> element
+    const lineBreakThree = document.createElement('br');
+    modalContent.appendChild(lineBreakThree);
+
+
+    // Create element for ref header
+    const refHeader = document.createElement('h1');
+    refHeader.classList.add('modal-content-header');
+    refHeader.textContent = "References"; 
+    modalContent.appendChild(refHeader);
+
+
+    // Create ref element dynamically
+    const refElement = document.createElement('div');
+    refElement.id = 'ref';
+    modalContent.appendChild(refElement);
+
+    
+
+    checkAndDisplayHeaders(data.description);
+
 
     if (!data.description || !data.description.trim()) {
         // Hide the description section if description data is empty
         descHeader.style.display = 'none';
         desc.style.display = 'none';
     }
+
 
     // Parse description for links and append to container
     const modal = document.getElementById('pageModal');
@@ -761,10 +851,58 @@ function displayPageData(data) {
         }
     }
 
+
     window.onload = () => {
         fetchAndSortPages();
         getPageDataFromURL();
     };
+
+
+
+
+function checkAndDisplayHeaders(description) {
+    const regexHeaders = /#\s*(\w+)/g; // Regular expression to match headers
+    const regexLinks = /<a\s+(?:[^>]*?\s+)?href="([^"]*)"[^>]*>(.*?)<\/a>/gi; // Regular expression to match links
+
+    const headerMatches = description.match(regexHeaders); // Find all matches of headers
+    const linkMatches = description.match(regexLinks); // Find all matches of links
+
+    const refElement = document.getElementById('ref');
+    refElement.innerHTML = ''; // Clear existing ref
+
+    if (headerMatches || linkMatches) {
+        const list = document.createElement('ul');
+
+        // Display headers
+        if (headerMatches) {
+            headerMatches.forEach(match => {
+                const headerText = match.replace('#', '').trim(); // Remove '#' and trim whitespace
+                const listItem = document.createElement('li');
+                listItem.innerText = headerText;
+                list.appendChild(listItem);
+            });
+        }
+
+        // Display links
+        if (linkMatches) {
+            linkMatches.forEach(match => {
+                const linkUrl = match.replace(regexLinks, '$1'); // Extract URL from the match
+                const linkElement = document.createElement('li');
+                const anchorElement = document.createElement('a');
+                anchorElement.href = linkUrl; // Set href attribute to the extracted URL
+                anchorElement.innerText = linkUrl; // Set inner text as the raw URL
+                linkElement.appendChild(anchorElement);
+                list.appendChild(linkElement);
+            });
+        }
+
+        // Append the list of headers and links to the ref element
+        refElement.appendChild(list);
+    }
+}
+
+
+
 
     window.onclick = function(event) {
         const modal = document.getElementById('pageModal');
