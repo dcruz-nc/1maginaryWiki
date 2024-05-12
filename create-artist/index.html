@@ -45,7 +45,7 @@ h1 {
     font-family: sans-serif;
     outline: 2px solid rgb(0, 0, 0);
     width: 80vw;
-    height: 100px;
+    height: 500px;
     font-size: 20px;
     resize: none;
     overflow: auto;
@@ -248,6 +248,7 @@ h2 {
         <h2>Media Links</h2>
         <input type="url" id="soundcloud" placeholder="SoundCloud Profile">
         <input type="url" id="spotify" placeholder="Spotify Profile">
+        <input type="url" id="bandcamp" placeholder="Bandcamp Profile">
         <input type="url" id="instagram" placeholder="Instagram Profile">
         <input type="url" id="twitter" placeholder="Twitter Profile">
         <input type="text" id="country" placeholder="Country">
@@ -333,6 +334,7 @@ pageForm.addEventListener('submit', async (e) => {
     const image = document.getElementById('image').files[0];
     let soundcloud = processLink(document.getElementById('soundcloud').value, 'SoundCloud');
     let spotify = processLink(document.getElementById('spotify').value, 'Spotify');
+    let bandcamp = processLink(document.getElementById('twitter').value, 'Bandcamp');
     let instagram = processLink(document.getElementById('instagram').value, 'Instagram');
     let twitter = processLink(document.getElementById('twitter').value, 'Twitter');
     const country = document.getElementById('country').value;
@@ -340,6 +342,7 @@ pageForm.addEventListener('submit', async (e) => {
     // Check if the fields are blank, if so, set them to null
     soundcloud = soundcloud.trim() !== '' ? soundcloud : null;
     spotify = spotify.trim() !== '' ? spotify : null;
+    bandcamp = bandcamp.trim() !== '' ? bandcamp : null;
     instagram = instagram.trim() !== '' ? instagram : null;
     twitter = twitter.trim() !== '' ? twitter : null;
 
@@ -363,6 +366,7 @@ pageForm.addEventListener('submit', async (e) => {
         imageURL,
         soundcloud,
         spotify,
+        bandcamp,
         instagram,
         twitter,
         country,
