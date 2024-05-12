@@ -1022,6 +1022,7 @@ function checkAndDisplayHeaders(description) {
 
 // EDIT SCRIPT
 
+
 const editButton = document.getElementById('editButton');
 
 editButton.addEventListener('click', () => {
@@ -1038,10 +1039,11 @@ function displayEditModal() {
     url.hash = artistName + '?edit';
     history.pushState({}, '', url);
     
-    
     // Populate input fields with existing artist data
     populateEditFields(artistName);
+
 }
+
 
 function populateEditFields(artistName) {
     // Fetch artist data from Firestore based on artistName
@@ -1067,6 +1069,7 @@ function populateEditFields(artistName) {
 }
 
 function submitEditForm() {
+
     // Get updated data from input fields
     const updatedData = {
         name: document.getElementById('editName').value,
@@ -1094,6 +1097,7 @@ function submitEditForm() {
                         const url = new URL(window.location.href);
                         url.hash = artistName;
                         history.pushState({}, '', url);
+                        location.reload();
                     })
                     .catch((error) => {
                         console.error("Error updating document:", error);
