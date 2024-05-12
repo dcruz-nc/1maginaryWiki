@@ -32,8 +32,11 @@ body {
 }
 
 h1 {
-    margin: 10px;
+    margin-top: 10px;
+    margin-bottom: -10px;
     font-family: 'Times New Roman', Times, serif;
+    border-bottom: 1.5px solid rgb(43, 43, 43);
+    width: 95%;
 }
 
 h2 {
@@ -209,12 +212,12 @@ h2 {
     outline: 1px solid rgb(56, 56, 56);
         background-color: rgb(21, 21, 21);
         padding-bottom: 10px;
-        margin-left: 10px;
+        margin-left: 0px;
         padding-top: 1px;
         padding: 5px;
         width: 50vw;
         height: auto;
-        margin-top: 25px;
+        margin-top: 32px;
 }
 
 
@@ -322,13 +325,12 @@ a:hover {
         outline: 1px solid rgb(56, 56, 56);
     background-color: rgb(21, 21, 21);
     padding-bottom: 10px;
-    margin-left: 10px;
+    margin-left: 0px;
     padding-top: 1px;
     padding: 5px;
-    margin-top: 10px;
+    margin-top: 32px;
     width: 45vw;
     height: auto;
-    margin-top: 25px;
     }
 
 
@@ -336,7 +338,7 @@ a:hover {
     font-size: 40px;
     font-weight: bold;
     text-align: left;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid rgb(177, 177, 177);
     width: 83vw;
 }
 
@@ -368,13 +370,12 @@ a:hover {
         outline: 1px solid rgb(56, 56, 56);
     background-color: rgb(21, 21, 21);
     padding-bottom: 10px;
-    margin-left: 10px;
+    margin-left: 0px;
     padding-top: 1px;
     padding: 5px;
-    margin-top: 10px;
+    margin-top: 32px;
     width: 35vw;
     height: auto;
-    margin-top: 25px;
     }
 
 
@@ -383,7 +384,7 @@ a:hover {
     font-size: 40px;
     font-weight: bold;
     text-align: left;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid rgb(122, 122, 122);
     width: 80vw;
 }
 
@@ -433,6 +434,7 @@ a:hover {
 #gray-text {
     color: rgb(168, 168, 168);
 }
+
 
 
 
@@ -559,7 +561,6 @@ a:hover {
         getPageDataFromURL();
     };
     
-
     function insertLinksIntoParagraph(description, container) {
     // Create a temporary div element to parse the HTML content
     const tempDiv = document.createElement('div');
