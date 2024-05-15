@@ -1,0 +1,14 @@
+#items-page {
+    background-color: black;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    font-family: sans-serif;
+    color: white;
+    overflow: auto;
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
