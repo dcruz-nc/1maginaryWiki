@@ -147,6 +147,11 @@
     cursor: pointer;
 }
 
+#show-items-page:hover {
+    color: #00ff00;
+    cursor: pointer;
+}
+
 #show-home-page:hover {
     color: #00ff00;
     cursor: pointer;

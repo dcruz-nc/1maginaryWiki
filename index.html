@@ -10,6 +10,7 @@
             <link rel="stylesheet" href="home.css">
             <link rel="stylesheet" href="register.css">
             <link rel="stylesheet" href="artists.css">
+            <link rel="stylesheet" href="items.css">
             <link rel="stylesheet" href="create.css">
 
 
@@ -110,7 +111,7 @@ body {
         <ul>
             <li class="home-li">> 1maginary</li>
             <li class="home-li" id="show-artists-page">> Artists</li>
-            <li class="home-li">> Items</li>
+            <li class="home-li" id="show-items-page">> Items</li>
             <li class="home-li"><a  class="home-a" href="https://1maginary.online/wiki/emotes">> Emotes</a></li>
             <li class="home-li"><a  class="home-a" href="https://1maginary.online/wiki/creators">> Creators</a></li>
         </ul>
@@ -201,10 +202,7 @@ body {
         
             <ul id="pageList-artists">
             </ul>
-        
-            <ul id="pageList-items">
-            </ul>
-        
+   
             <div id="pageModal" class="modal">
         
                 <div id="back"><<</div>
@@ -256,6 +254,47 @@ body {
 
 
 
+<!--#################################################################-->
+<!--#################################################################-->
+                        <!-- ITEMS PAGE -->
+
+
+<div id="items-page">
+
+    <h1>Category:Items</h1>
+
+    <div id="section-one">
+        <p>Items are virtual objects that can be earned when a user spends time on <a href="https://1maginary.online/radio">1*RADIO</a>.</p>
+        <p>The list is sorted in alphabetical order.</p>
+    </div>
+
+
+
+    <h2>Items</h2>
+    <ul id="pageList-items">
+    </ul>
+
+    <div id="itemsPageModal" class="modal">
+        <div class="items-modal-content" id="itemsModalContent">
+        </div>
+    </div>
+</div>
+
+
+
+</div>
+
+
+<!-- ########################################################################### -->
+<!-- ########################################################################### -->
+<!-- ########################################################################### -->
+
+
+
+
+
+
+
 
 
 
@@ -294,9 +333,9 @@ body {
 
 <!--#################################################################-->
 <!--#################################################################-->
-                        <!-- CREATE PAGE -->
+                        <!-- CREATE ITEM -->
 
-<div id="create-item-page" class="hidden">
+<div id="create-item-page">
     <!-- Content for creating item page -->
     <h2>Create Item Page</h2>
 </div>
@@ -311,7 +350,7 @@ body {
 
 <!--#################################################################-->
 <!--#################################################################-->
-                        <!-- CREATE PAGE -->
+                        <!-- CREATE 1MAGINARY -->
 <div id="create-1maginary-page" class="hidden">
     <!-- Content for creating 1maginary page -->
     <h2>Create 1maginary Page</h2>
@@ -320,6 +359,7 @@ body {
 <!-- ########################################################################### -->
 <!-- ########################################################################### -->
 <!-- ########################################################################### -->
+
 
 
 
@@ -698,6 +738,7 @@ label {
 <script src="firebase.js"></script>
 <script src="home.js"></script>
 <script src="artists.js"></script>
+<script src="items.js"></script>
 <script src="create.js"></script>
 <script src="auth.js"></script>
 

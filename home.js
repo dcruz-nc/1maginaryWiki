@@ -37,6 +37,27 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
+// SHOW ARTISTS PAGE
+document.addEventListener("DOMContentLoaded", function() {
+    var titleElement = document.querySelector('title');
+    var showArtistsButton = document.getElementById("show-items-page");
+    var artistsPage = document.getElementById("artists-page");
+    var homePage = document.getElementById("home-page");
+    var itemsPage = document.getElementById("items-page");
+
+    if (showArtistsButton && artistsPage) {
+        showArtistsButton.addEventListener("click", function() {
+            titleElement.innerText = 'Items*';
+            window.location.hash = "artists-page";
+            artistsPage.style.display = "none";
+            itemsPage.style.display = "block";
+            homePage.style.display = "none";
+        });
+        
+    }
+});
+
+
 
 // SHOW CREATE PAGE
 
