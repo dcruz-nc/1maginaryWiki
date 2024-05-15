@@ -1,7 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="stylesheet" type="text/css" href="style.css">
+
+
+
+
+
+            <!-- ######## STYLESHEETS ######## -->
+            <link rel="stylesheet" href="home.css">
+            <link rel="stylesheet" href="register.css">
+            <link rel="stylesheet" href="artists.css">
+            <link rel="stylesheet" href="create.css">
+
+
+
+            
+
+
+
+
+            <link rel="stylesheet" type="text/css" href="style.css">
             <link rel="stylesheet" href="styles.css"/>
             <link rel="icon" type="image/x-icon" href="favicon.ico">
             <meta charset="UTF-8">
@@ -18,6 +36,18 @@
             <meta property="og:image" content="https://i.imgur.com/NsWEb0Z.png">
             <meta property="og:type" content="website">
             <title>1*Wiki</title>
+            <script>
+                function toggleTitle() {
+                  var titleElement = document.querySelector('title');
+                  if (titleElement.innerText === '1*Wiki') {
+                    titleElement.innerText = '1 Wiki';
+                  } else {
+                    titleElement.innerText = '1*Wiki';
+                  }
+                }
+            
+                setInterval(toggleTitle, 1000);
+              </script>
     </head>
 <style>
 
@@ -42,194 +72,342 @@ body {
             color: white;
         }
 
-h1 {
-    font-family: 'Times New Roman', Times, serif;
-    margin: 10px;
-    font-size: 40px;
-}
 
-h2 {
-    margin: 10px;
-    font-family: 'Times New Roman', Times, serif;
-}
-
-
-    .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-
-        .modal-content {
-            background-color: #000000;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 70%;
-            text-align: center;
-        }
-
-
-
-        li {
-            list-style-type: none;
-            margin-left: -30px;
-        }
-
-
-
-    #pageList-artists {
-        border-bottom: 2px solid white;
-        padding: 10px;
-        margin-bottom: 5px;
-    }
-
-    p {
-        margin-left: 10px;
-        font-size: 1em;
-        width: auto;
-    }
-    
-    a {
-        text-decoration: none; 
-        color: inherit; 
-    }
-
-    a:hover {
-        cursor: pointer;
-        color: #00ff00;
-    }
-
-    #logo {
-        background-image: url('assets/logo.png');
-        background-size: cover;
-        width: 200px;
-        height: 200px;
-        position: absolute;
-        right: 5vw;
-        top: 5vw;
-        outline: 1px solid white;
-    }
-
-    #header {
-        font-family: 'Times New Roman', Times, serif;
-        margin: 10px;
-        font-size: 2em;
-        width: 90vw;
-        border-bottom: 1px solid white;
-    }
 
     #section-one {
         width: 70vw;
     }
 
-    #navigation-box {
-        outline: 1px solid rgb(56, 56, 56);
-        background-color: rgb(21, 21, 21);
-        width: 40vw;
-        height: auto;
-        padding-bottom: 10px;
-        margin-left: 10px;
-        padding-top: 1px;
-        margin-top: 10px;
-    }
-
-    #login-button {
-        margin-left: 10px;
-        cursor: pointer;
-    }
-
-    #login-button:hover {
-        color: #00ff00;
-    }
-
-    #logging-in {
-        outline: 1px solid rgb(56, 56, 56);
-        background-color: rgb(21, 21, 21);
-        padding-bottom: 10px;
-        margin-left: 10px;
-        padding-top: 1px;
-        margin-top: 10px;
-        width: 80vw;
-        height: auto;
-    }
-
-    #create-a-page {
-        outline: 1px solid rgb(56, 56, 56);
-        background-color: rgb(21, 21, 21);
-        padding-bottom: 10px;
-        margin-left: 10px;
-        padding-top: 1px;
-        margin-top: 10px;
-        width: 80vw;
-        height: auto;
-    }
-
-    #create-button {
-        margin-left: 10px;
-        cursor: pointer;
-    }
-
-    #create-button:hover {
-        color: #00ff00;
-    }
-
-    #permissions {
-        outline: 1px solid rgb(56, 56, 56);
-        background-color: rgb(21, 21, 21);
-        padding-bottom: 10px;
-        margin-left: 10px;
-        padding-top: 1px;
-        margin-top: 10px;
-        width: 80vw;
-        height: auto;
-    }
-
-    #rules {
-        outline: 1px solid rgb(56, 56, 56);
-        background-color: rgb(21, 21, 21);
-        padding-bottom: 10px;
-        margin-left: 10px;
-        padding-top: 1px;
-        margin-top: 10px;
-        width: 80vw;
-        height: auto;
-    }
-
-
-    #reporting-problems {
-        outline: 1px solid rgb(56, 56, 56);
-        background-color: rgb(21, 21, 21);
-        padding-bottom: 10px;
-        margin-left: 10px;
-        padding-top: 1px;
-        margin-top: 10px;
-        width: 80vw;
-        height: auto;
-    }
 
     #gray-text {
         color: gray;
     }
+</style>
+<body>
+
+
+<!--#################################################################-->
+<!--#################################################################-->
+                        <!-- HOME PAGE -->
+    <div id="home-page">
+    <div id="home-header">
+        <h1 class="home-h1">Main Page</h1>
+        <div id="logout-button">Logout</div>
+    </div>
+
+    <div id="section-one">
+        <h1 class="home-h1">Welcome to the 1* Wiki!</h1>
+        <p class="home-p">Explore information about the history of 1*, site, artists, creators, items, and emotes.<p  class="home-p"></p>
+        <p class="home-p">These articles serve to cover everything you would want to know regarding the 1maginary universe</p>
+    </div>
+
+    <div id="home-logo"></div>
+    <br class="home-br">
+    <br class="home-br">
+    <br class="home-br">
+    <h2 class="home-h2">Navigate Categories</h2>
+    <div id="home-navigation-box">
+        <ul>
+            <li class="home-li">> 1maginary</li>
+            <li class="home-li" id="show-artists-page">> Artists</li>
+            <li class="home-li">> Items</li>
+            <li class="home-li"><a  class="home-a" href="https://1maginary.online/wiki/emotes">> Emotes</a></li>
+            <li class="home-li"><a  class="home-a" href="https://1maginary.online/wiki/creators">> Creators</a></li>
+        </ul>
+    </div>
+
+
+    <br class="home-br">
+    <h2 class="home-h2" id="logging-in-header">Logging in</h2>
+    <div id="logging-in">
+        <p class="home-p">Login:<p id="login-screen-button" onclick="showLoginElements()">click here</p></p>
+        <p class="home-p">Signup: <p id="signup-window-box">click here</p></p>
+    </div>
+
+    <br class="home-br">
+    <h2 class="home-h2">Create a Page</h2>
+    <div id="create-a-page">
+        <p class="home-p"></p>To create a page that displays on the 1maginary wiki, <div id="create-button">click here</div></p>
+    </div>
+
+    <br class="home-br">
+    <h2 class="home-h2">Permissions</h2>
+    <div id="permissions">
+        <p  class="home-p"></p>To create or edit the 1* wiki, you must have an account that is at least 7 weeks old.</p>
+        <p  class="home-p"></p>Users can only create 1 page every 12 hours. This it to prevent potential spam.</p>
+    </div>
+
+    <br class="home-br">
+    <h2 class="home-h2">Wiki Etiquitte</h2>
+    <div id="rules">
+        <ul>
+            <li class="home-li">Citation is recommended if possible.</li>
+            <li class="home-li">Insulting any individual or group does not belong on the wiki.</li>
+            <li class="home-li">Keep discussions relevant to the page.</li>
+        </ul>
+    </div>
+    
+
+    <br class="home-br">
+    <h2 class="home-h2">Reporting Problems</h2>
+    <div id="reporting-problems">
+        <p  class="home-p"></p>Contact with moderators can be made through the <a  class="home-a" href="https://discord.gg/jbr class="home-br"FJwASXH">1* discord server.</a></p>
+    </div>
+    <br class="home-br">
+    <p id="gray-text">This page was last edited on Wednesday, May 8th, 2024, at 06:52 PM.</p>
+    <br class="home-br">
+
+
+
+</div>
+<!--#################################################################-->
+<!--#################################################################-->
 
 
 
 
-/* /////////////////////////////// */
-/* /////////////////////////////// */
-/* /////////////////////////////// */
-/* /////////////////////////////// */
-/* /////////////////////////////// */
-
-/* SIGNUP / LOGIN STYLES */
 
 
+
+
+
+
+
+
+<!--#################################################################-->
+<!--#################################################################-->
+                        <!-- ARTISTS PAGE -->
+
+    <div id="artists-page">
+
+        <div class="sidepanel" id="artists-sidepanel">
+            <div id="artists-logo"></div>
+                <p id="show-home-page">[Home]</p>
+                <a href="https://1maginary.online/wiki/1maginary" class="option">[1maginary]</a>
+                <a class="option" id="artists">[Artists]*</a>
+                <a href="https://1maginary.online/wiki/items"  class="option" id="items">[Items]</a>
+                <a href="https://1maginary.online/wiki/emotes" class="option" >[Emotes]</a>
+                <a href="https://1maginary.online/wiki/creators" class="option" >[Creators]</a>
+        </div>
+
+
+        <div id="everything">
+            <div id="header"><h1 id="category-artists">Category:Artists</h1></div>
+        
+            <div id="section-one">
+                <p>Artists that have have been featured on 1*Radio, , 1*Magazine, Artist-Index, the 1maginary youtube channel, or have contributed to the project in another way.<p>
+                <p id="gray-text">The list is sorted in alphabetical order.</p>
+            </div>
+        
+            <ul id="pageList-artists">
+            </ul>
+        
+            <ul id="pageList-items">
+            </ul>
+        
+            <div id="pageModal" class="modal">
+        
+                <div id="back"><<</div>
+                <div id="authentication-required">You must be registered to edit.</div>
+                <div id="editButton">Edit</div>
+                <div class="modal-content" id="modalContent">
+            
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div id="editModal" class="modal">
+            <div id="backEdit"><<</div>
+            <div class="modal-content">
+                <h1 id="edit-artist-header">Edit Artist</h1>
+                <label for="editName">Name:</label>
+                <input type="text" id="editName">
+                <label for="editDescription">Description:</label>
+                <textarea id="editDescription"></textarea>
+                <label for="editSoundcloud">Soundcloud:</label>
+                <textarea id="editSoundcloud"></textarea>
+                <label for="editSpotify">Spotify:</label>
+                <textarea id="editSpotify"></textarea>
+                <label for="editInstagram">Instagram:</label>
+                <textarea id="editInstagram"></textarea>
+                <label for="editTwitter">Twitter:</label>
+                <textarea id="editTwitter"></textarea>
+                <label for="editCountry">Country:</label>
+                <textarea id="editCountry"></textarea>
+                <button onclick="submitEditForm()">Submit</button>
+                <br>
+                <br>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+
+
+<!-- ########################################################################### -->
+<!-- ########################################################################### -->
+<!-- ########################################################################### -->
+
+
+
+
+
+
+
+
+
+<!--#################################################################-->
+<!--#################################################################-->
+                        <!-- CREATE PAGE -->
+
+
+
+    <div id="create-page">
+        <form id="category-form">
+            <label for="category">Select a category:</label>
+            <select id="category">
+                <option value="artist">Artist</option>
+                <option value="item">Item</option>
+                <option value="1maginary">1maginary</option>
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+
+    </div>
+
+<!-- ########################################################################### -->
+<!-- ########################################################################### -->
+<!-- ########################################################################### -->
+
+
+
+
+
+
+
+
+<!--#################################################################-->
+<!--#################################################################-->
+                        <!-- CREATE PAGE -->
+
+<div id="create-item-page" class="hidden">
+    <!-- Content for creating item page -->
+    <h2>Create Item Page</h2>
+</div>
+<!-- ########################################################################### -->
+<!-- ########################################################################### -->
+<!-- ########################################################################### -->
+
+
+
+
+
+
+<!--#################################################################-->
+<!--#################################################################-->
+                        <!-- CREATE PAGE -->
+<div id="create-1maginary-page" class="hidden">
+    <!-- Content for creating 1maginary page -->
+    <h2>Create 1maginary Page</h2>
+</div>
+
+<!-- ########################################################################### -->
+<!-- ########################################################################### -->
+<!-- ########################################################################### -->
+
+
+
+
+
+<!--#################################################################-->
+<!--#################################################################-->
+                        <!-- CREATE ARTIST -->
+
+
+
+                        <div id="create-artist-page">
+
+
+                            <div class="sidepanel" id="artists-sidepanel">
+                                <div id="artists-logo"></div>
+                                    <p id="show-home-page">[Home]</p>
+                                    <a href="https://1maginary.online/wiki/1maginary" class="option">[1maginary]</a>
+                                    <a class="option" id="artists">[Artists]*</a>
+                                    <a href="https://1maginary.online/wiki/items"  class="option" id="items">[Items]</a>
+                                    <a href="https://1maginary.online/wiki/emotes" class="option" >[Emotes]</a>
+                                    <a href="https://1maginary.online/wiki/creators" class="option" >[Creators]</a>
+                            </div>
+
+
+                            <br>
+                        <h1 id="create-wiki-page">Create Wiki Page</h1>
+                        <div id="guide-box" onclick="toggleGuide()">
+                            <h3 id="guide-header">🢒 Formatting Guide</h3>
+                            <div id="guide-box-content">
+                                <h3>Headers</h3>
+                                <p>To create headers, use hash (#) symbols followed by a space. For example:</p>
+                                <p># Header Example</p>
+                                <br>
+                                <h3>Hyperlinks</h3>
+                                <p>To create hyperlinks, use square brackets [] for the link text and parentheses () for the URL. For example:</p>
+                                <p>[Link Text](URL)</p>
+                                <br>
+                                <h3>Line Breaks</h3>
+                                <p>To insert a line break, end the line with two or more spaces followed by a newline character. For example:</p>
+                                <p>This is the first line.</p>
+                                <br>
+                                <p>This is the second line.</p>
+                            </div>
+                        </div>
+                    
+                        <form id="pageForm">
+                            <h2>Name</h2>
+                            <input type="text" id="name" placeholder="Name (necessary)" required>
+                            <select id="category" required>
+                                <option value="artist">Artist</option>
+                            </select>
+                            <h2>Content</h2>
+                            <textarea class="create-textarea" id="description" placeholder="Content (necessary)" required></textarea>
+                            <h2>Media Links</h2>
+                            <input type="url" id="soundcloud" placeholder="SoundCloud Profile">
+                            <input type="url" id="spotify" placeholder="Spotify Profile">
+                            <input type="url" id="bandcamp" placeholder="Bandcamp Profile">
+                            <input type="url" id="instagram" placeholder="Instagram Profile">
+                            <input type="url" id="twitter" placeholder="Twitter Profile">
+                            <input type="text" id="country" placeholder="Country">
+                            <input type="file" id="image">
+                            <button type="submit">Create Page</button>
+                        </form>
+                    
+                        <div id="successMessage" style="display: none; color: green;">
+                            Page created successfully!
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        </div>
+                                        
+                    <!-- ########################################################################### -->
+                    <!-- ########################################################################### -->
+                    <!-- ########################################################################### -->
+                                        
+                    
+
+
+
+
+
+
+<!-- ########################################################################### -->
+<!-- ########################################################################### -->
+<!-- ########################################################################### -->
+<!-- LOGIN/SIGNUP FORM --><style>
 #center-container {
     position: fixed;
     top: 0;
@@ -420,31 +598,28 @@ label {
     display: none;
 }
 
-  
-/* /////////////////////////////// */
-/* /////////////////////////////// */
-/* /////////////////////////////// */
-/* /////////////////////////////// */
-/* /////////////////////////////// */
+#close-login-box {
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+    font-size: 20px;
+}
 
+#close-login-box:hover {
+    color: #00ff00;
+}
 </style>
-<body>
-
-
-
-
 
     <div id="center-container">
-
         <div id="login-box">
             <div id="close-login-box" onclick="closeLoginBox()">[X]</div>
             <form id="login-form">
                 <h2>LOGIN</h2>
                 <label for="login-email">Email:</label>
-                <input type="text" id="login-email" name="login-email">
+                <input class="home-input" type="text" id="login-email" name="login-email">
                 <label for="login-password">Password:</label>
-                <input type="password" id="login-password" name="login-password">
-                <br>
+                <input class="home-input" type="password" id="login-password" name="login-password">
+                <br class="home-br">
                 <input id="input-login" type="submit" value="Login">
             </form>
         </div>
@@ -453,129 +628,20 @@ label {
             <form id="signup-form">
                 <h2>SIGNUP</h2>
                 <label for="signup-username">Username:</label>
-                <input type="text" id="signup-username" name="signup-username">
+                <input class="home-input" type="text" id="signup-username" name="signup-username">
                 <label for="signup-email">Email:</label>
-                <input type="text" id="signup-email" name="signup-email">
+                <input class="home-input" type="text" id="signup-email" name="signup-email">
                 <label for="signup-password">Password:</label>
-                <input type="password" id="signup-password" name="signup-password">
+                <input class="home-input" type="password" id="signup-password" name="signup-password">
                 <label for="confirm-password">Confirm Password:</label>
-                <input type="password" id="confirm-password" name="confirm-password">
+                <input class="home-input" type="password" id="confirm-password" name="confirm-password">
                 <div id="password-match-error" style="color: red;"></div>
-                <input id="input-signup" type="submit" value="Sign Up">
+                <input class="home-input" id="input-signup" type="submit" value="Sign Up">
             </form>
             <div id="login-window-box">login instead</div>
         </div>
     </div>
-
-
-
-<div id="login-background"></div>
-
-
-
-    
-    
-    <div id="header">
-        <h1>Main Page</h1>
-        <div id="logout-button">Logout</div>
-    </div>
-
-    <div id="section-one">
-        <h1>Welcome to the 1* Wiki!</h1>
-        <p>Explore information about the history of 1*, site, artists, creators, items, and emotes.<p>
-        <p>These articles serve to cover everything you would want to know regarding the 1maginary universe</p>
-    </div>
-
-    <div id="logo"></div>
-    <br>
-    <br>
-    <br>
-    <h2>Navigate Categories</h2>
-    <div id="navigation-box">
-        <ul>
-            <li><a href="https://1maginary.online/wiki/1maginary">> 1maginary</a></li>
-            <li><a href="https://1maginary.online/wiki/artists">> Artists</a></li>
-            <li><a href="https://1maginary.online/wiki/items">> Items</a></li>
-            <li><a href="https://1maginary.online/wiki/emotes">> Emotes</a></li>
-            <li><a href="https://1maginary.online/wiki/creators">> Creators</a></li>
-        </ul>
-    </div>
-
-
-    <br>
-    <h2 id="logging-in-header">Logging in</h2>
-    <div id="logging-in">
-        <p>Login:<p id="login-screen-button" onclick="showLoginElements()">click here</p></p>
-        <p>Signup: <p id="signup-window-box">click here</p></p>
-    </div>
-
-    <br>
-    <h2>Create a Page</h2>
-    <div id="create-a-page">
-        <p>To create a page that displays on the 1maginary wiki, <div id="create-button">click here</div></p>
-    </div>
-
-    <br>
-    <h2>Permissions</h2>
-    <div id="permissions">
-        <p>To create or edit the 1* wiki, you must have an account that is at least 7 weeks old.</p>
-        <p>Users can only create 1 page every 12 hours. This it to prevent potential spam.</p>
-    </div>
-
-    <br>
-    <h2>Wiki Etiquitte</h2>
-    <div id="rules">
-        <ul>
-            <li>Citation is recommended if possible.</li>
-            <li>Insulting any individual or group does not belong on the wiki.</li>
-            <li>Keep discussions relevant to the page.</li>
-        </ul>
-    </div>
-    
-
-    <br>
-    <h2>Reporting Problems</h2>
-    <div id="reporting-problems">
-        <p>Contact with moderators can be made through the <a href="https://discord.gg/jBRFJwASXH">1* discord server.</a></p>
-    </div>
-    <br>
-    <p id="gray-text">This page was last edited on Wednesday, May 8th, 2024, at 06:52 PM.</p>
-    <br>
-
-
-    <div id="pageModal" class="modal">
-        <div class="modal-content" id="modalContent">
-        </div>
-    </div>
-
-
-<script src="scripts/points.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-storage.js"></script>
-<script src="scripts/points.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-storage.js"></script>
-<script>
-
-
-const firebaseConfig = {
-          apiKey: "AIzaSyA6WX1wyybNv8y7YjWoxjYo3r7A9JXFrn0",
-          authDomain: "imaginary-online.firebaseapp.com",
-          projectId: "imaginary-online",
-          storageBucket: "imaginary-online.appspot.com",
-          messagingSenderId: "161150961566",
-          appId: "1:161150961566:web:601b3313b7aa4a0c39b88f",
-          measurementId: "G-VYEP9HHWPB"
-        };
-        firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-const auth = firebase.auth();
-
-</script>
-
-
-
-
-
-
-
-
+    <div id="login-background"></div>
 
 <!-- LOGIN BOX SIGNUP BOX  -->
 <script>
@@ -618,11 +684,44 @@ const auth = firebase.auth();
         var signupBox = document.getElementById("signup-box");
         signupBox.style.display = "none";
     }
+    
 </script>
 
 
 
-    <script src="auth.js"></script>
+
+
+
+<!-- ######## SCRIPTS ######## -->
+<script src="scripts/points.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-storage.js"></script>
+<script src="scripts/points.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-storage.js"></script>
+<script src="firebase.js"></script>
+<script src="home.js"></script>
+<script src="artists.js"></script>
+<script src="create.js"></script>
+<script src="auth.js"></script>
+
+
+    <!-- CHECK FRAGMENTS -->
+<script>
+    checkHashFragment();
+</script>
+<!-- ########################################################################### -->
+<!-- ########################################################################### -->
+<!-- ########################################################################### -->
+<!-- ########################################################################### -->
+<!-- ########################################################################### -->
+<!-- ########################################################################### -->
+
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>
