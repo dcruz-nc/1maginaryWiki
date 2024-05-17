@@ -1,61 +1,74 @@
-// SHOW PAGES SCRIPTS
-
-
-
-// SHOW ARTISTS PAGE
+// SHOW HOME AND ARTISTS PAGES SCRIPTS
 document.addEventListener("DOMContentLoaded", function() {
     var showArtistsButton = document.getElementById("show-artists-page");
+    var artistsLink = document.getElementById("artists");
     var artistsPage = document.getElementById("artists-page");
     var homePage = document.getElementById("home-page");
+    var titleElement = document.querySelector('title');
+    var showHomeButton = document.getElementById("show-home-page");
+    var itemsPage = document.getElementById("items-page");
 
-    if (showArtistsButton && artistsPage) {
-        showArtistsButton.addEventListener("click", function() {
-            artistsPage.style.display = "block";
-            window.location.hash = "artists-page"; // Add the fragment identifier to the URL
-            homePage.style.display = "none";
-        });
+    function showArtistsPage() {
+        artistsPage.style.display = "block";
+        window.location.hash = "artists-page";
+        homePage.style.display = "none";
+    }
+
+    function showHomePage() {
+        titleElement.innerText = 'Artists*';
+        window.location.hash = "";
+        artistsPage.style.display = "none";
+        itemsPage.style.display = "none";
+        homePage.style.display = "block";
+    }
+
+    if (showArtistsButton && artistsPage && homePage) {
+        showArtistsButton.addEventListener("click", showArtistsPage);
+    }
+
+    if (artistsLink && artistsPage && homePage) {
+        artistsLink.addEventListener("click", showArtistsPage);
+    }
+
+    if (showHomeButton && artistsPage && homePage && itemsPage) {
+        showHomeButton.addEventListener("click", showHomePage);
     }
 });
 
 
-// SHOW ARTISTS PAGE
+
+
+
+
+// SHOW ITEMS PAGE
 document.addEventListener("DOMContentLoaded", function() {
     var titleElement = document.querySelector('title');
-    var showArtistsButton = document.getElementById("show-home-page");
-    var artistsPage = document.getElementById("artists-page");
-    var homePage = document.getElementById("home-page");
-
-    if (showArtistsButton && artistsPage) {
-        showArtistsButton.addEventListener("click", function() {
-            titleElement.innerText = 'Artists*';
-            window.location.hash = "";
-            artistsPage.style.display = "none";
-            homePage.style.display = "block";
-        });
-        
-    }
-});
-
-
-// SHOW ARTISTS PAGE
-document.addEventListener("DOMContentLoaded", function() {
-    var titleElement = document.querySelector('title');
-    var showArtistsButton = document.getElementById("show-items-page");
+    var showItemsButton = document.getElementById("show-items-page");
+    var itemsLink = document.getElementById("items");
     var artistsPage = document.getElementById("artists-page");
     var homePage = document.getElementById("home-page");
     var itemsPage = document.getElementById("items-page");
 
-    if (showArtistsButton && artistsPage) {
-        showArtistsButton.addEventListener("click", function() {
-            titleElement.innerText = 'Items*';
-            window.location.hash = "artists-page";
-            artistsPage.style.display = "none";
-            itemsPage.style.display = "block";
-            homePage.style.display = "none";
-        });
-        
+    function showItemsPage() {
+        titleElement.innerText = 'Items*';
+        window.location.hash = "artists-page";
+        artistsPage.style.display = "none";
+        itemsPage.style.display = "block";
+        homePage.style.display = "none";
+    }
+
+    if (showItemsButton && artistsPage) {
+        showItemsButton.addEventListener("click", showItemsPage);
+    }
+
+    if (itemsLink && artistsPage) {
+        itemsLink.addEventListener("click", showItemsPage);
     }
 });
+
+
+
+
 
 
 

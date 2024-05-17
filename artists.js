@@ -209,11 +209,6 @@ history.pushState({}, '', url);
 
 
 
-
-
-
-
-
 function parseLinks(text) {
 const regex = /<a\s+(?:[^>]*?\s+)?href="([^"]*)"[^>]*>(.*?)<\/a>/gi;
 const replacedText = text.replace(regex, (match, href, innerHTML) => {

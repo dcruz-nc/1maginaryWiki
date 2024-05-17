@@ -87,6 +87,19 @@ body {
 <body>
 
 
+    <div class="sidepanel" id="artists-sidepanel">
+        <div id="artists-logo"></div>
+        <div id="options-bar">
+            <p id="show-home-page">[Home]</p>
+            <P class="option" id="artists">[Artists]</p>
+            <P class="option" id="items">[Items]</p>
+            <P class="option" >[Emotes]</p>
+        </div>
+    </div>
+
+
+
+
 <!--#################################################################-->
 <!--#################################################################-->
                         <!-- HOME PAGE -->
@@ -109,7 +122,6 @@ body {
     <h2 class="home-h2">Navigate Categories</h2>
     <div id="home-navigation-box">
         <ul>
-            <li class="home-li">> 1maginary</li>
             <li class="home-li" id="show-artists-page">> Artists</li>
             <li class="home-li" id="show-items-page">> Items</li>
             <li class="home-li"><a  class="home-a" href="https://1maginary.online/wiki/emotes">> Emotes</a></li>
@@ -181,15 +193,7 @@ body {
 
     <div id="artists-page">
 
-        <div class="sidepanel" id="artists-sidepanel">
-            <div id="artists-logo"></div>
-                <p id="show-home-page">[Home]</p>
-                <a href="https://1maginary.online/wiki/1maginary" class="option">[1maginary]</a>
-                <a class="option" id="artists">[Artists]*</a>
-                <a href="https://1maginary.online/wiki/items"  class="option" id="items">[Items]</a>
-                <a href="https://1maginary.online/wiki/emotes" class="option" >[Emotes]</a>
-                <a href="https://1maginary.online/wiki/creators" class="option" >[Creators]</a>
-        </div>
+
 
 
         <div id="everything">
@@ -261,7 +265,9 @@ body {
 
 <div id="items-page">
 
-    <h1>Category:Items</h1>
+    
+<div id="everythingTwo">
+    <h1>Categories</h1>
 
     <div id="section-one">
         <p>Items are virtual objects that can be earned when a user spends time on <a href="https://1maginary.online/radio">1*RADIO</a>.</p>
@@ -275,8 +281,11 @@ body {
     </ul>
 
     <div id="itemsPageModal" class="modal">
-        <div class="items-modal-content" id="itemsModalContent">
+        <div class="modal-content" id="modalContentItems">
+            <!-- Content for displaying item details will go here -->
         </div>
+    </div>
+    
     </div>
 </div>
 
@@ -348,22 +357,6 @@ body {
 
 
 
-<!--#################################################################-->
-<!--#################################################################-->
-                        <!-- CREATE 1MAGINARY -->
-<div id="create-1maginary-page" class="hidden">
-    <!-- Content for creating 1maginary page -->
-    <h2>Create 1maginary Page</h2>
-</div>
-
-<!-- ########################################################################### -->
-<!-- ########################################################################### -->
-<!-- ########################################################################### -->
-
-
-
-
-
 
 <!--#################################################################-->
 <!--#################################################################-->
@@ -374,15 +367,7 @@ body {
                         <div id="create-artist-page">
 
 
-                            <div class="sidepanel" id="artists-sidepanel">
-                                <div id="artists-logo"></div>
-                                    <p id="show-home-page">[Home]</p>
-                                    <a href="https://1maginary.online/wiki/1maginary" class="option">[1maginary]</a>
-                                    <a class="option" id="artists">[Artists]*</a>
-                                    <a href="https://1maginary.online/wiki/items"  class="option" id="items">[Items]</a>
-                                    <a href="https://1maginary.online/wiki/emotes" class="option" >[Emotes]</a>
-                                    <a href="https://1maginary.online/wiki/creators" class="option" >[Creators]</a>
-                            </div>
+                    
 
 
                             <br>
@@ -747,21 +732,6 @@ label {
 <script>
     checkHashFragment();
 </script>
-<!-- ########################################################################### -->
-<!-- ########################################################################### -->
-<!-- ########################################################################### -->
-<!-- ########################################################################### -->
-<!-- ########################################################################### -->
-<!-- ########################################################################### -->
-
-
-
-
-
-
-
-
-
 
 
 </body>
