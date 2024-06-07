@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="register.css">
+    <link rel="stylesheet" type="text/css" href="media-queries.css">
+
+    <meta charset="UTF-8">
+            <meta name="darkreader-lock">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=ABeeZee&family=Noto+Sans+TC&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link href="https://fonts.googleapis.com/css2?family=Handjet&display=swap" rel="stylesheet">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta property="og:title" content="Artists - 1*Wiki">
+            <meta property="og:description" content="Artists that have have been featured on 1*Radio, , 1*Magazine, Artist-Index, the 1maginary youtube channel, or have contributed to the project in another way.">
+            <meta property="og:type" content="website">
+            <title>Category:1maginary</title>
+</head>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<style>
+
+body {
+    background-color: rgb(10, 10, 10);
+    margin: 0;
+    height: 100vh;
+    font-family: sans-serif;
+    color: rgb(255, 255, 255);
+    overflow: auto;
+}
+
+
+#alphabetical-list {
+        column-count: 2; /* Adjust this value as needed */
+        column-gap: 20px; /* Adjust this value as needed */
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
+    a:hover {
+        color: #00ff00;
+        border: none;
+    }
+
+    li {
+        text-decoration: none;
+    }
+
+    h2 {
+    font-family: sans serif;
+    font-weight: bold;
+    font-size: 25px;
+    margin-top: 20px;
+}
+
+
+</style>
+<body>
+    
+
+
+    <!-- SIDE PANEL -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-body">
+            <a href="https://1maginary.online/wiki"><div id="logo" class="mb-4"></div></a>
+            <ul class="list-unstyled">
+                <p style="border-bottom: 1px solid gray;">Navigate</p>
+                <li><a href="https://1maginary.online/wiki/">Home</a></li>
+                <li><a href="https://1maginary.online/wiki/1maginary/">1maginary</a></li>
+                <li><a href="https://1maginary.online/wiki/artists/">Artists</a></li>
+                <br>
+            </ul>
+        </div>
+    </div>
+    
+    
+        <!-- TOP PANEL -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark top-nav">
+        <a class="navbar-brand" href="#">1*Wiki</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="https://1maginary.online/wiki/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://1maginary.online/wiki/1maginary">1maginary</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://1maginary.online/wiki/artists">Artists</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    
+    <!-- LOGIN/LOGOUT CONTAINER -->
+    <div id="login-logout-container">
+        <button id="login-screen-button" type="button" class="btn btn-dark" onclick="showLoginElements()">Login</button>
+        <button id="logout-button" type="button" class="btn btn-dark">Logout</button>
+    </div>
+    
+
+
+
+<!-- ARTISTS PAGE -->
+<div id="artists-page">
+    <div class="container mt-4">
+        <header class="mb-4">
+            <div id="artists-header">
+            <h1>Category:1maginary</h1>
+                <p>Everything fundamental to the 1maginary project, from pages to basic lore.<p>
+            </div>
+                <p id="gray-text">The list is sorted in alphabetical order.</p>
+        </header>
+
+        <div id="alphabetical-list" class="border p-3">
+            <ul id="linkList">
+                <li><a href="https://1maginary.online/wiki/1maginary/1_radio">1*RADIO</a></li>
+                <li><a href="https://1maginary.online/wiki/1maginary/1_magazine">1*MAGAZINE</a></li>
+                <li><a href="https://1maginary.online/wiki/1maginary/artist-index">Artist-Index</a></li>
+                <li><a href="https://1maginary.online/wiki/1maginary/1maginary-project">1maginary project</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+<!-- SCRIPT FOR LIST -->
+
+<script>
+    // Get the list items
+    var list = document.getElementById("linkList");
+    var items = list.getElementsByTagName("li");
+  
+    // Convert the list items to an array
+    var itemsArray = Array.prototype.slice.call(items);
+  
+    // Sort the array alphabetically based on the text content of the <a> element
+    itemsArray.sort(function(a, b) {
+      var textA = a.textContent.trim().toUpperCase();
+      var textB = b.textContent.trim().toUpperCase();
+      return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+    });
+  
+    // Remove existing list items
+    while (list.firstChild) {
+      list.removeChild(list.firstChild);
+    }
+  
+    // Initialize variable to keep track of current letter
+    var currentLetter = '';
+  
+    // Append the sorted items back to the list with headers
+    for (var i = 0; i < itemsArray.length; i++) {
+      var listItem = itemsArray[i];
+      var artistName = listItem.textContent.trim();
+      var firstLetter = artistName.charAt(0).toUpperCase();
+  
+      // If first letter is different, create a new header
+      if (firstLetter !== currentLetter) {
+        currentLetter = firstLetter;
+        var header = document.createElement('h2');
+        header.textContent = currentLetter;
+        list.appendChild(header);
+      }
+  
+      // Append the list item under the corresponding header
+      list.appendChild(listItem);
+    }
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+<div id="center-container" class="container">
+    <div id="login-box" class="card">
+        <button type="button" id="close-login-box" class="btn-dark" onclick="closeLoginBox()">[X]</button>
+        <div class="card-body">
+            <form id="login-form">
+                <h2 class="card-title">Login</h2>
+                <div class="mb-3">
+                    <label for="login-email" class="form-label">Email:</label>
+                    <input class="form-control" type="text" id="login-email" name="login-email" placeholder="Email">
+                </div>
+                <div class="mb-3">
+                    <label for="login-password" class="form-label">Password:</label>
+                    <input class="form-control" type="password" id="login-password" name="login-password" placeholder="Password">
+                </div>
+                <div class="d-grid">
+                    <input id="input-login" type="submit" value="Login" class="btn btn-primary">
+                </div>
+            </form>
+            <div class="text-center mt-3">
+                <p>Don't have an account?</p>
+                <btn id="signup-window-box">Join 1*wiki</btn>
+            </div>
+        </div>
+    </div>
+
+    <div id="signup-box" class="card mt-3">
+        <button type="button" id="close-signup-box" class="btn-close" aria-label="Close" onclick="closeSignupBox()">[X]</button>
+        <div class="card-body">
+            <form id="signup-form">
+                <h2 class="card-title">Signup</h2>
+                <div class="mb-3">
+                    <label for="signup-username" class="form-label">Username:</label>
+                    <input class="form-control" type="text" id="signup-username" name="signup-username" placeholder="Username">
+                </div>
+                <div class="mb-3">
+                    <label for="signup-email" class="form-label">Email:</label>
+                    <input class="form-control" type="text" id="signup-email" name="signup-email" placeholder="Email">
+                </div>
+                <div class="mb-3">
+                    <label for="signup-password" class="form-label">Password:</label>
+                    <input class="form-control" type="password" id="signup-password" name="signup-password" placeholder="Password">
+                </div>
+                <div class="mb-3">
+                    <label for="confirm-password" class="form-label">Confirm Password:</label>
+                    <input class="form-control" type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password">
+                </div>
+                <div id="password-match-error" style="color: red;"></div>
+                <div class="d-grid">
+                    <input id="input-signup" type="submit" value="Sign Up" class="btn btn-primary">
+                </div>
+            </form>
+            <div class="text-center mt-3">
+                <p>Don't have an account?</p>
+                <btn id="login-window-box">Login</btn>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <div id="login-background"></div>
+
+<!-- LOGIN BOX SIGNUP BOX  -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var loginBox = document.getElementById("login-box");
+        var signupBox = document.getElementById("signup-box");
+        var signupWindowBox = document.getElementById("signup-window-box");
+        var loginWindowBox = document.getElementById("login-window-box");
+        var loginButton = document.getElementById("login-button");
+    
+        signupWindowBox.addEventListener("click", function () {
+            loginBox.style.display = "none";
+            signupBox.style.display = "flex";
+        });
+
+    
+        loginWindowBox.addEventListener("click", function () {
+            loginBox.style.display = "flex";
+            signupBox.style.display = "none";
+        });
+
+        // Add event listener for login-button
+        loginButton.addEventListener("click", function () {
+            loginBox.style.display = "flex";
+            signupBox.style.display = "none";
+            
+        });
+    });
+</script>
+
+
+<!-- CLOSE LOGIN BOX AND SIGNUP BOX SCRIPT -->
+<script>
+    function closeLoginBox() {
+        var loginBox = document.getElementById("login-box");
+        const centerContainer = document.querySelector('#center-container');
+        loginBox.style.display = "none";
+        centerContainer.style.display = 'none';
+        centerContainer.style.zIndex = '-1000';
+        centerContainer.style.pointerEvents = 'none';
+    }
+
+    function closeSignupBox() {
+        var signupBox = document.getElementById("signup-box");
+        const centerContainer = document.querySelector('#center-container');
+        centerContainer.style.display = 'none';
+        centerContainer.style.zIndex = '-1000';
+        centerContainer.style.pointerEvents = 'none';
+        signupBox.style.display = "none";
+    }
+    
+</script>
+
+
+
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+
+<!-- ######## SCRIPTS ######## -->
+<script src="scripts/points.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-storage.js"></script>
+<script src="scripts/points.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-storage.js"></script>
+<script src="firebase.js"></script>
+<script src="auth.js"></script>
+<script src="firebase.js"></script>
+
+</body>
+</html>

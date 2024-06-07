@@ -1,0 +1,403 @@
+
+
+#ID-card {
+    text-align: center;
+}
+
+
+
+
+.card-subtitle {
+background-color: #00a800;
+color: #000000 !important;
+padding-top: 5px;
+padding-bottom: 5px;
+}
+
+#edit:hover {
+cursor: pointer;
+color: #008400;
+}
+
+#center-edit-page {
+display: flex;
+height: 100vh;
+width: 100vw;
+position: absolute;
+top: 0;
+left: 0;
+pointer-events: none;
+z-index: 100000;
+justify-content: center;
+align-items: center;
+}
+
+#edit-page {
+position: fixed;
+width: 100%;
+height: 100%;
+background: rgb(0, 0, 0);
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 500;
+pointer-events: auto;
+overflow: auto;
+}
+
+.edit-container {
+background: #000000;
+color:rgb(0, 139, 2);
+padding: 20px;
+border-radius: 8px;
+width: 80%;
+box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+overflow: auto;
+height: auto;
+margin-top: 300px;
+margin-right: -120px;
+}
+
+.edit-container textarea {
+width: 100%;
+height: 30px;
+margin-bottom: 10px;
+background-color: rgb(0, 0, 0);
+color: rgb(255, 255, 255);
+}
+
+#edit-description {
+height: 300px;
+}
+
+
+
+
+::selection {
+            background-color: #00ff00;
+            color: rgb(255, 255, 255); /* Change text color to make it visible */
+        }
+
+        /* For older versions of Firefox */
+        ::-moz-selection {
+            background-color: #00ff00;
+            color: rgb(255, 255, 255);
+        }
+
+
+
+    #section-one {
+        width: 70vw;
+    }
+
+
+    #gray-text {
+        color: rgb(61, 61, 61);
+    }
+
+    #pageList-items {
+        display: none;
+    }
+
+
+    h1 {
+            font-family:'Times New Roman', Times, serif;
+            font-size: 50px;
+            color: #00ff00;
+            border-bottom: 1px solid #00ff00;
+        }
+
+        h2 {
+            font-family: sans-serif;
+            font-size: 40px;
+        }
+
+        p {
+            font-family: Arial, sans-serif;
+            font-size: 17px;
+            color: white !important;
+        }
+
+        h1, p, h2, ul, li {
+            text-align: left;
+        }
+        a {
+            color: #00ff00;
+        }
+        a:hover {
+            color: #87ad86;
+            text-decoration: none;
+        }
+
+
+
+
+        #logo {
+            background-image: url('assets/spinleaf7.gif');
+            background-size: contain;
+            background-repeat: no-repeat;
+            height: 100px;
+            width: 100px;
+            outline:
+            1px solid rgb(28, 28, 28);
+        }
+
+        .offcanvas-start {
+            position: fixed;
+            top: 0px;
+            left: 0;
+            padding-top: 10px;
+            height: 100%;
+            width: 130px;
+            z-index: 9999999;
+            display: auto;
+            background-color: rgb(0, 0, 0);
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            border-right: 1px solid #007b00;
+        }
+        
+        
+
+
+
+        .container.mt-4 {
+            margin-top: 1.5rem;
+            margin-left: 130px;
+        }
+
+        .container.mt-5 {
+            margin-top: 1.5rem;
+            margin-left: 130px;
+        }
+
+        .gray-text {
+            color: gray;
+            text-align: center;
+        }
+
+        ::selection {
+            background-color: #00ab00;
+            color: white; /* Change text color to make it visible */
+        }
+
+        /* For older versions of Firefox */
+        ::-moz-selection {
+            background-color: #00a700;
+            color: white;
+        }
+
+        .card-body {
+            background-color: black !important;
+            color: white !important;
+            outline: 1px solid rgb(0, 0, 0) !important;
+        }
+
+
+        
+
+        #modalContent {
+            background-color: rgb(0, 0, 0);
+            z-index: 155;
+            height: auto;
+        }
+
+        #pageModal {
+            position: absolute;
+            width: 90%;
+            left: 120px;
+            top: 0;
+            display: none;
+        }
+
+        .border.p-3 {
+            background-color: rgb(0, 0, 0);
+            outline: 1px solid rgb(36, 36, 36) !important;
+        }
+
+
+        li:hover {
+            color: #00ff00;
+            cursor: pointer;
+        }
+
+        /* Styles for headers */
+.modal-header {
+    background-color: rgb(0, 207, 0);
+    color: white;
+    font-weight: bold;
+    padding: 5px;
+    text-align: center;
+    width: 95%;
+    margin-top: 10px;
+    border-radius: 0px;
+    border: none;
+}
+
+
+
+
+
+    .header-container {
+            position: relative;
+        }
+        .header-right {
+            float: right;
+            margin-left: 20px;
+            margin-right: 10px;
+        }
+        .header-text {
+            overflow: hidden; /* Ensure proper wrapping of text around the floated element */
+        }
+
+        #artists-header {
+            width: 60vw;
+        }
+
+        #logo {
+            background-image: url('assets/spinleaf7.gif');
+            background-size: cover;
+        }
+
+
+        .container.mt-6 {
+            margin-top: 1.5rem;
+            margin-left: 130px;
+        }
+
+        #edit-deny {
+            background-color: rgb(0, 0, 0);
+            z-index: 9999999;
+            width: 200px;
+            height: 100px;
+            position: fixed;
+            display: none;
+            outline: 2px solid gray;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        #description-box h2 {
+            margin-top: 20px;
+        }
+
+        #description-box p {
+            margin-bottom: 25px;
+        }
+
+
+
+
+/* COMMENT STYLINGS */
+.list-group-item {
+    background-color: rgb(0, 0, 0) !important;
+    outline: 1px solid rgb(53, 53, 53) !important;
+    color: #008d00;
+    border-radius: 1px !important;
+  }
+
+.list-group-item p {
+    color: rgb(255, 255, 255) !important;
+}
+
+.reply-form {
+    background-color: #000000 !important;
+    outline: 2px solid gray !important;
+    color: rgb(255, 255, 255);
+    border-radius: 2px !important;
+    border: 2px solid #2d2d2d !important;
+    outline: none !important;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.reply-button {
+    background-color: #008c00 !important;
+    color: rgb(255, 255, 255) !important;
+    border: none !important;
+    border-radius: 0px !important;
+    position: absolute;
+    margin-top: -50px;
+    right: 20px;
+}
+
+.reply-button:hover {
+    background-color: #00ff00 !important;
+    color: #ffffff !important;
+}
+
+#comment-content, .reply-content {
+    background-color: rgb(0, 0, 0) !important;
+    outline: 1px solid gray !important;
+    color: rgb(255, 255, 255);
+    border-radius: 0px !important;
+    border: 1px solid #171717 !important;
+    outline: none !important;
+}
+
+#submit-comment {
+    background-color: #008c00 !important;
+    color: rgb(255, 255, 255) !important;
+    border: none !important;
+    border-radius: 0px !important;
+}
+
+#submit-comment:hover {
+    background-color: #00ff00 !important;
+    color: #ffffff !important;
+}
+
+.submit-reply {
+    background-color: #009800 !important;
+    color: rgb(255, 255, 255) !important;
+    border: none !important;
+    border-radius: 0px !important;
+}
+
+.submit-reply:hover {
+    background-color: #00ff00 !important;
+    color: #ffffff !important;
+}
+
+#username {
+    color: #006a00;
+    margin-left: -5px !important;
+    font-weight: bold !important;
+}
+
+#user-profile {
+    margin-top: 20px !important;
+    margin-bottom: 5px;
+}
+
+.comment-pfp {
+    position: absolute;
+    top: 5px;
+}
+
+.profile-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adjust spacing between elements */
+    margin-bottom: 10px;
+}
+
+
+
+.profile-details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-details h6 {
+    margin: 0;
+}
+
+.profile-details small {
+    color: #888; /* or any other color you prefer */
+}
+

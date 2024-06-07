@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comments List</title>
+    <meta name="darkreader-lock">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+
+        body {
+            background-color: #1d1e1f;
+            color: #76b6b9;
+        }
+        .comment-item {
+            background: #1d1e1f;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 5px;
+            position: relative;
+            outline: 2px solid rgb(146, 103, 146);
+        }
+        .timestamp {
+            font-size: 0.8em;
+            color: #76b6b9;
+        }
+        .delete-button {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+
+        .delete-button:hover {
+            background-color: #b976a9;
+            color: white;
+            border: 1px solid pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Comments</h1>
+        <ul id="commentsList" class="list-unstyled"></ul>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-storage.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyA6WX1wyybNv8y7YjWoxjYo3r7A9JXFrn0",
+            authDomain: "imaginary-online.firebaseapp.com",
+            projectId: "imaginary-online",
+            storageBucket: "imaginary-online.appspot.com",
+            messagingSenderId: "161150961566",
+            appId: "1:161150961566:web:601b3313b7aa4a0c39b88f",
+            measurementId: "G-VYEP9HHWPB"
+        };
+
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore(app);
+
+        // Function to fetch and display comments
+        async function fetchComments() {
+            const commentsList = document.getElementById('commentsList');
+            commentsList.innerHTML = ''; // Clear the list
+
+            // Get documents from 'comments' collection, sorted by 'timestamp' descending
+            const querySnapshot = await db.collection('comments').orderBy('timestamp', 'desc').get();
+
+            querySnapshot.forEach(doc => {
+                const comment = doc.data();
+                const li = document.createElement('li');
+                li.className = 'comment-item';
+                li.innerHTML = `
+                    <strong>${comment.name}</strong>
+                    <div class="timestamp">${new Date(comment.timestamp.toDate()).toLocaleString()}</div>
+                    <p>${comment.content}</p>
+                    <em>Page ID: ${comment.pageID}</em>
+                    <button class="btn btn-danger btn-sm delete-button" data-id="${doc.id}">Delete</button>
+                `;
+                commentsList.appendChild(li);
+            });
+
+            // Add event listeners to delete buttons
+            const deleteButtons = document.querySelectorAll('.delete-button');
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', async (e) => {
+                    const docId = e.target.getAttribute('data-id');
+                    await deleteComment(docId);
+                    fetchComments(); // Refresh the comments list
+                });
+            });
+        }
+
+        // Function to delete a comment
+        async function deleteComment(docId) {
+            await db.collection('comments').doc(docId).delete();
+        }
+
+        // Fetch comments when the page loads
+        window.onload = fetchComments;
+    </script>
+</body>
+</html>

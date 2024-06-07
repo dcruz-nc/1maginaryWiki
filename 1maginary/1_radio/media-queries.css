@@ -1,0 +1,250 @@
+
+/* OVER 800PX */
+@media (min-width: 801px) {
+    .top-nav {
+        display: none;
+    }
+
+    .navbar-light.bg-dark {
+        background-color: black !important;
+        color: #00ff00 !important;
+        border-bottom: 1px solid white !important;
+        display: none;
+    }
+
+
+#logout-button {
+    position: fixed;
+        bottom: 15px;
+        left: 15px;
+        background-color: rgb(0, 0, 0);
+        border-radius: 0px;
+        font-size: 16px;
+        color: rgb(255, 255, 255);
+        border: none;
+        outline: 2px solid #292929;
+        z-index: 99999999;
+    }
+    
+    #logout-button:hover {
+        color: #00ff00;
+    }
+    
+    
+    #login-screen-button {
+        position: fixed;
+        bottom: 15px;
+        left: 15px;
+        background-color: rgb(0, 0, 0);
+        border-radius: 0px;
+        font-size: 16px;
+        color: rgb(255, 255, 255);
+        border: none;
+        outline: 2px solid #292929;
+        z-index: 99999999;
+    }
+    #login-screen-button:hover {
+        color: #00ff00;
+    }
+
+
+    #close-login-box {
+        cursor: pointer;
+        height: 35px;
+        width: 35px;
+        font-size: 15px;
+        color: #00ff00;
+        background-color: rgb(0, 0, 0);
+        outline: 2px solid #00ff00 !important;
+        border: none !important; 
+    }
+    
+    #close-login-box:hover {
+        color: #00ff00;
+        outline: none !important;
+        border: none !important;
+    }
+    
+    #close-signup-box {
+        cursor: pointer;
+        height: 35px;
+        width: 35px;
+        font-size: 15px;
+        color: rgb(255, 255, 255);
+        background-color: rgb(0, 0, 0);
+        outline: none !important;
+        border: none !important;
+    }
+    
+    #close-signup-box:hover {
+        color: #00ff00;
+        outline: none !important;
+        border: none !important;
+    }
+    
+
+}
+
+
+/* UNDER 800PX*/
+
+
+@media (max-width: 800px) {
+    .top-nav {
+        display: block;
+        position: fixed;
+        z-index: 999999;
+    }
+
+    .offcanvas-start {
+        position: fixed;
+        top: 0px;
+        left: 0;
+        padding-top: 10px;
+        height: 100%;
+        width: 130px;
+        z-index: 9999999;
+        display: auto;
+        background-color: rgb(0, 0, 0);
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        border-right: 1px solid #007b00;
+        display: none;
+    }
+
+    .container.mt-4 {
+        margin-top: 1.5rem;
+        margin-left: 0px;
+    }
+
+    .container.mt-5 {
+        margin-top: 1.5rem;
+        margin-left: 0px;
+    }
+
+    .navbar-light.bg-dark {
+        background-color: black !important;
+        color: #00ff00 !important;
+        border-bottom: 1px solid white !important;
+    }
+
+    .navbar-light .navbar-brand {
+        color: #00ff00 !important;
+        font-weight: bold;
+    }
+    .navbar-light .navbar-nav .nav-link {
+        color: white !important;
+    }
+
+
+    .navbar-light .navbar-toggler {
+        border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    .navbar-light .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+    }
+
+    #login-logout-container {
+        position: fixed;
+        left: 10px;
+        bottom: 10px;
+        z-index: 9999999;
+    }
+
+    #center-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        margin-left: 0px;
+        width: 100vw;
+        height: 100vh;
+        z-index: 99999999999999999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow-y: scroll;
+        pointer-events: none;
+        display: none;
+        background-color: black;
+    }
+
+    #logout-button {
+        position: fixed;
+        bottom: 15px;
+        left: 15px;
+        background-color: #00ff00;
+        border-radius: 0px;
+        font-size: 16px;
+        color: rgb(0, 113, 28);
+        border: none;
+        outline: none;
+        z-index: 99999999;
+        font-weight: bold;
+        }
+        
+        #logout-button:hover {
+            color: #00ff00;
+        }
+        
+        
+        #login-screen-button {
+            position: fixed;
+            bottom: 15px;
+            left: 15px;
+            background-color: #00ff00;
+            border-radius: 0px;
+            font-size: 16px;
+            color: rgb(0, 113, 28);
+            border: none;
+            outline: none;
+            z-index: 99999999;
+            font-weight: bold;
+        }
+        #login-screen-button:hover {
+            color: #00ff00;
+        }
+
+        #close-login-box {
+            cursor: pointer;
+            height: 35px;
+            width: 35px;
+            font-size: 15px;
+            color: #00ff00;
+            background-color: rgb(0, 0, 0);
+            outline: 2px solid #00ff00 !important;
+            border: none !important; 
+            z-index: 999999999;
+        }
+
+        #close-login-box:active {
+            background-color: #00ff00 !important;
+            color: white !important;
+        }
+        
+        
+        #close-signup-box {
+            cursor: pointer;
+            height: 35px;
+            width: 35px;
+            font-size: 15px;
+            color: #00ff00;
+            background-color: rgb(0, 0, 0);
+            outline: 2px solid #00ff00 !important;
+            border: none !important; 
+            z-index: 999999999;
+        }
+
+        #close-signup-box:active {
+            background-color: #00ff00 !important;
+            color: white !important;
+        }
+
+        #signup-box {
+            z-index: 99999999999999999999;
+        }
+        
+
+    
+
+}

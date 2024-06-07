@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="darkreader-lock">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN</title>
+</head>
+<style>
+ body {
+        background-color: rgb(37, 37, 37);
+        color: white;
+        height: 200vh;
+        overflow: hidden;
+    }
+
+    #main-container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgb(36, 25, 29);
+        flex-direction: row;
+    }
+
+    .column-container {
+        width: 33.33%;
+        height: 100vh;
+        overflow-y: auto;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        border-right: 2px solid rgb(126, 126, 126);
+    }
+
+    .column-header {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 100px;
+    }
+
+    button {
+        background-color: rgb(46, 46, 46);
+        color: #bd8fc3;
+        font-size: 20px;
+    }
+    button:hover {
+        background-color: rgb(255, 255, 255) !important;
+        color: rgb(155, 155, 155);
+        cursor: pointer;
+    }
+
+    .modal {
+        z-index: 50000;
+        position: fixed;
+        bottom: 20vh;
+        left: 5vw;
+        padding-left: 10px;
+        height: 70vh;
+        width: 90vw;
+        background-color:rgb(23, 23, 23);
+        overflow: auto;
+        margin: 0;
+        outline: 2px solid rgb(255, 211, 218)!important;
+    }
+</style>
+<body>
+
+    
+<div id="main-container">
+    <div id="pagesContainer" class="column-container">
+        <div class="column-header">Pages</div>
+    </div>
+    <div id="editedPagesContainer" class="column-container">
+        <div class="column-header">Edited Pages</div>
+    </div>
+    <div id="submittedPagesContainer" class="column-container">
+        <div class="column-header">Submitted Pages</div>
+    </div>
+</div>
+
+    <script src="scripts/points.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-storage.js"></script>
+    <script src="scripts/points.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-storage.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyA6WX1wyybNv8y7YjWoxjYo3r7A9JXFrn0",
+            authDomain: "imaginary-online.firebaseapp.com",
+            projectId: "imaginary-online",
+            storageBucket: "imaginary-online.appspot.com",
+            messagingSenderId: "161150961566",
+            appId: "1:161150961566:web:601b3313b7aa4a0c39b88f",
+            measurementId: "G-VYEP9HHWPB"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+    
+        const pagesRef = db.collection('Pages');
+        const editedPagesRef = db.collection('edited-pages');
+        const submittedPagesRef = db.collection('submitted-pages');
+    
+        function displayPages() {
+            const pagesContainer = document.getElementById('pagesContainer');
+            pagesContainer.innerHTML = '';
+    
+            pagesRef.orderBy('name').get()
+                .then(querySnapshot => {
+                    querySnapshot.forEach(doc => {
+                        const pageButton = createPageButton(doc);
+                        pagesContainer.appendChild(pageButton);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error getting documents: ', error);
+                });
+        }
+    
+        function displayEditedPages() {
+            const editedPagesContainer = document.getElementById('editedPagesContainer');
+            editedPagesContainer.innerHTML = '';
+    
+            editedPagesRef.orderBy('name').get()
+                .then(querySnapshot => {
+                    querySnapshot.forEach(doc => {
+                        const pageButton = createPageButton(doc);
+                        editedPagesContainer.appendChild(pageButton);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error getting documents: ', error);
+                });
+        }
+    
+        function displaySubmittedPages() {
+            const submittedPagesContainer = document.getElementById('submittedPagesContainer');
+            submittedPagesContainer.innerHTML = '';
+    
+            submittedPagesRef.orderBy('name').get()
+                .then(querySnapshot => {
+                    querySnapshot.forEach(doc => {
+                        const pageButton = createPageButton(doc);
+                        submittedPagesContainer.appendChild(pageButton);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error getting documents: ', error);
+                });
+        }
+    
+        function createPageButton(doc) {
+            const pageButton = document.createElement('button');
+            pageButton.classList.add('btn', 'mb-2');
+            pageButton.textContent = doc.data().name;
+    
+            pageButton.addEventListener('click', () => {
+                displayPageData(doc.id, doc.data(), 'pageModal');
+            });
+    
+            return pageButton;
+        }
+    
+        function generateTextData(pageData) {
+            let textData = '';
+            for (const key in pageData) {
+                if (pageData.hasOwnProperty(key)) {
+                    textData += `${key}: ${pageData[key]}\n`;
+                }
+            }
+            return textData;
+        }
+    
+        function addDownloadButton(pageData, modalBody) {
+            const downloadButton = document.createElement('button');
+            downloadButton.textContent = 'Download Data';
+            downloadButton.classList.add('btn', 'btn-primary', 'mb-2');
+    
+            downloadButton.addEventListener('click', () => {
+                const textData = generateTextData(pageData);
+                const blob = new Blob([textData], {type: 'text/plain'});
+                const downloadLink = document.createElement('a');
+                downloadLink.href = URL.createObjectURL(blob);
+                downloadLink.download = `${pageData.name}_data.txt`;
+                downloadLink.click();
+                URL.revokeObjectURL(downloadLink.href);
+            });
+    
+            modalBody.appendChild(downloadButton);
+        }
+    
+        function displayPageData(docId, pageData, modalId) {
+            const modalContent = `
+                <div class="modal fade" id="${docId}-${modalId}" tabindex="-1" aria-labelledby="${docId}-${modalId}Label" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="${docId}-${modalId}Label">${pageData.name}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p><strong>Submitted By:</strong> ${pageData.submittedBy}</p>
+                                <p><strong>Name:</strong> ${pageData.name}</p>
+                                <p><strong>Image URL:</strong> ${pageData.imageURL}</p>
+                                <p><strong>Description:</strong> ${pageData.description}</p>
+                                <p><strong>Soundcloud:</strong> ${pageData.soundcloud}</p>
+                                <p><strong>Spotify:</strong> ${pageData.spotify}</p>
+                                <p><strong>Twitter:</strong> ${pageData.twitter}</p>
+                                <p><strong>Instagram:</strong> ${pageData.instagram}</p>
+                                <p><strong>Country:</strong> ${pageData.country}</p>
+                                <p><strong>Category:</strong> ${pageData.category}</p>
+                                <p><strong>Bandcamp:</strong> ${pageData.bandcamp}</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" onclick="deletePage('${docId}', 'Pages')">Delete</button>
+                                <button type="button" class="btn btn-danger" onclick="deletePage('${docId}', 'edited-pages')">Delete(edited)</button>
+                                <button type="button" class="btn btn-danger" onclick="deletePage('${docId}', 'submitted-pages')">Delete(submitted)</button>
+                                <button type="button" class="btn btn-primary" onclick="transferEditedPageToPages('${docId}', '${pageData.name}')">Transfer to Pages (Edited)</button>
+                                <button type="button" class="btn btn-primary" onclick="transferSubmittedPageToPages('${docId}')">Transfer to Pages (Submitted)</button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+    
+            document.body.insertAdjacentHTML('beforeend', modalContent);
+            const modalBody = document.querySelector(`#${docId}-${modalId} .modal-body`);
+            addDownloadButton(pageData, modalBody);
+            $(`#${docId}-${modalId}`).modal('show');
+        }
+    
+        function transferEditedPageToPages(docId, pageName) {
+            editedPagesRef.doc(docId).get().then(doc => {
+                if (doc.exists) {
+                    const pageData = doc.data();
+                    pagesRef.where('name', '==', pageName).get().then(querySnapshot => {
+                        querySnapshot.forEach(doc => {
+                            doc.ref.delete();
+                        });
+                        pagesRef.add(pageData).then(() => {
+                            console.log("Document transferred to Pages successfully!");
+                            displayPages();
+                        }).catch(error => {
+                            console.error("Error adding document to Pages: ", error);
+                        });
+                    }).catch(error => {
+                        console.error("Error getting documents from Pages: ", error);
+                    });
+                } else {
+                    console.error("No such document in edited-pages!");
+                }
+            }).catch(error => {
+                console.error("Error getting document from edited-pages: ", error);
+            });
+        }
+    
+        function transferSubmittedPageToPages(docId) {
+            submittedPagesRef.doc(docId).get().then(doc => {
+                if (doc.exists) {
+                    const pageData = doc.data();
+                    pagesRef.add(pageData).then(() => {
+                        console.log("Document transferred to Pages successfully!");
+                        displayPages();
+                    }).catch(error => {
+                        console.error("Error adding document to Pages: ", error);
+                    });
+                } else {
+                    console.error("No such document in submitted-pages!");
+                }
+            }).catch(error => {
+                console.error("Error getting document from submitted-pages: ", error);
+            });
+        }
+    
+        function deletePage(docId, collectionName) {
+            db.collection(collectionName).doc(docId).delete().then(() => {
+                console.log("Document successfully deleted!");
+                if (collectionName === 'Pages') {
+                    displayPages();
+                } else if (collectionName === 'edited-pages') {
+                    displayEditedPages();
+                } else if (collectionName === 'submitted-pages') {
+                    displaySubmittedPages();
+                }
+            }).catch((error) => {
+                console.error("Error removing document: ", error);
+            });
+        }
+    
+        window.addEventListener('load', () => {
+            displayPages();
+            displayEditedPages();
+            displaySubmittedPages();
+        });
+    </script>
+    
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="stylesheet" type="text/css" href="auth.css">
+        <link rel="stylesheet" type="text/css" href="media-queries.css">
+
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <meta charset="UTF-8">
+        <meta name="darkreader-lock">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="og:title" content="Anabel White">
+        <meta property="og:description" content="Anabel White is an electronic noise-pop artist from Blue Summit, Missouri.">
+        <meta property="og:type" content="website">
+        <title>1*RADIO</title>
+</head>
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<style>
+body {
+    background-color: rgb(10, 10, 10);
+    font-family: sans-serif;
+    color: rgb(255, 255, 255) !important;
+}
+
+td {
+    color: rgb(255, 255, 255);
+}
+
+h2 {
+font-family: 'Times New Roman', Times, serif;
+background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)) padding-box,
+linear-gradient(to right, rgb(124, 124, 124), rgb(220, 220, 220)) border-box;
+border-bottom: 1px solid transparent;
+}
+
+p {
+    color: white !important;
+}
+
+a {
+    text-decoration: none;
+    color: #00ff00;
+}
+
+a:hover {
+    color: #00ff00;
+    border: none;
+}
+
+li {
+    color: #00ff00;
+}
+
+
+.card {
+    background-color: rgb(0, 0, 0);
+}
+
+
+strong {
+    color: white !important;
+}
+
+
+</style>
+<body>
+    
+
+
+    <!-- SIDE PANEL -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-body">
+            <a href="https://1maginary.online/wiki"><div id="logo" class="mb-4"></div></a>
+            <ul class="list-unstyled">
+                <p style="border-bottom: 1px solid gray;">Navigate</p>
+                <li><a href="https://1maginary.online/wiki/">Home</a></li>
+                <li><a href="https://1maginary.online/wiki/1maginary/">1maginary</a></li>
+                <li><a href="https://1maginary.online/wiki/artists/">Artists</a></li>
+                <br>
+            </ul>
+        </div>
+    </div>
+    
+    
+        <!-- TOP PANEL -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark top-nav">
+        <a class="navbar-brand" href="#">1*Wiki</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="https://1maginary.online/wiki/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://1maginary.online/wiki/1maginary">1maginary</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://1maginary.online/wiki/artists">Artists</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    
+    <!-- LOGIN/LOGOUT CONTAINER -->
+    <div id="login-logout-container">
+        <button id="login-screen-button" type="button" class="btn btn-dark" onclick="showLoginElements()">Login</button>
+        <button id="logout-button" type="button" class="btn btn-dark">Logout</button>
+    </div>
+    
+
+
+
+<div id="artists-page">
+    <div class="container mt-5">
+        <!-- Header -->
+        <header class="mb-4">
+            <h1>1*RADIO</h1>
+        </header>
+        
+        <div class="row">
+            <!-- Paragraph with box around it -->
+            <div class="col-md-8">
+                <div id="description-box" class="border p-3 mb-4 border-gray">
+                    <p>Loading..</p>
+                </div>
+            </div>
+            
+            <!-- Card element to the right -->
+            <div id="ID-card" class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>Anabel White</strong></h5>
+                        <img src="assets/radio-logo.gif" width="90%" alt="Anabel White" class="img-fluid mb-3">
+                        <p></p>
+                        <h6 class="card-subtitle mb-2 text-muted"><strong>Page</strong></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Another header -->
+        <header class="mb-4">
+            <h2>References</h2>
+        </header>
+        
+        <!-- List of links with box around it -->
+        <div class="border p-3 mb-4 border-gray">
+            <ul class="list-unstyled">
+                <li>🡑<a href="#">Loading...</a></li>
+            </ul>
+        </div>
+
+        <section>
+            <div id="edit">Edit this page</div>
+    </section>
+    </div>
+
+
+
+
+    <br>
+
+    <div class="container mt-5">
+        <h2>Comments</h2>
+        <div id="comment-section" class="mb-4">
+          <div id="user-profile" class="d-flex align-items-center mb-3">
+            <img id="profile-picture" src="" alt="" width="50" height="50">
+            <div class="ml-3">
+              <h5 id="username"></h5>
+            </div>
+          </div>
+          <div class="form-group">
+            <textarea id="comment-content" class="form-control" rows="3" placeholder="Write a comment..."></textarea>
+          </div>
+          <button id="submit-comment" class="btn btn-primary">Comment</button>
+        </div>
+        <div id="comments-list" class="list-group">
+          <!-- Comments will be appended here -->
+        </div>
+        <br>
+       <!-- Footer -->
+       <footer class="text-center mt-5 py-3 border-top">
+        <p id="gray-text" class="mb-0">1maginary.online© All Rights Reserved</p>
+    </footer>
+    <br>
+      </div>
+    
+
+
+      
+
+
+
+    <div id="center-edit-page">
+        <div id="edit-page" style="display: none;">
+            <div class="edit-container">
+                <h1>Edit Page</h1>
+                <label for="edit-name">Name:</label>
+                <textarea id="edit-name"></textarea>
+                
+                <label for="edit-description">Description:</label>
+                <textarea id="edit-description"></textarea>
+        
+                <label for="edit-country">Country:</label>
+                <textarea id="edit-country"></textarea>
+        
+                <label for="edit-soundcloud">SoundCloud:</label>
+                <textarea id="edit-soundcloud"></textarea>
+        
+                <label for="edit-spotify">Spotify:</label>
+                <textarea id="edit-spotify"></textarea>
+        
+                <label for="edit-bandcamp">Bandcamp:</label>
+                <textarea id="edit-bandcamp"></textarea>
+        
+                <label for="edit-twitter">Twitter:</label>
+                <textarea id="edit-twitter"></textarea>
+        
+                <label for="edit-instagram">Instagram:</label>
+                <textarea id="edit-instagram"></textarea>
+                
+                <button id="submit-edit">Submit</button>
+            </div>
+        </div>
+        <div id="thank-you-message" style="display: none;">Thank you for your submission! It will be reviewed by our team.</div>
+    </div>
+
+</div>
+
+
+
+
+<!-- FILL IN INFO -->
+<script>
+// Define documentId and userData variables in a wider scope
+let documentId;
+let userData;
+
+// Function to load comments with the document ID
+function loadComments(pageID) {
+    console.log("Loading comments for pageID:", pageID); // Debugging output
+    db.collection('comments').where('pageID', '==', pageID).orderBy('timestamp', 'desc').onSnapshot(snapshot => {
+        const commentsList = document.getElementById('comments-list');
+        commentsList.innerHTML = '';
+        snapshot.forEach(doc => {
+            const comment = doc.data();
+            if (!comment.reply) {
+                const commentItem = createCommentItem(doc.id, comment);
+                commentsList.appendChild(commentItem);
+            }
+        });
+    });
+}
+
+async function retrieveAndPopulateData() {
+    // Retrieve the title from the header
+    const title = document.querySelector('header h1').innerText;
+
+    try {
+        // Query Firestore for a document with a matching 'name' field
+        const pagesRef = db.collection('Pages');
+        const querySnapshot = await pagesRef.where('name', '==', title).get();
+
+        if (!querySnapshot.empty) {
+            // Assuming there's only one document with the matching name
+            const doc = querySnapshot.docs[0];
+            const data = doc.data();
+
+            // Store the document ID in a variable
+            documentId = doc.id;
+
+            // Print the document ID to the console
+            console.log("Document ID:", documentId);
+
+            // Populate HTML elements with the retrieved data
+            document.querySelector('header h1').innerText = data.name;
+
+            // Parse Markdown content for description
+            const descriptionElement = document.querySelector('.border p');
+            descriptionElement.innerHTML = marked(data.description);
+
+            // Populate links in the list under "References" header
+            populateReferences(data.description);
+
+            document.querySelector('.card-title').innerText = data.name;
+            document.querySelector('.table tbody').children[0].children[1].innerText = data.country; // Correct index for country
+
+            const links = ['spotify', 'soundcloud', 'instagram', 'twitter', 'bandcamp'];
+            links.forEach((link, index) => {
+                const linkValue = data[link];
+                if (linkValue) { // Check if link value is not null
+                    document.querySelectorAll('.card-link')[index].setAttribute('href', linkValue);
+                } else {
+                    // If link value is null, hide the corresponding row
+                    document.querySelectorAll('.table tbody tr')[index + 1].style.display = 'none'; // index + 1 to skip the country row
+                }
+            });
+
+            // Call the function to load comments with the document ID
+            loadComments(documentId);
+
+        } else {
+            console.log("No matching document found.");
+        }
+    } catch (error) {
+        console.error("Error retrieving document: ", error);
+    }
+}
+
+// Call the function on page load
+window.onload = retrieveAndPopulateData;
+
+// Function to populate links in the list under "References" header
+function populateReferences(description) {
+    const referenceList = document.querySelector('.border.p-3.mb-4.border-gray ul');
+    referenceList.innerHTML = ''; // Clear existing list items
+
+    // Regular expression to match markdown links
+    const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+    let match;
+    let index = 1;
+
+    // Iterate through matches and populate list items
+    while ((match = linkRegex.exec(description)) !== null) {
+        const linkText = match[1];
+        const linkURL = match[2];
+        const listItem = document.createElement('li');
+        const linkElement = document.createElement('a');
+        linkElement.href = linkURL;
+        linkElement.innerText = `🡑 ${linkURL}`;
+        listItem.appendChild(linkElement);
+        referenceList.appendChild(listItem);
+        index++;
+    }
+
+    // If no links were found, display "None"
+    if (index === 1) {
+        const noneItem = document.createElement('li');
+        noneItem.textContent = '🡑None';
+        referenceList.appendChild(noneItem);
+    }
+}
+
+
+// Function to convert Markdown to HTML
+function marked(markdown) {
+    // Regular expression to match headings
+    const headingRegex = /^(#+)\s(.*)$/gm;
+    // Regular expression to match hyperlinks
+    const hyperlinkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+
+    // Replace headings with HTML heading elements
+    markdown = markdown.replace(headingRegex, (match, level, text) => {
+        const headingLevel = level.length;
+        return `<h${headingLevel}>${text}</h${headingLevel}>`;
+    });
+
+    // Replace hyperlinks with HTML anchor elements
+    markdown = markdown.replace(hyperlinkRegex, '<a href="$2">$1</a>');
+
+    return markdown;
+}
+
+function createCommentItem(commentId, comment) {
+    const commentItem = document.createElement('div');
+    commentItem.className = 'list-group-item';
+    commentItem.innerHTML = `
+      <div class="profile-wrapper">
+        <img src="" width="auto" height="50px">
+        <div class="profile-details">
+          <h6 id="username">${comment.name}</h6>
+          <small class="text-muted">${new Date(comment.timestamp.toDate()).toLocaleString()}</small>
+        </div>
+      </div>
+      <p>${comment.content}</p>
+      <button class="reply-button btn btn-primary" data-comment-id="${commentId}">Reply</button>
+      <div class="replies-list mt-3"></div>
+      <div class="reply-form mt-2" style="display:none;">
+        <textarea class="reply-content form-control" rows="2" placeholder="Write a reply..."></textarea>
+        <button class="submit-reply btn btn-primary mt-2">Submit</button>
+      </div>
+    `;
+    
+    const profilePictureImg = commentItem.querySelector('img');
+    storage.refFromURL(comment['profile-picture']).getDownloadURL().then(url => {
+        profilePictureImg.src = url;
+    });
+
+    const replyButton = commentItem.querySelector('.reply-button');
+    const replyForm = commentItem.querySelector('.reply-form');
+    const replyContent = replyForm.querySelector('.reply-content');
+    const submitReplyButton = replyForm.querySelector('.submit-reply');
+    const repliesList = commentItem.querySelector('.replies-list');
+
+    replyButton.addEventListener('click', () => {
+        replyForm.style.display = replyForm.style.display === 'none' ? 'block' : 'none';
+    });
+
+    submitReplyButton.addEventListener('click', () => {
+        const replyText = replyContent.value;
+        if (replyText.trim()) {
+            db.collection('comments').add({
+                name: userData.name,
+                content: replyText,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                'profile-picture': userData['profile-picture'],
+                reply: true,
+                parentId: commentId,
+                pageID: documentId // Ensure pageID is included in replies as well
+            }).then(() => {
+                replyContent.value = '';
+                loadReplies(commentId, repliesList);
+            });
+        }
+    });
+
+    loadReplies(commentId, repliesList);
+    return commentItem;
+}
+
+
+
+function loadReplies(commentId, repliesList) {
+    db.collection('comments').where('parentId', '==', commentId).orderBy('timestamp', 'desc').onSnapshot(snapshot => {
+        repliesList.innerHTML = '';
+        snapshot.forEach(doc => {
+            const reply = doc.data();
+            const replyItem = document.createElement('div');
+            replyItem.className = 'list-group-item reply';
+            replyItem.innerHTML = `
+                <div class="profile-wrapper">
+                    <img src="" width="auto" height="50px">
+                    <div class="profile-details">
+                        <h6>${reply.name}</h6>
+                        <small class="text-muted">${new Date(reply.timestamp.toDate()).toLocaleString()}</small>
+                    </div>
+                </div>
+                <p>${reply.content}</p>
+            `;
+            const profilePictureImg = replyItem.querySelector('img');
+            storage.refFromURL(reply['profile-picture']).getDownloadURL().then(url => {
+                profilePictureImg.src = url;
+            });
+            repliesList.appendChild(replyItem);
+        });
+    });
+}
+
+
+// Auth state change handling and comment submission
+document.addEventListener('DOMContentLoaded', function () {
+    auth.onAuthStateChanged(user => {
+        if (user) {
+            const uid = user.uid;
+            const userDocRef = db.collection('user-collection').doc(uid);
+
+            // Retrieve user information
+            userDocRef.get().then(doc => {
+                if (doc.exists) {
+                    userData = doc.data(); // Store user data in the wider scope
+                    document.getElementById('username').innerText = userData.name;
+
+                    // Use refFromURL for correct profile picture retrieval
+                    storage.refFromURL(userData['profile-picture']).getDownloadURL().then(url => {
+                        document.getElementById('profile-picture').src = url;
+                    });
+
+                    // Event listener for submitting comments
+                    document.getElementById('submit-comment').addEventListener('click', () => {
+                        const commentContent = document.getElementById('comment-content').value;
+                        if (commentContent.trim()) {
+                            db.collection('comments').add({
+                                name: userData.name,
+                                content: commentContent,
+                                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                                'profile-picture': userData['profile-picture'],
+                                reply: false,
+                                parentId: null,
+                                pageID: documentId // Use the stored document ID as pageID
+                            }).then(() => {
+                                document.getElementById('comment-content').value = '';
+                                loadComments(documentId); // Pass documentId as an argument
+                            });
+                        }
+                    });
+
+                    // Ensure comments are loaded initially
+                    loadComments(documentId);
+                }
+            });
+        }
+    });
+});
+
+</script>
+
+<script>
+document.getElementById('edit').addEventListener('click', async () => {
+    // Check Firebase authentication status
+    const user = firebase.auth().currentUser;
+    
+    if (user) { // User is authenticated
+        const title = document.querySelector('h1').innerText;
+        const docRef = db.collection('Pages').where('name', '==', title);
+        const querySnapshot = await docRef.get();
+        
+        if (!querySnapshot.empty) {
+            const doc = querySnapshot.docs[0];
+            const data = doc.data();
+
+            document.getElementById('edit-name').value = data.name || '';
+            document.getElementById('edit-description').value = data.description || '';
+            document.getElementById('edit-country').value = data.country || '';
+            document.getElementById('edit-soundcloud').value = data.soundcloud || '';
+            document.getElementById('edit-spotify').value = data.spotify || '';
+            document.getElementById('edit-bandcamp').value = data.bandcamp || '';
+            document.getElementById('edit-twitter').value = data.twitter || '';
+            document.getElementById('edit-instagram').value = data.instagram || '';
+
+            document.getElementById('edit-page').style.display = 'flex';
+            window.location.hash = 'edit';
+        }
+    } else { // User is not authenticated
+        // Display denial message
+        document.getElementById('edit-deny').style.display = 'flex';
+        setTimeout(() => {
+            document.getElementById('edit-deny').style.display = 'none';
+        }, 3000);
+    }
+});
+
+document.getElementById('submit-edit').addEventListener('click', async () => {
+    const confirmed = confirm("Are you sure you want to submit?");
+    if (confirmed) {
+        const editedData = {
+            name: document.getElementById('edit-name').value,
+            description: document.getElementById('edit-description').value,
+            country: document.getElementById('edit-country').value,
+            soundcloud: document.getElementById('edit-soundcloud').value,
+            spotify: document.getElementById('edit-spotify').value,
+            bandcamp: document.getElementById('edit-bandcamp').value,
+            twitter: document.getElementById('edit-twitter').value,
+            instagram: document.getElementById('edit-instagram').value
+        };
+
+        await db.collection('edited-pages').add(editedData);
+
+        document.getElementById('edit-page').style.display = 'none';
+        const thankYouMessage = document.getElementById('thank-you-message');
+        thankYouMessage.style.display = 'block';
+        setTimeout(() => {
+            thankYouMessage.style.display = 'none';
+        }, 3000);
+        window.location.hash = '';
+    }
+});
+</script>
+
+
+
+
+
+<!-- EDIT SCRIPT -->
+<script>
+
+    document.getElementById('edit').addEventListener('click', async () => {
+        // Check Firebase authentication status
+        const user = firebase.auth().currentUser;
+        
+        if (user) { // User is authenticated
+            const title = document.querySelector('h1').innerText;
+            const docRef = db.collection('Pages').where('name', '==', title);
+            const querySnapshot = await docRef.get();
+            
+            if (!querySnapshot.empty) {
+                const doc = querySnapshot.docs[0];
+                const data = doc.data();
+
+                document.getElementById('edit-name').value = data.name || '';
+                document.getElementById('edit-description').value = data.description || '';
+                document.getElementById('edit-country').value = data.country || '';
+                document.getElementById('edit-soundcloud').value = data.soundcloud || '';
+                document.getElementById('edit-spotify').value = data.spotify || '';
+                document.getElementById('edit-bandcamp').value = data.bandcamp || '';
+                document.getElementById('edit-twitter').value = data.twitter || '';
+                document.getElementById('edit-instagram').value = data.instagram || '';
+
+                document.getElementById('edit-page').style.display = 'flex';
+                window.location.hash = 'edit';
+            }
+        } else { // User is not authenticated
+            // Display denial message
+            document.getElementById('edit-deny').style.display = 'flex';
+            setTimeout(() => {
+                document.getElementById('edit-deny').style.display = 'none';
+            }, 3000);
+        }
+    });
+
+    document.getElementById('submit-edit').addEventListener('click', async () => {
+        const confirmed = confirm("Are you sure you want to submit?");
+        if (confirmed) {
+            const editedData = {
+                name: document.getElementById('edit-name').value,
+                description: document.getElementById('edit-description').value,
+                country: document.getElementById('edit-country').value,
+                soundcloud: document.getElementById('edit-soundcloud').value,
+                spotify: document.getElementById('edit-spotify').value,
+                bandcamp: document.getElementById('edit-bandcamp').value,
+                twitter: document.getElementById('edit-twitter').value,
+                instagram: document.getElementById('edit-instagram').value
+            };
+
+            await db.collection('edited-pages').add(editedData);
+
+            document.getElementById('edit-page').style.display = 'none';
+            const thankYouMessage = document.getElementById('thank-you-message');
+            thankYouMessage.style.display = 'block';
+            setTimeout(() => {
+                thankYouMessage.style.display = 'none';
+            }, 3000);
+            window.location.hash = '';
+        }
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="center-container" class="container">
+
+
+    <div class="container.mt-6" id="edit-deny">Login to submit an edit!</div>
+
+
+    <div id="login-box" class="card">
+        <button type="button" id="close-login-box" class="btn-dark" onclick="closeLoginBox()">[X]</button>
+        <div class="card-body">
+            <form id="login-form">
+                <h2 class="card-title">Login</h2>
+                <div class="mb-3">
+                    <label for="login-email" class="form-label">Email:</label>
+                    <input class="form-control" type="text" id="login-email" name="login-email" placeholder="Email">
+                </div>
+                <div class="mb-3">
+                    <label for="login-password" class="form-label">Password:</label>
+                    <input class="form-control" type="password" id="login-password" name="login-password" placeholder="Password">
+                </div>
+                <div class="d-grid">
+                    <input id="input-login" type="submit" value="Login" class="btn btn-primary">
+                </div>
+            </form>
+            <div class="text-center mt-3">
+                <p>Don't have an account?</p>
+                <btn id="signup-window-box">Join 1*wiki</btn>
+            </div>
+        </div>
+    </div>
+
+    <div id="signup-box" class="card mt-3">
+        <button type="button" id="close-signup-box" class="btn-close" aria-label="Close" onclick="closeSignupBox()">[X]</button>
+        <div class="card-body">
+            <form id="signup-form">
+                <h2 class="card-title">Signup</h2>
+                <div class="mb-3">
+                    <label for="signup-username" class="form-label">Username:</label>
+                    <input class="form-control" type="text" id="signup-username" name="signup-username" placeholder="Username">
+                </div>
+                <div class="mb-3">
+                    <label for="signup-email" class="form-label">Email:</label>
+                    <input class="form-control" type="text" id="signup-email" name="signup-email" placeholder="Email">
+                </div>
+                <div class="mb-3">
+                    <label for="signup-password" class="form-label">Password:</label>
+                    <input class="form-control" type="password" id="signup-password" name="signup-password" placeholder="Password">
+                </div>
+                <div class="mb-3">
+                    <label for="confirm-password" class="form-label">Confirm Password:</label>
+                    <input class="form-control" type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password">
+                </div>
+                <div id="password-match-error" style="color: red;"></div>
+                <div class="d-grid">
+                    <input id="input-signup" type="submit" value="Sign Up" class="btn btn-primary">
+                </div>
+            </form>
+            <div class="text-center mt-3">
+                <p>Already have an account?</p>
+                <btn id="login-window-box">Login</btn>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <div id="login-background"></div>
+
+<!-- LOGIN BOX SIGNUP BOX  -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var loginBox = document.getElementById("login-box");
+        var signupBox = document.getElementById("signup-box");
+        var signupWindowBox = document.getElementById("signup-window-box");
+        var loginWindowBox = document.getElementById("login-window-box");
+        var loginButton = document.getElementById("login-button");
+    
+        signupWindowBox.addEventListener("click", function () {
+            loginBox.style.display = "none";
+            signupBox.style.display = "flex";
+        });
+
+    
+        loginWindowBox.addEventListener("click", function () {
+            loginBox.style.display = "flex";
+            signupBox.style.display = "none";
+        });
+
+        // Add event listener for login-button
+        loginButton.addEventListener("click", function () {
+            loginBox.style.display = "flex";
+            signupBox.style.display = "none";
+            
+        });
+    });
+</script>
+
+
+<!-- CLOSE LOGIN BOX AND SIGNUP BOX SCRIPT -->
+<script>
+    function closeLoginBox() {
+        var loginBox = document.getElementById("login-box");
+        const centerContainer = document.querySelector('#center-container');
+        loginBox.style.display = "none";
+        centerContainer.style.display = 'none';
+        centerContainer.style.zIndex = '-1000';
+        centerContainer.style.pointerEvents = 'none';
+    }
+
+    function closeSignupBox() {
+        var signupBox = document.getElementById("signup-box");
+        const centerContainer = document.querySelector('#center-container');
+        centerContainer.style.display = 'none';
+        centerContainer.style.zIndex = '-1000';
+        centerContainer.style.pointerEvents = 'none';
+        signupBox.style.display = "none";
+    }
+    
+</script>
+
+
+
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+
+<!-- ######## SCRIPTS ######## -->
+<script src="scripts/points.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-storage.js"></script>
+<script src="scripts/points.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-firestore.js"></script><script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-storage.js"></script>
+<script src="firebase.js"></script>
+<script src="auth.js"></script>
+
+
+</body>
+</html>
