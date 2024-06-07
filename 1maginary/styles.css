@@ -1,0 +1,171 @@
+::selection {
+    background-color: #00ab00;
+    color: white; /* Change text color to make it visible */
+}
+
+/* For older versions of Firefox */
+::-moz-selection {
+    background-color: #00a700;
+    color: white;
+}
+
+
+
+#section-one {
+width: 70vw;
+}
+
+
+#gray-text {
+color: gray;
+}
+
+#pageList-items {
+display: none;
+}
+
+
+h1 {
+    font-family:'Times New Roman', Times, serif;
+    font-size: 50px;
+    color: #00ff00;
+}
+
+p {
+    font-family: Arial, sans-serif;
+    font-size: 17px;
+}
+
+h1, p, h2, ul, li {
+    text-align: left;
+}
+a {
+    color: #00ff00 !important;
+}
+a:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+#logo {
+    background-image: url('assets/spinleaf7.gif');
+            background-size: contain;
+            background-repeat: no-repeat;
+            height: 100px;
+            width: 100px;
+            outline:
+            1px solid rgb(28, 28, 28);
+}
+
+
+.offcanvas-start {
+    position: fixed;
+    top: 0px;
+    left: 0;
+    padding-top: 10px;
+    height: 100%;
+    width: 130px;
+    z-index: 1045;
+    display: auto;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    border-right: 1px solid #007b00;
+}
+
+
+.container.mt-4 {
+    margin-top: 1.5rem;
+    margin-left: 130px;
+}
+
+.container.mt-5 {
+    margin-top: 1.5rem;
+    margin-left: 130px;
+}
+
+.gray-text {
+    color: gray;
+    text-align: center;
+}
+
+::selection {
+    background-color: #00ab00;
+    color: white; /* Change text color to make it visible */
+}
+
+/* For older versions of Firefox */
+::-moz-selection {
+    background-color: #00a700;
+    color: white;
+}
+
+.card-body {
+    background-color: black !important;
+    color: white !important;
+    outline: 1px solid rgb(0, 0, 0) !important;
+}
+
+#modalContent {
+    background-color: black;
+    z-index: 155;
+    height: auto;
+}
+
+#pageModal {
+    position: absolute;
+    width: 90%;
+    left: 120px;
+    top: 0;
+    display: none;
+}
+
+.border.p-3 {
+    background-color: rgb(0, 0, 0);
+    outline: 1px solid rgb(42, 42, 42) !important;
+}
+
+
+li:hover {
+    color: #00ff00;
+    cursor: pointer;
+}
+
+/* Styles for headers */
+.modal-header {
+background-color: #00ff00;
+color: white;
+font-weight: bold;
+padding: 5px;
+text-align: center;
+width: 95%;
+margin-top: 10px;
+border-radius: 0px;
+border: none;
+}
+
+
+
+
+a:hover {
+color: #00ff00;
+cursor: pointer;
+}
+
+.header-container {
+    position: relative;
+}
+.header-right {
+    float: right;
+    margin-left: 20px;
+    margin-right: 10px;
+}
+.header-text {
+    overflow: hidden; /* Ensure proper wrapping of text around the floated element */
+}
+
+#artists-header {
+    width: 60vw;
+}
+
+

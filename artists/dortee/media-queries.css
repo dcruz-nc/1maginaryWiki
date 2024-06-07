@@ -1,0 +1,102 @@
+@media (max-width: 800px) {
+
+
+    .container-fluid {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 65px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        background-color: black !important;
+        color: white !important;
+        display: block !important;
+        border-bottom: 1px solid #00ff00 !important;
+    }
+
+    .container-fluid ul {
+        gap: 10px;
+        display: flex;
+        flex-direction: row;
+        font-weight: bold;
+    }
+
+
+
+
+    .col-md-8 {
+        left: 100px;
+        top: 20px;
+        display: flex;
+        flex-direction: row;
+    }
+
+    #logo {
+        background-image: url('assets/spinleaf7.gif');
+                background-size: contain;
+                background-repeat: no-repeat;
+                height: 70px;
+                width: 70px;
+                position: absolute;
+                left: 5px;
+                outline:
+                1px solid rgb(28, 28, 28);
+    }
+
+    .offcanvas-start {
+        display: none;
+    }
+    
+    
+    .container.mt-4 {
+        margin-top: 110px;
+        margin-left: 0;
+    }
+    
+    .container.mt-5 {
+        margin-top: 110px;
+        margin-left: 0;
+    }
+
+    #home-page {
+        margin-top: 80px;
+    }
+
+    #logout-button {
+        position: fixed;
+            top: 15px;
+            right: 15px !important;
+            background-color: rgb(0, 0, 0);
+            border-radius: 0px;
+            font-size: 16px;
+            color: rgb(255, 255, 255);
+            border: none;
+            outline: 2px solid #4c4c4c;
+            width: 80px;
+            height: 40px;
+        }
+        
+        #logout-button:hover {
+            color: #00790a;
+        }
+        
+        
+        #login-screen-button {
+            position: fixed;
+            top: 15px;
+            right: 15px !important;
+            background-color: rgb(0, 0, 0);
+            border-radius: 0px;
+            font-size: 16px;
+            color: rgb(255, 255, 255);
+            border: none;
+            outline: 2px solid #414141;
+            width: 80px;
+            height: 40px;
+        }
+        #login-screen-button:hover {
+            color: #00790a;
+        }
+
+}
